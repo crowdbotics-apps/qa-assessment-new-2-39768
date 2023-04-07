@@ -1,41 +1,31 @@
-import { useNavigation } from "@react-navigation/native";
-import { Pressable } from "react-native";
-import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Image, TouchableHighlight, TextInput, StyleSheet } from "react-native";
+import React from "react";
+import { Text, View, TouchableOpacity, Image, StyleSheet, TextInput, TouchableHighlight } from "react-native";
 
-const Login2 = () => {
-  const navigation = useNavigation();
-  const [selected, setSelected] = useState(false);
+const pressed = () => {
+  console.log("pressed");
+};
 
-  const onPress = () => {
-    setSelected(!selected);
-  };
-
+const Signup = () => {
   return <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.headingText}>Log in</Text>
+        <Text style={styles.headingText}>Sign up</Text>
       </View>
       <View>
         <View style={styles.emailContainer}>
           <Text style={styles.mr10}>Email address</Text>
-          <Input placeholder="Email" />
+          <Input placeholder='Email' />
         </View>
         <View style={styles.mb20}>
           <Text style={styles.mr10}>Password</Text>
-          <Input placeholder="Password" />
+          <Input placeholder='Enter' />
         </View>
-        <View style={styles.forgotPassword}>
-          <View>
-            <CheckBox onPress={onPress} selected={selected} text="Remember me" />
-          </View>
-          <TouchableOpacity>
-            <Pressable onPress={() => {
-            navigation.navigate("forgotPassword");
-          }}><Text>Forgot Password?</Text></Pressable>
-          </TouchableOpacity>
+        <View style={styles.mb20}>
+          <Text style={styles.mr10}>Confirm password</Text>
+          <Input placeholder='Enter' />
         </View>
+
         <View style={styles.loginContainer}>
-          <Button>Log In</Button>
+          <Button onPress={pressed}>Sign up</Button>
         </View>
         <View style={styles.orContainer}>
           <View style={styles.line} />
@@ -55,11 +45,9 @@ const Login2 = () => {
         </View>
       </View>
       <View style={styles.footerContainer}>
-        <Text style={styles.footerText}>Do not have an account?</Text>
-        <TouchableOpacity>
-          <Pressable onPress={() => {
-          navigation.navigate("signup");
-        }}><Text>Sign Up</Text></Pressable>
+        <Text style={styles.footerText}>I have an account? </Text>
+        <TouchableOpacity onPress={pressed}>
+          <Text>Login</Text>
         </TouchableOpacity>
       </View>
     </View>;
@@ -149,25 +137,20 @@ const styles = StyleSheet.create({
     color: "#6B6B6B"
   }
 });
-export default Login2;
+export default Signup;
 
 const Button = props => {
-  const navigation = useNavigation();
-  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <Pressable onPress={() => {
-      navigation.navigate("profile");
-    }}><View style={[btnStyles.button, {
-        backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
-        height: props.height ? props.height : 49,
-        borderWidth: props.borderWidth ? props.borderWidth : 0,
-        borderColor: props.borderColor ? props.borderColor : "#000000"
-      }]}>
+  return <TouchableHighlight onPress={props.onPress} underlayColor='#DDDDDD'>
+      <View style={[btnStyles.button, {
+      backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
+      height: props.height ? props.height : 49,
+      borderWidth: props.borderWidth ? props.borderWidth : 0,
+      borderColor: props.borderColor ? props.borderColor : "#000000"
+    }]}>
         <Text style={[btnStyles.text, {
-          color: props.color ? props.color : "#ffffff"
-        }]}>
-          {props.children}
-        </Text>
-      </View></Pressable>
+        color: props.color ? props.color : "#ffffff"
+      }]}>{props.children}</Text>
+      </View>
     </TouchableHighlight>;
 };
 
@@ -184,46 +167,9 @@ const btnStyles = StyleSheet.create({
   }
 });
 
-const CheckBox = ({
-  selected,
-  onPress,
-  text
-}) => <TouchableOpacity onPress={onPress}>
-    <View style={checkBoxStyles.checkBoxContainer}>
-      <View style={checkBoxStyles.iconContainer}>
-        {selected && <Image source={require("./assets/checkbox.png")} style={checkBoxStyles.icon} />}
-      </View>
-      <Text style={checkBoxStyles.iconText}>{text}</Text>
-    </View>
-  </TouchableOpacity>;
-
-const checkBoxStyles = StyleSheet.create({
-  checkBoxContainer: {
-    display: "flex",
-    flexDirection: "row"
-  },
-  iconContainer: {
-    height: 18,
-    width: 18,
-    borderColor: "#000000",
-    borderWidth: 2,
-    borderRadius: 5,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  icon: {
-    height: 16,
-    width: 16
-  },
-  iconText: {
-    marginLeft: 10
-  }
-});
-
 const Input = props => {
   return <View>
-      <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={num => props.setValue(num)} placeholderTextColor="#ddd" editable={props.editable !== false} />
+      <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={num => props.setValue(num)} placeholderTextColor='#ddd' editable={props.editable !== false} />
       {props.errorText ? <Text style={textStyles.error}>{props.errorText}</Text> : null}
     </View>;
 };
