@@ -13,7 +13,7 @@ const Login2 = () => {
 
   return <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.headingText}>Log in</Text>
+        <Text style={styles.headingText}>Welcome back</Text>
       </View>
       <View>
         <View style={styles.emailContainer}>
