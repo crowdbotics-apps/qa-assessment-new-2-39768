@@ -42,7 +42,9 @@ const MyOffersScreen = () => {
         }}><Image source={{
             uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
           }} style={_styles.footerIcon} /></Pressable>
-          <Text style={_styles.footerText}>Home</Text>
+          <Pressable onPress={() => {
+          navigation.navigate("ScreenAI12");
+        }}><Text style={_styles.footerText}>Home</Text></Pressable>
         </TouchableOpacity>
         <TouchableOpacity style={_styles.footerButton}>
           <Image source={{
@@ -55,9 +57,11 @@ const MyOffersScreen = () => {
           </Pressable>
         </TouchableOpacity>
         <TouchableOpacity style={_styles.footerButton}>
-          <Image source={{
-          uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
-        }} style={_styles.footerIcon} />
+          <Pressable onPress={() => {
+          navigation.navigate("profile");
+        }}><Image source={{
+            uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+          }} style={_styles.footerIcon} /></Pressable>
           <Pressable onPress={() => {
           navigation.navigate("profile");
         }}>
