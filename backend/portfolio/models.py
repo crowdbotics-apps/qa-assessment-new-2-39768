@@ -24,5 +24,6 @@ class Offer(models.Model):
     'Generated Model'
     status = models.CharField(max_length=256,)
     created_date = models.DateTimeField(auto_now=True,)
+    offerer = models.ForeignKey("users.User",on_delete=models.CASCADE,null=True,blank=True,related_name="offer_offerer",)
 
 # Create your models here.
