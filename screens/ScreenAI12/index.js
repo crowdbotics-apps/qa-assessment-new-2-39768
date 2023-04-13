@@ -1,13 +1,18 @@
+import { useNavigation } from "@react-navigation/native";
+import { Pressable } from "react-native";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   return <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Welcome to Coin Offer</Text>
       </View>
       <View style={styles.content}>
-        <Image source={require("../assets/home-image.png")} style={styles.image} />
+        <Image source={{
+        uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+      }} style={styles.image} />
         <Text style={styles.contentText}>
           Explore our coin offers and find the best deals for you!
         </Text>
@@ -19,11 +24,15 @@ const HomeScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
           <Image source={require("../assets/offers-icon.png")} style={styles.footerIcon} />
-          <Text style={styles.footerText}>My Offers</Text>
+          <Pressable onPress={() => {
+          navigation.navigate("ScreenAI13");
+        }}><Text style={styles.footerText}>My Offers</Text></Pressable>
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
           <Image source={require("../assets/profile-icon.png")} style={styles.footerIcon} />
-          <Text style={styles.footerText}>Profile</Text>
+          <Pressable onPress={() => {
+          navigation.navigate("profile");
+        }}><Text style={styles.footerText}>Profile</Text></Pressable>
         </TouchableOpacity>
       </View>
     </View>;

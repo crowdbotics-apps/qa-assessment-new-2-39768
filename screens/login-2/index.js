@@ -155,7 +155,7 @@ const Button = props => {
   const navigation = useNavigation();
   return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
       <Pressable onPress={() => {
-      navigation.navigate("profile");
+      navigation.navigate("ScreenAI12");
     }}><View style={[btnStyles.button, {
         backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
         height: props.height ? props.height : 49,
