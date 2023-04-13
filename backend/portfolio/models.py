@@ -18,6 +18,8 @@ class OfferList(models.Model):
     'Generated Model'
     quantity = models.BigIntegerField()
     offer = models.ForeignKey("portfolio.Offer",null=True,blank=True,on_delete=models.CASCADE,related_name="offerlist_offer",)
+    coin = models.ForeignKey("portfolio.Coin",on_delete=models.CASCADE,null=True,blank=True,related_name="offerlist_coin",)
+    user = models.ForeignKey("users.User",on_delete=models.CASCADE,null=True,blank=True,related_name="offerlist_user",)
 class Offer(models.Model):
     'Generated Model'
     user = models.ForeignKey("users.User",on_delete=models.CASCADE,related_name="offer_user",)
