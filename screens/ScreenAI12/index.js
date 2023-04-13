@@ -19,17 +19,23 @@ const HomeScreen = () => {
       </View>
       <View style={styles.footer}>
         <TouchableOpacity style={styles.footerButton}>
-          <Image source={require("../assets/home-icon.png")} style={styles.footerIcon} />
+          <Image source={{
+          uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+        }} style={styles.footerIcon} />
           <Text style={styles.footerText}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
-          <Image source={require("../assets/offers-icon.png")} style={styles.footerIcon} />
+          <Image source={{
+          uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+        }} style={styles.footerIcon} />
           <Pressable onPress={() => {
           navigation.navigate("ScreenAI13");
         }}><Text style={styles.footerText}>My Offers</Text></Pressable>
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
-          <Image source={require("../assets/profile-icon.png")} style={styles.footerIcon} />
+          <Image source={{
+          uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+        }} style={styles.footerIcon} />
           <Pressable onPress={() => {
           navigation.navigate("profile");
         }}><Text style={styles.footerText}>Profile</Text></Pressable>

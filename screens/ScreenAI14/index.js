@@ -1,8 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
-import { Pressable } from "react-native";
 import { StyleSheet } from "react-native";
 import React from "react";
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image, Pressable } from "react-native";
 
 const MyOffersScreen = () => {
   const navigation = useNavigation();
@@ -41,22 +40,32 @@ const MyOffersScreen = () => {
       <FlatList data={coinOffers} renderItem={renderCoinOffer} keyExtractor={item => item.id} contentContainerStyle={{
       padding: 16
     }} />
-      <View style={_styles.QDahqBny}>
-        <TouchableOpacity>
-          <Image source={require("../assets/home.png")} style={_styles.GKuBhEtH} />
+      <View style={_styles.footer}>
+        <TouchableOpacity style={_styles.footerButton}>
+          <Image source={{
+          uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+        }} style={_styles.footerIcon} />
+          <Text style={_styles.footerText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={_styles.footerButton}>
+          <Image source={{
+          uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+        }} style={_styles.footerIcon} />
           <Pressable onPress={() => {
-          navigation.navigate("ScreenAI12");
-        }}><Text style={_styles.UZsmjWKT}>Home</Text></Pressable>
+          navigation.navigate("ScreenAI13");
+        }}>
+            <Text style={_styles.footerText}>My Offers</Text>
+          </Pressable>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require("../assets/my_offers.png")} style={_styles.JxJofnVA} />
-          <Text style={_styles.UZsmjWKT}>My Offers</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require("../assets/profile.png")} style={_styles.hpOsEfGw} />
+        <TouchableOpacity style={_styles.footerButton}>
+          <Image source={{
+          uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+        }} style={_styles.footerIcon} />
           <Pressable onPress={() => {
           navigation.navigate("profile");
-        }}><Text style={_styles.UZsmjWKT}>Profile</Text></Pressable>
+        }}>
+            <Text style={_styles.footerText}>Profile</Text>
+          </Pressable>
         </TouchableOpacity>
       </View>
     </View>;
@@ -68,7 +77,7 @@ const _styles = StyleSheet.create({
   ZBjbKrgj: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 16
+    padding: 18
   },
   JORrwtwR: {
     width: 50,
@@ -98,5 +107,59 @@ const _styles = StyleSheet.create({
   hpOsEfGw: {
     width: 30,
     height: 30
+  },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff"
+  },
+  header: {
+    height: 80,
+    backgroundColor: "#f4511e",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#fff"
+  },
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginBottom: 20
+  },
+  contentText: {
+    fontSize: 18,
+    color: "#333",
+    textAlign: "center",
+    paddingHorizontal: 20
+  },
+  footer: {
+    height: 80,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    borderTopWidth: 1,
+    borderTopColor: "#ccc",
+    position: "relative",
+    width: 356
+  },
+  footerButton: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  footerIcon: {
+    width: 30,
+    height: 30,
+    marginBottom: 5
+  },
+  footerText: {
+    fontSize: 12,
+    color: "#333"
   }
 });
