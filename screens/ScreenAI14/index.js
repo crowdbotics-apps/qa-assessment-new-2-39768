@@ -7,24 +7,19 @@ const MyOffersScreen = () => {
   const navigation = useNavigation();
   const coinOffers = [{
     id: "1",
-    title: "10% off on Bitcoin",
-    image: require("../assets/bitcoin.png")
+    title: "10% off on Bitcoin"
   }, {
     id: "2",
-    title: "20% off on Ethereum",
-    image: require("../assets/ethereum.png")
+    title: "20% off on Ethereum"
   }, {
     id: "3",
-    title: "15% off on Dogecoin",
-    image: require("../assets/dogecoin.png")
+    title: "15% off on Dogecoin"
   }, {
     id: "4",
-    title: "5% off on Litecoin",
-    image: require("../assets/litecoin.png")
+    title: "5% off on Litecoin"
   }, {
     id: "5",
-    title: "25% off on Ripple",
-    image: require("../assets/ripple.png")
+    title: "25% off on Ripple"
   }];
 
   const renderCoinOffer = ({
