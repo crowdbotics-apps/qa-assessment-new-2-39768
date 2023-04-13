@@ -1,4 +1,4 @@
-from .models import MetalType
+from .models import Coin, MetalType
 from django.views.generic import CreateView, UpdateView, DetailView, ListView
 from django.shortcuts import render
 

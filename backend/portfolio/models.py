@@ -14,5 +14,15 @@ class Coin(models.Model):
     price = models.FloatField()
     bid_premium_low = models.FloatField()
     bid_premium_high = models.BigIntegerField()
+class OfferList(models.Model):
+    'Generated Model'
+    coin = models.ForeignKey("users.User",on_delete=models.CASCADE,related_name="offerlist_coin",)
+    quantity = models.BigIntegerField()
+    user = models.ForeignKey("portfolio.Offer",on_delete=models.CASCADE,related_name="offerlist_user",)
+class Offer(models.Model):
+    'Generated Model'
+    user = models.ForeignKey("users.User",on_delete=models.CASCADE,related_name="offer_user",)
+    status = models.CharField(max_length=256,)
+    created_date = models.DateTimeField(auto_now=True,)
 
 # Create your models here.
