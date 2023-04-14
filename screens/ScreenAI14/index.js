@@ -32,8 +32,8 @@ const MyOffersScreen = ({
       uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
     }} style={_styles.JORrwtwR} />
       <Pressable onPress={() => {
-      navigation.navigate("ScreenAI13", {
-        id: item.id
+      navigation.navigate("Untitled14", {
+        item: item
       });
     }}>
         <Text style={_styles.UZsmjWKT}>{item.title}</Text>
