@@ -12,7 +12,7 @@ const CoinDetailScreen = ({
         <Image source={{
         uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
       }} style={styles.coinIcon} />
-        <Text style={styles.coinName}>Bitcoin</Text>
+        <Text style={styles.coinName}>{item?.title}</Text>
       </View>
       <View style={styles.content}>
         <View style={styles.priceContainer}>
