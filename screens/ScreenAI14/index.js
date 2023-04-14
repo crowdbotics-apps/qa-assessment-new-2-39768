@@ -3,7 +3,10 @@ import { StyleSheet } from "react-native";
 import React from "react";
 import { View, Text, FlatList, TouchableOpacity, Image, Pressable } from "react-native";
 
-const MyOffersScreen = () => {
+const MyOffersScreen = ({
+  route
+}) => {
+  const {} = route.params || {};
   const navigation = useNavigation();
   const coinOffers = [{
     id: "1",
@@ -28,7 +31,13 @@ const MyOffersScreen = () => {
       <Image source={{
       uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
     }} style={_styles.JORrwtwR} />
-      <Text style={_styles.UZsmjWKT}>{item.title}</Text>
+      <Pressable onPress={() => {
+      navigation.navigate("ScreenAI13", {
+        id: item.id
+      });
+    }}>
+        <Text style={_styles.UZsmjWKT}>{item.title}</Text>
+      </Pressable>
     </TouchableOpacity>;
 
   return <View style={_styles.AJuMpbNO}>
@@ -39,12 +48,16 @@ const MyOffersScreen = () => {
         <TouchableOpacity style={_styles.footerButton}>
           <Pressable onPress={() => {
           navigation.navigate("ScreenAI12");
-        }}><Image source={{
+        }}>
+            <Image source={{
             uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
-          }} style={_styles.footerIcon} /></Pressable>
+          }} style={_styles.footerIcon} />
+          </Pressable>
           <Pressable onPress={() => {
           navigation.navigate("ScreenAI12");
-        }}><Text style={_styles.footerText}>Home</Text></Pressable>
+        }}>
+            <Text style={_styles.footerText}>Home</Text>
+          </Pressable>
         </TouchableOpacity>
         <TouchableOpacity style={_styles.footerButton}>
           <Image source={{
@@ -59,9 +72,11 @@ const MyOffersScreen = () => {
         <TouchableOpacity style={_styles.footerButton}>
           <Pressable onPress={() => {
           navigation.navigate("profile");
-        }}><Image source={{
+        }}>
+            <Image source={{
             uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
-          }} style={_styles.footerIcon} /></Pressable>
+          }} style={_styles.footerIcon} />
+          </Pressable>
           <Pressable onPress={() => {
           navigation.navigate("profile");
         }}>
