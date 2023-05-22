@@ -6,6 +6,8 @@ import { Text, View, TouchableOpacity, Image, TouchableHighlight, TextInput, Sty
 const Login2 = () => {
   const navigation = useNavigation();
   const [selected, setSelected] = useState(false);
+  const [localEmail, setLoaclEmail] = useState("");
+  const [localPassword, setLocalPassword] = useState("");
 
   const onPress = () => {
     setSelected(!selected);
@@ -18,11 +20,15 @@ const Login2 = () => {
       <View>
         <View style={styles.emailContainer}>
           <Text style={styles.mr10}>Email address</Text>
-          <Input placeholder="Email" />
+          <Input placeholder="Email" value={{
+          localEmail
+        }} />
         </View>
         <View style={styles.mb20}>
           <Text style={styles.mr10}>Password</Text>
-          <Input placeholder="Password" />
+          <Input placeholder="Password" value={{
+          localPassword
+        }} />
         </View>
         <View style={styles.forgotPassword}>
           <View>
@@ -31,7 +37,9 @@ const Login2 = () => {
           <TouchableOpacity>
             <Pressable onPress={() => {
             navigation.navigate("forgotPassword");
-          }}><Text>Forgot Password?</Text></Pressable>
+          }}>
+              <Text>Forgot Password?</Text>
+            </Pressable>
           </TouchableOpacity>
         </View>
         <View style={styles.loginContainer}>
@@ -59,7 +67,9 @@ const Login2 = () => {
         <TouchableOpacity>
           <Pressable onPress={() => {
           navigation.navigate("signup");
-        }}><Text>Sign Up</Text></Pressable>
+        }}>
+            <Text>Sign Up</Text>
+          </Pressable>
         </TouchableOpacity>
       </View>
     </View>;
@@ -156,18 +166,20 @@ const Button = props => {
   return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
       <Pressable onPress={() => {
       navigation.navigate("ScreenAI12");
-    }}><View style={[btnStyles.button, {
+    }}>
+        <View style={[btnStyles.button, {
         backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
         height: props.height ? props.height : 49,
         borderWidth: props.borderWidth ? props.borderWidth : 0,
         borderColor: props.borderColor ? props.borderColor : "#000000"
       }]}>
-        <Text style={[btnStyles.text, {
+          <Text style={[btnStyles.text, {
           color: props.color ? props.color : "#ffffff"
         }]}>
-          {props.children}
-        </Text>
-      </View></Pressable>
+            {props.children}
+          </Text>
+        </View>
+      </Pressable>
     </TouchableHighlight>;
 };
 
