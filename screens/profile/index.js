@@ -9,38 +9,33 @@ const pressed = () => {
 const Profile = () => {
   return <ScrollView>
       <View style={styles.mainContainer}>
-        <View>
-          <View style={styles.headerContainer}>
-            <ProfileImage />
-            <Text style={styles.headerText}>Jay Mahanga</Text>
-            <Text style={styles.headerSubText}>jay@gmail.com</Text>
-          </View>
-          <View style={styles.subheaderContainer}>
-            <Text style={styles.subheaderDetailText}>Details</Text>
-            <Text style={styles.subheaderRemoveText}>Delete Account</Text>
-          </View>
-        </View>
+        {
+        /*         <View>
+                <View style={styles.headerContainer}>
+                  <ProfileImage />
+                  <Text style={styles.headerText}>Jay Mahanga</Text>
+                  <Text style={styles.headerSubText}>jay@gmail.com</Text>
+                </View>
+                <View style={styles.subheaderContainer}>
+                  <Text style={styles.subheaderDetailText}>Details</Text>
+                  <Text style={styles.subheaderRemoveText}>Delete Account</Text>
+                </View>
+              </View> */
+      }
         <View style={styles.mainBody}>
           <View style={styles.mt15}>
-            <Text style={styles.textLabel}>Name</Text>
+            <Text style={styles.textLabel}>Full name</Text>
             <Input placeholder="Name" />
           </View>
           <View style={styles.mt15}>
-            <Text style={styles.textLabel}>Email address</Text>
+            <Text style={styles.textLabel}>Email</Text>
             <Input placeholder="Email address" />
           </View>
-          <View style={styles.mt15}>
-            <Text style={styles.textLabel}>Gender</Text>
-            <Input placeholder="Gender" />
-          </View>
-          <View style={styles.mt15}>
-            <Text style={styles.textLabel}>Password</Text>
-            <Input placeholder="Password" />
-          </View>
+          
         </View>
         <View style={styles.btnSave}>
           <Button onPress={pressed} height={49}>
-            Save
+            Edit Profile
           </Button>
         </View>
       </View>
@@ -113,18 +108,20 @@ export default Profile;
 
 const Button = props => {
   return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <Pressable><View style={[btnStyles.button, {
+      <Pressable>
+        <View style={[btnStyles.button, {
         backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
         height: props.height ? props.height : 49,
         borderWidth: props.borderWidth ? props.borderWidth : 0,
         borderColor: props.borderColor ? props.borderColor : "#000000"
       }]}>
-        <Text style={[btnStyles.text, {
+          <Text style={[btnStyles.text, {
           color: props.color ? props.color : "#ffffff"
         }]}>
-          {props.children}
-        </Text>
-      </View></Pressable>
+            {props.children}
+          </Text>
+        </View>
+      </Pressable>
     </TouchableHighlight>;
 };
 
