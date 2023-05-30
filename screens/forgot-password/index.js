@@ -1,29 +1,24 @@
-import * as React from "react";
+import { Pressable } from "react-native";
+import "react";
 import { Text, View, StyleSheet, TextInput, TouchableHighlight } from "react-native";
 
 const pressed = () => {
   console.log("pressed");
 };
 
-const ForgotPassword = () => {
+const ForgotPassword = ({
+  navigation
+}) => {
   return <View style={styles.container}>
       <View style={styles.topHead}>
         <Text style={styles.mainHeading}>Forgot {"\n"} password</Text>
       </View>
 
       <View style={styles.inputSection}>
-        <View style={styles.newPassword}>
-          <Text style={styles.newPassword}>
-            Set new password for your account.
-          </Text>
-        </View>
+        <View style={styles.newPassword}></View>
         <View style={styles.passwordInput}>
-          <Text style={styles.newPasswordLabel}>Password</Text>
-          <Input placeholder="Enter"></Input>
-        </View>
-        <View style={styles.confirmInput}>
-          <Text style={styles.newPasswordLabel}>Confirm Password</Text>
-          <Input placeholder="Enter"></Input>
+          <Text style={styles.newPasswordLabel}>{"Email"}</Text>
+          <Input placeholder="Enter your email"></Input>
         </View>
       </View>
       <View style={styles.resetButton}>
@@ -32,7 +27,11 @@ const ForgotPassword = () => {
         </Button>
       </View>
       <View style={styles.back}>
-        <Text style={styles.backText}>Back</Text>
+        <Pressable onPress={() => {
+        navigation.navigate("login2");
+      }}>
+          <Text style={styles.backText}>Back</Text>
+        </Pressable>
       </View>
     </View>;
 };
@@ -70,9 +69,6 @@ const styles = StyleSheet.create({
   newPasswordLabel: {
     paddingLeft: 15,
     paddingBottom: 7
-  },
-  confirmInput: {
-    paddingTop: 10
   },
   resetButton: {
     paddingTop: 20,
