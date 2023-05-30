@@ -8,7 +8,7 @@ const Signup = ({
 }) => {
   return <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.headingText}>Sign up</Text>
+        
       </View>
       <View style={styles.uDZvAxRY}>
         <View style={styles.emailContainer}>
@@ -54,7 +54,7 @@ const Signup = ({
       <Pressable style={styles.qXIwXffk} onPress={() => navigation.navigate("login2")}>
       <Text>{"Already have an account? Login."}</Text>
       </Pressable>
-    </View>;
+    <Text style={styles.vHuQyzXm}>{"Sign Up"}</Text></View>;
 };
 
 const styles = StyleSheet.create({
@@ -68,16 +68,6 @@ const styles = StyleSheet.create({
   },
   heading: {
     alignSelf: "center"
-  },
-  headingText: {
-    fontSize: 45,
-    fontWeight: "500",
-    position: "absolute",
-    top: 27,
-    left: -100,
-    width: 204,
-    height: 32,
-    textAlign: "center"
   },
   emailContainer: {
     marginBottom: 10
@@ -149,6 +139,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 594,
     left: 73
+  },
+  vHuQyzXm: {
+    fontSize: 42,
+    fontWeight: "500",
+    position: "absolute",
+    top: 54,
+    left: 114
   }
 });
 export default Signup;

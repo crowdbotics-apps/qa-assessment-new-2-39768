@@ -1,11 +1,11 @@
 import { Pressable } from "react-native";
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Image, TouchableHighlight, TextInput, StyleSheet } from "react-native";
+import { Text, View, TouchableOpacity, Image, TextInput, StyleSheet } from "react-native";
 
-const Login2 = () => {
+const Login2 = ({
+  navigation
+}) => {
   const [selected, setSelected] = useState(false);
-  const [localEmail, setLoaclEmail] = useState("");
-  const [localPassword, setLocalPassword] = useState("");
 
   const onPress = () => {
     setSelected(!selected);
@@ -13,20 +13,16 @@ const Login2 = () => {
 
   return <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.headingText}>Welcome back</Text>
+        <Text style={styles.headingText}>{"Login"}</Text>
       </View>
       <View>
         <View style={styles.emailContainer}>
           <Text style={styles.mr10}>Email address</Text>
-          <Input placeholder="Email" value={{
-          localEmail
-        }} />
+          <Input placeholder="Email" />
         </View>
         <View style={styles.mb20}>
           <Text style={styles.mr10}>Password</Text>
-          <Input placeholder="Password" value={{
-          localPassword
-        }} />
+          <Input placeholder="Password" />
         </View>
         <View style={styles.forgotPassword}>
           <View>
@@ -40,35 +36,30 @@ const Login2 = () => {
             </Pressable>
           </TouchableOpacity>
         </View>
-        <View style={styles.loginContainer}>
-          <Button>Log In</Button>
-        </View>
-        <View style={styles.orContainer}>
-          <View style={styles.line} />
-          <Text style={styles.orText}>Or</Text>
-          <View style={styles.line} />
-        </View>
-        <View style={styles.imageContainer}>
-          <View style={styles.iconContainer}>
-            <Image source={require("./assets/appleIcon.png")} style={styles.icon} />
-          </View>
-          <View style={styles.iconContainer}>
-            <Image source={require("./assets/googleIcon.png")} style={styles.icon} />
-          </View>
-          <View style={styles.iconContainer}>
-            <Image source={require("./assets/fbIcon.png")} style={styles.icon} />
-          </View>
-        </View>
+        {
+        /*         <View style={styles.loginContainer}>
+                <Button>Log In</Button>
+              </View> */
+      }
       </View>
-      <View style={styles.footerContainer}>
-        <Text style={styles.footerText}>Do not have an account?</Text>
-        <TouchableOpacity>
-          <Pressable onPress={() => {
-          navigation.navigate("signup");
-        }}>
-            <Text>Sign Up</Text>
-          </Pressable>
-        </TouchableOpacity>
+      <Pressable onPress={() => {
+      navigation.navigate("signup");
+    }}>
+        <View style={styles.footerContainer}>
+          <Text style={styles.footerText}>Do not have an account?</Text>
+          <TouchableOpacity>
+            <Pressable onPress={() => {
+            navigation.navigate("signup");
+          }}>
+              <Text>Sign Up</Text>
+            </Pressable>
+          </TouchableOpacity>
+        </View>
+      </Pressable>
+      <View style={styles.DUqwmwLc}>
+        <Pressable>
+          <Text style={styles.vkrKyqAb}>{"Login"}</Text>
+        </Pressable>
       </View>
     </View>;
 };
@@ -87,7 +78,10 @@ const styles = StyleSheet.create({
   },
   headingText: {
     fontSize: 42,
-    fontWeight: "500"
+    fontWeight: "500",
+    position: "absolute",
+    top: 43,
+    left: -55
   },
   emailContainer: {
     marginBottom: 10
@@ -105,49 +99,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 40
   },
-  loginContainer: {
-    width: "80%",
-    alignSelf: "center"
-  },
-  orContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "70%",
-    alignSelf: "center"
-  },
-  line: {
-    height: 1,
-    width: 100,
-    backgroundColor: "rgba(0, 0, 0, 0.05)"
-  },
-  orText: {
-    marginVertical: 40,
-    alignSelf: "center",
-    fontSize: 16,
-    color: "#231F20",
-    opacity: 0.5
-  },
-  imageContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    width: "60%",
-    alignSelf: "center",
-    justifyContent: "space-between"
-  },
-  iconContainer: {
-    height: 40,
-    width: 40,
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: "#F7F7F7"
-  },
-  icon: {
-    height: 18,
-    width: 18
-  },
   footerContainer: {
     alignSelf: "center",
     display: "flex",
@@ -155,43 +106,31 @@ const styles = StyleSheet.create({
   },
   footerText: {
     color: "#6B6B6B"
+  },
+  DUqwmwLc: {
+    height: 54,
+    width: 297,
+    backgroundColor: "#000",
+    borderRadius: 10,
+    color: "#777777",
+    position: "absolute",
+    top: 464,
+    left: 28
+  },
+  vkrKyqAb: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 18,
+    borderRadius: 0,
+    color: "#fff",
+    fontWeight: "700",
+    position: "absolute",
+    top: 18,
+    left: 123
   }
 });
 export default Login2;
-
-const Button = props => {
-  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <Pressable onPress={() => {
-      navigation.navigate("ScreenAI12");
-    }}>
-        <View style={[btnStyles.button, {
-        backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
-        height: props.height ? props.height : 49,
-        borderWidth: props.borderWidth ? props.borderWidth : 0,
-        borderColor: props.borderColor ? props.borderColor : "#000000"
-      }]}>
-          <Text style={[btnStyles.text, {
-          color: props.color ? props.color : "#ffffff"
-        }]}>
-            {props.children}
-          </Text>
-        </View>
-      </Pressable>
-    </TouchableHighlight>;
-};
-
-const btnStyles = StyleSheet.create({
-  button: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10
-  },
-  text: {
-    fontWeight: "bold",
-    fontSize: 15
-  }
-});
 
 const CheckBox = ({
   selected,
