@@ -1,43 +1,33 @@
 import { Pressable } from "react-native";
 import React from "react";
-import { ScrollView, Text, View, StyleSheet, TouchableHighlight, Image, TextInput } from "react-native";
+import { ScrollView, Text, View, StyleSheet, TouchableHighlight } from "react-native";
 
 const pressed = () => {
   console.log("pressed");
 };
 
-const Profile = () => {
-  return <ScrollView>
+const Profile = ({
+  navigation
+}) => {
+  return <ScrollView style={styles.tfTVXojR}>
       <View style={styles.mainContainer}>
-        {
-        /*         <View>
-                <View style={styles.headerContainer}>
-                  <ProfileImage />
-                  <Text style={styles.headerText}>Jay Mahanga</Text>
-                  <Text style={styles.headerSubText}>jay@gmail.com</Text>
-                </View>
-                <View style={styles.subheaderContainer}>
-                  <Text style={styles.subheaderDetailText}>Details</Text>
-                  <Text style={styles.subheaderRemoveText}>Delete Account</Text>
-                </View>
-              </View> */
-      }
-        <View style={styles.mainBody}>
-          <View style={styles.mt15}>
-            <Text style={styles.textLabel}>Full name</Text>
-            <Input placeholder="Name" />
-          </View>
-          <View style={styles.mt15}>
-            <Text style={styles.textLabel}>Email</Text>
-            <Input placeholder="Email address" />
-          </View>
-          
-        </View>
         <View style={styles.btnSave}>
           <Button onPress={pressed} height={49}>
             Edit Profile
           </Button>
         </View>
+      </View>
+
+      <View style={styles.SdRjwfTN}>
+        <Text style={styles.MiqDiFzk}>{"Full Name"}</Text>
+        <View style={styles.UnhjSBVC}>
+          <Text style={styles.niqwKWtr}>{"Full Name"}</Text>
+        </View>
+      </View>
+
+      <Text style={styles.yPmeXPji}>{"Email "}</Text>
+      <View style={styles.YNBGZvWa}>
+        <Text style={styles.sMCYPuBL}>{"example@test.com"}</Text>
       </View>
     </ScrollView>;
 };
@@ -51,64 +41,94 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "#FFF"
   },
-  mt15: {
-    marginTop: 15
-  },
-  headerContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignSelf: "center",
-    alignItems: "center"
-  },
-  headerText: {
-    marginTop: 15,
-    fontSize: 20,
-    fontWeight: "bold"
-  },
-  headerSubText: {
-    marginTop: 5,
-    fontSize: 12,
-    color: "#1C1A19",
-    opacity: 0.5
-  },
-  subheaderContainer: {
-    marginTop: 15,
-    marginBottom: 30,
-    padding: 10,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    borderBottomWidth: 1,
-    borderBottomColor: "#C4C4C4"
-  },
-  subheaderDetailText: {
-    fontSize: 16,
-    fontWeight: "bold"
-  },
-  subheaderRemoveText: {
-    fontSize: 14,
-    color: "#FF6848"
-  },
-  textLabel: {
-    fontSize: 14,
-    marginLeft: 15,
-    marginBottom: 5,
-    fontWeight: "bold"
-  },
-  mainBody: {// height: '60%'
-  },
   btnSave: {
     display: "flex",
     alignSelf: "center",
     marginTop: 50,
-    width: "80%"
-  }
+    width: "80%",
+    position: "absolute",
+    top: 500
+  },
+  MiqDiFzk: {
+    width: 100,
+    height: 22,
+    lineHeight: 14,
+    fontSize: 16,
+    borderRadius: 0,
+    position: "absolute",
+    top: 46,
+    left: 49,
+    fontWeight: "700"
+  },
+  UnhjSBVC: {
+    height: 60,
+    width: 268,
+    backgroundColor: "#E4E4E4",
+    borderRadius: 10,
+    color: "#777777",
+    position: "absolute",
+    top: 78,
+    left: 43
+  },
+  niqwKWtr: {
+    width: 232,
+    height: 30,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0,
+    position: "absolute",
+    top: 19,
+    left: 19,
+    color: "#5A5A5A"
+  },
+  SdRjwfTN: {
+    width: 356,
+    height: 204,
+    position: "absolute",
+    left: 0,
+    top: 38
+  },
+  yPmeXPji: {
+    width: 100,
+    height: 19,
+    lineHeight: 14,
+    fontSize: 16,
+    borderRadius: 0,
+    position: "absolute",
+    top: 190,
+    left: 45,
+    fontWeight: "700"
+  },
+  YNBGZvWa: {
+    height: 60,
+    width: 268,
+    backgroundColor: "#E4E4E4",
+    borderRadius: 10,
+    color: "#777777",
+    position: "absolute",
+    top: 223,
+    left: 43
+  },
+  sMCYPuBL: {
+    width: 232,
+    height: 30,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0,
+    position: "absolute",
+    top: 19,
+    left: 19,
+    color: "#5A5A5A"
+  },
+  tfTVXojR: {}
 });
 export default Profile;
 
 const Button = props => {
   return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <Pressable>
+      <Pressable onPress={() => {
+      navigation.navigate("ProfileScreenCopy");
+    }}>
         <View style={[btnStyles.button, {
         backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
         height: props.height ? props.height : 49,
@@ -130,58 +150,15 @@ const btnStyles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10
+    borderRadius: 10,
+    position: "relative",
+    top: 0,
+    left: 5,
+    width: 263,
+    height: 49
   },
   text: {
     fontWeight: "bold",
     fontSize: 15
-  }
-});
-
-const ProfileImage = props => {
-  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <View style={profileStyles.container}>
-        <Image style={profileStyles.image} resizeMode="contain" source={require("./assets/edit.png")} />
-      </View>
-    </TouchableHighlight>;
-};
-
-const profileStyles = StyleSheet.create({
-  container: {
-    backgroundColor: "#DADADA",
-    height: 108,
-    width: 108,
-    borderRadius: 54,
-    display: "flex",
-    alignItems: "center"
-  },
-  image: {
-    width: 43,
-    marginTop: 21
-  }
-});
-
-const Input = props => {
-  return <View>
-      <TextInput style={inputStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={num => props.setValue(num)} placeholderTextColor="#ddd" editable={props.editable !== false} />
-      {props.errorText ? <Text style={inputStyles.error}>{props.errorText}</Text> : null}
-    </View>;
-};
-
-const inputStyles = StyleSheet.create({
-  input: {
-    backgroundColor: "#fff",
-    height: 53,
-    borderColor: "#C4C4C4",
-    color: "#000",
-    borderRadius: 10,
-    fontSize: 14,
-    borderWidth: 1,
-    paddingHorizontal: 15
-  },
-  error: {
-    fontSize: 13,
-    color: "#FA060D",
-    paddingTop: 8
   }
 });
