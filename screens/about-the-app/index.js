@@ -1,7 +1,10 @@
+import { Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, SafeAreaView, Image } from "react-native";
 
-const AboutTheAppScreen = params => {
+const AboutTheAppScreen = ({
+  navigation
+}) => {
   const [ImageSource, setImageSource] = useState();
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
@@ -14,6 +17,11 @@ const AboutTheAppScreen = params => {
       <View style={styles.imgScroller}>
         <Image source={ImageSource} />
         <Image style={styles.threeDots} source={require("./assets/3Dots.png")} />
+        <Pressable onPress={() => {
+        navigation.navigate("Untitled15");
+      }} style={styles.rgVPtOhG}>
+          <Image style={styles.rgVPtOhF} source={require("./icons8-back-50.png")} />
+        </Pressable>
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.text}>{text1}</Text>
@@ -27,6 +35,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     backgroundColor: "#fff"
+  },
+  rgVPtOhG: {
+    position: "absolute",
+    left: 0,
+    top: -8
   },
   imgScroller: {
     flexDirection: "column",
@@ -45,6 +58,10 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     lineHeight: 18,
     marginVertical: 10
+  },
+  rgVPtOhF: {
+    width: 38,
+    height: 35
   }
 });
 export default AboutTheAppScreen;

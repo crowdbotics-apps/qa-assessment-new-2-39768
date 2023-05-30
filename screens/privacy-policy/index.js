@@ -1,3 +1,5 @@
+import { Image } from "react-native";
+import { Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, ScrollView } from "react-native";
 
@@ -28,6 +30,11 @@ const PrivacyPolicyScreen = params => {
           <Text style={styles.policyText}>{thirdPara}</Text>
         </View>
       </ScrollView>
+      <Pressable style={styles.JBRtUnVl} onPress={() => {
+      navigation.navigate("Untitled15");
+    }}>
+        <Image style={styles.XtvTFDHq} source={require("./icons8-back-50.png")} />
+      </Pressable>
     </View>;
 };
 
@@ -50,7 +57,18 @@ const styles = StyleSheet.create({
   },
   policyText: {
     lineHeight: 20,
-    textAlign: "justify"
+    textAlign: "justify",
+    width: 296,
+    height: 272
+  },
+  JBRtUnVl: {
+    position: "absolute",
+    left: 24,
+    top: 5
+  },
+  XtvTFDHq: {
+    width: 38,
+    height: 35
   }
 });
 export default PrivacyPolicyScreen;

@@ -1,26 +1,28 @@
 import { Pressable } from "react-native";
 import React from "react";
-import { ScrollView, Text, View, StyleSheet, TouchableHighlight, Image, TextInput } from "react-native";
+import { ScrollView, Text, View, StyleSheet, TouchableHighlight, TextInput } from "react-native";
 
 const pressed = () => {
   console.log("pressed");
 };
 
-const Profile = () => {
+const Profile = ({
+  navigation
+}) => {
   return <ScrollView>
       <View style={styles.mainContainer}>
         {
         /*         <View>
-               <View style={styles.headerContainer}>
-                 <ProfileImage />
-                 <Text style={styles.headerText}>Jay Mahanga</Text>
-                 <Text style={styles.headerSubText}>jay@gmail.com</Text>
-               </View>
-               <View style={styles.subheaderContainer}>
-                 <Text style={styles.subheaderDetailText}>Details</Text>
-                 <Text style={styles.subheaderRemoveText}>Delete Account</Text>
-               </View>
-             </View> */
+          <View style={styles.headerContainer}>
+            <ProfileImage />
+            <Text style={styles.headerText}>Jay Mahanga</Text>
+            <Text style={styles.headerSubText}>jay@gmail.com</Text>
+          </View>
+          <View style={styles.subheaderContainer}>
+            <Text style={styles.subheaderDetailText}>Details</Text>
+            <Text style={styles.subheaderRemoveText}>Delete Account</Text>
+          </View>
+        </View> */
       }
         <View style={styles.mainBody}>
           <View style={styles.mt15}>
@@ -32,6 +34,10 @@ const Profile = () => {
             <Input placeholder="Last name" />
           </View>
           <View style={styles.mt15}>
+            <Text style={styles.textLabel}>Date of Birth</Text>
+            <Input placeholder="Date of Birth" />
+          </View>
+          <View style={styles.mt15}>
             <Text style={styles.textLabel}>Email</Text>
             <Input placeholder="Email Address" isEditable={false} />
           </View>
@@ -39,7 +45,20 @@ const Profile = () => {
             <Text style={styles.textLabel}>Address</Text>
             <Input placeholder="Address" />
           </View>
-          
+          <View style={styles.mt15}>
+            <Text style={styles.textLabel}>Zip code</Text>
+            <Input placeholder="Zip code" />
+          </View>
+
+          <View style={styles.mt15}>
+            <Text style={styles.textLabel}>City</Text>
+            <Input placeholder="City name" />
+          </View>
+
+          <View style={styles.mt15}>
+            <Text style={styles.textLabel}>State</Text>
+            <Input placeholder="Name of state" />
+          </View>
         </View>
         <View style={styles.btnSave}>
           <Button onPress={pressed} height={49}>
@@ -62,41 +81,6 @@ const styles = StyleSheet.create({
   mt15: {
     marginTop: 15
   },
-  headerContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignSelf: "center",
-    alignItems: "center"
-  },
-  headerText: {
-    marginTop: 15,
-    fontSize: 20,
-    fontWeight: "bold"
-  },
-  headerSubText: {
-    marginTop: 5,
-    fontSize: 12,
-    color: "#1C1A19",
-    opacity: 0.5
-  },
-  subheaderContainer: {
-    marginTop: 15,
-    marginBottom: 30,
-    padding: 10,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    borderBottomWidth: 1,
-    borderBottomColor: "#C4C4C4"
-  },
-  subheaderDetailText: {
-    fontSize: 16,
-    fontWeight: "bold"
-  },
-  subheaderRemoveText: {
-    fontSize: 14,
-    color: "#FF6848"
-  },
   textLabel: {
     fontSize: 14,
     marginLeft: 15,
@@ -116,7 +100,9 @@ export default Profile;
 
 const Button = props => {
   return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <Pressable>
+      <Pressable onPress={() => {
+      navigation.navigate("profile");
+    }}>
         <View style={[btnStyles.button, {
         backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
         height: props.height ? props.height : 49,
@@ -143,29 +129,6 @@ const btnStyles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     fontSize: 15
-  }
-});
-
-const ProfileImage = props => {
-  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <View style={profileStyles.container}>
-        <Image style={profileStyles.image} resizeMode="contain" source={require("./assets/edit.png")} />
-      </View>
-    </TouchableHighlight>;
-};
-
-const profileStyles = StyleSheet.create({
-  container: {
-    backgroundColor: "#DADADA",
-    height: 108,
-    width: 108,
-    borderRadius: 54,
-    display: "flex",
-    alignItems: "center"
-  },
-  image: {
-    width: 43,
-    marginTop: 21
   }
 });
 
