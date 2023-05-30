@@ -38,7 +38,7 @@ const Signup = ({
         </View>
       </View>
       <View style={styles.footerContainer}>
-        <Text style={styles.footerText}>I have an account? </Text>
+        
         <TouchableOpacity onPress={pressed}>
           <Pressable onPress={() => {
           navigation.navigate("login2");
@@ -92,9 +92,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     display: "flex",
     flexDirection: "row"
-  },
-  footerText: {
-    color: "#6B6B6B"
   }
 });
 export default Signup;
