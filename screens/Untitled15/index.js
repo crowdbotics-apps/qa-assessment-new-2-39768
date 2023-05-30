@@ -1,10 +1,13 @@
+import { Pressable } from "react-native";
 import { Text } from "react-native";
 import { View } from "react-native";
 import { Image } from "react-native";
 import React from "react";
 import { StyleSheet, ScrollView, SafeAreaView } from "react-native";
 
-const Untitled15 = () => {
+const Untitled15 = ({
+  navigation
+}) => {
   return <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={{
       backgroundColor: "#f0f0f1",
@@ -26,6 +29,14 @@ const Untitled15 = () => {
       </View>
       <View style={styles.DXCaOeme}>
         <Text style={styles.zqrbQWem}>{"Privacy Policy"}</Text>
+      </View>
+
+      <View style={styles.KBZeTCNN}>
+        <Pressable onPress={() => {
+        navigation.navigate("signup");
+      }}>
+          <Text style={styles.dFwnCtGs}>{"Sign In / Sign Up"}</Text>
+        </Pressable>
       </View>
     </SafeAreaView>;
 };
@@ -52,7 +63,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     color: "#777777",
     position: "absolute",
-    top: 410,
+    top: 386,
     left: 29
   },
   ZezLXuKD: {
@@ -76,8 +87,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     color: "#777777",
     position: "absolute",
-    top: 513,
-    left: 27
+    top: 475,
+    left: 31
   },
   JjrHHKKm: {
     width: 100,
@@ -101,8 +112,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     color: "#777777",
     position: "absolute",
-    top: 410,
-    left: 190
+    top: 387,
+    left: 191
   },
   tmOHRJWU: {
     width: 100,
@@ -125,8 +136,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     color: "#777777",
     position: "absolute",
-    top: 512,
-    left: 193
+    top: 475,
+    left: 190
   },
   zqrbQWem: {
     width: 99,
@@ -137,6 +148,54 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 7,
     left: 19,
+    textAlign: "center",
+    fontWeight: "700",
+    color: "#fff",
+    fontFamily: "inherit"
+  },
+  XoNJtAdd: {
+    height: 60,
+    width: 300,
+    backgroundColor: "#173140",
+    borderRadius: 10,
+    color: "#777777",
+    position: "absolute",
+    top: 555,
+    left: 33
+  },
+  SKCZdFqh: {
+    width: 150,
+    height: 42,
+    lineHeight: 21,
+    fontSize: 18,
+    borderRadius: 0,
+    position: "absolute",
+    top: 20,
+    left: 78,
+    textAlign: "center",
+    fontWeight: "700",
+    color: "#fff",
+    fontFamily: "inherit"
+  },
+  KBZeTCNN: {
+    height: 60,
+    width: 300,
+    backgroundColor: "#173140",
+    borderRadius: 10,
+    color: "#777777",
+    position: "absolute",
+    top: 552,
+    left: 31
+  },
+  dFwnCtGs: {
+    width: 159,
+    height: 42,
+    lineHeight: 21,
+    fontSize: 18,
+    borderRadius: 0,
+    position: "absolute",
+    top: 19,
+    left: 70,
     textAlign: "center",
     fontWeight: "700",
     color: "#fff",
