@@ -1,14 +1,14 @@
-import { useNavigation } from "@react-navigation/native";
 import { Pressable } from "react-native";
 import React from "react";
-import { Text, View, TouchableOpacity, Image, StyleSheet, TextInput, TouchableHighlight } from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet, TextInput, TouchableHighlight } from "react-native";
 
 const pressed = () => {
   console.log("pressed");
 };
 
-const Signup = () => {
-  const navigation = useNavigation();
+const Signup = ({
+  navigation
+}) => {
   return <View style={styles.container}>
       <View style={styles.heading}>
         <Text style={styles.headingText}>Sign up</Text>
@@ -16,35 +16,25 @@ const Signup = () => {
       <View>
         <View style={styles.emailContainer}>
           <Text style={styles.mr10}>Email address</Text>
-          <Input placeholder='Email' />
+          <Input placeholder="Email" />
         </View>
         <View style={styles.mb20}>
           <Text style={styles.mr10}>Password</Text>
-          <Input placeholder='Enter' />
+          <Input placeholder="Enter" />
         </View>
         <View style={styles.mb20}>
           <Text style={styles.mr10}>Confirm password</Text>
-          <Input placeholder='Enter' />
+          <Input placeholder="Enter" />
         </View>
 
         <View style={styles.loginContainer}>
           <Button onPress={pressed}>Sign up</Button>
         </View>
-        <View style={styles.orContainer}>
-          <View style={styles.line} />
-          <Text style={styles.orText}>Or</Text>
-          <View style={styles.line} />
-        </View>
+        
         <View style={styles.imageContainer}>
-          <View style={styles.iconContainer}>
-            <Image source={require("./assets/appleIcon.png")} style={styles.icon} />
-          </View>
-          <View style={styles.iconContainer}>
-            <Image source={require("./assets/googleIcon.png")} style={styles.icon} />
-          </View>
-          <View style={styles.iconContainer}>
-            <Image source={require("./assets/fbIcon.png")} style={styles.icon} />
-          </View>
+          
+          
+          
         </View>
       </View>
       <View style={styles.footerContainer}>
@@ -52,7 +42,9 @@ const Signup = () => {
         <TouchableOpacity onPress={pressed}>
           <Pressable onPress={() => {
           navigation.navigate("login2");
-        }}><Text>Login</Text></Pressable>
+        }}>
+            <Text>Login</Text>
+          </Pressable>
         </TouchableOpacity>
       </View>
     </View>;
@@ -84,35 +76,9 @@ const styles = StyleSheet.create({
   mb20: {
     marginBottom: 20
   },
-  forgotPassword: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 40
-  },
   loginContainer: {
     width: "80%",
     alignSelf: "center"
-  },
-  orContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "70%",
-    alignSelf: "center"
-  },
-  line: {
-    height: 1,
-    width: 100,
-    backgroundColor: "rgba(0, 0, 0, 0.05)"
-  },
-  orText: {
-    marginVertical: 40,
-    alignSelf: "center",
-    fontSize: 16,
-    color: "#231F20",
-    opacity: 0.5
   },
   imageContainer: {
     display: "flex",
@@ -121,17 +87,6 @@ const styles = StyleSheet.create({
     width: "60%",
     alignSelf: "center",
     justifyContent: "space-between"
-  },
-  iconContainer: {
-    height: 40,
-    width: 40,
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: "#F7F7F7"
-  },
-  icon: {
-    height: 18,
-    width: 18
   },
   footerContainer: {
     alignSelf: "center",
@@ -145,7 +100,7 @@ const styles = StyleSheet.create({
 export default Signup;
 
 const Button = props => {
-  return <TouchableHighlight onPress={props.onPress} underlayColor='#DDDDDD'>
+  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
       <View style={[btnStyles.button, {
       backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
       height: props.height ? props.height : 49,
@@ -154,7 +109,9 @@ const Button = props => {
     }]}>
         <Text style={[btnStyles.text, {
         color: props.color ? props.color : "#ffffff"
-      }]}>{props.children}</Text>
+      }]}>
+          {props.children}
+        </Text>
       </View>
     </TouchableHighlight>;
 };
@@ -164,7 +121,11 @@ const btnStyles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10
+    borderRadius: 10,
+    position: "absolute",
+    left: 4,
+    width: 250,
+    top: 59
   },
   text: {
     fontWeight: "bold",
@@ -174,7 +135,7 @@ const btnStyles = StyleSheet.create({
 
 const Input = props => {
   return <View>
-      <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={num => props.setValue(num)} placeholderTextColor='#ddd' editable={props.editable !== false} />
+      <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={num => props.setValue(num)} placeholderTextColor="#ddd" editable={props.editable !== false} />
       {props.errorText ? <Text style={textStyles.error}>{props.errorText}</Text> : null}
     </View>;
 };

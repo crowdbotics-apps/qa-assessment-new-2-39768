@@ -1,10 +1,8 @@
-import { useNavigation } from "@react-navigation/native";
 import { Pressable } from "react-native";
 import React, { useState } from "react";
 import { Text, View, TouchableOpacity, Image, TouchableHighlight, TextInput, StyleSheet } from "react-native";
 
 const Login2 = () => {
-  const navigation = useNavigation();
   const [selected, setSelected] = useState(false);
   const [localEmail, setLoaclEmail] = useState("");
   const [localPassword, setLocalPassword] = useState("");
@@ -162,7 +160,6 @@ const styles = StyleSheet.create({
 export default Login2;
 
 const Button = props => {
-  const navigation = useNavigation();
   return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
       <Pressable onPress={() => {
       navigation.navigate("ScreenAI12");
