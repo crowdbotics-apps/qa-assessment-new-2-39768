@@ -1,10 +1,7 @@
 import { Pressable } from "react-native";
+import { CheckBox } from "react-native-elements";
 import React from "react";
-import { Text, View, TouchableOpacity, StyleSheet, TextInput, TouchableHighlight } from "react-native";
-
-const pressed = () => {
-  console.log("pressed");
-};
+import { Text, View, StyleSheet, TextInput } from "react-native";
 
 const Signup = ({
   navigation
@@ -13,7 +10,7 @@ const Signup = ({
       <View style={styles.heading}>
         <Text style={styles.headingText}>Sign up</Text>
       </View>
-      <View>
+      <View style={styles.uDZvAxRY}>
         <View style={styles.emailContainer}>
           <Text style={styles.mr10}>Email address</Text>
           <Input placeholder="Email" />
@@ -27,26 +24,36 @@ const Signup = ({
           <Input placeholder="Enter" />
         </View>
 
-        <View style={styles.loginContainer}>
-          <Button onPress={pressed}>Sign up</Button>
-        </View>
-        
-        <View style={styles.imageContainer}>
-          
-          
-          
-        </View>
+        {
+        /*         <View style={styles.loginContainer}>
+             <Button onPress={pressed}>Sign up</Button>
+           </View> */
+      }
       </View>
-      <View style={styles.footerContainer}>
-        
-        <TouchableOpacity onPress={pressed}>
-          <Pressable onPress={() => {
-          navigation.navigate("login2");
-        }}>
-            <Text>Login</Text>
-          </Pressable>
-        </TouchableOpacity>
+
+      <View style={styles.tCjtGqjL}>
+        <CheckBox style={styles.kEMCBHUe} />
+        <Text style={styles.hXvAkQpN}>
+          {"I have read Terms and Conditions and Privacy Policy"}
+        </Text>
       </View>
+
+      {
+      /*       <View style={styles.footerContainer}>
+        <TouchableOpacity onPress={pressed}></TouchableOpacity>
+      </View> */
+    }
+      <View style={styles.BxjDSoZM}>
+        <Pressable onPress={() => {
+        navigation.navigate("login2");
+      }}>
+          <Text style={styles.nHIHOBof}>{"Sign Up"}</Text>
+        </Pressable>
+      </View>
+
+      <Pressable style={styles.qXIwXffk} onPress={() => navigation.navigate("login2")}>
+      <Text>{"Already have an account? Login."}</Text>
+      </Pressable>
     </View>;
 };
 
@@ -63,8 +70,14 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   headingText: {
-    fontSize: 42,
-    fontWeight: "500"
+    fontSize: 45,
+    fontWeight: "500",
+    position: "absolute",
+    top: 27,
+    left: -100,
+    width: 204,
+    height: 32,
+    textAlign: "center"
   },
   emailContainer: {
     marginBottom: 10
@@ -76,59 +89,69 @@ const styles = StyleSheet.create({
   mb20: {
     marginBottom: 20
   },
-  loginContainer: {
-    width: "80%",
-    alignSelf: "center"
+  kEMCBHUe: {
+    width: 15,
+    height: 15
   },
-  imageContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    width: "60%",
-    alignSelf: "center",
-    justifyContent: "space-between"
+  tCjtGqjL: {
+    height: 35,
+    marginVerical: 20,
+    position: "absolute",
+    width: 250,
+    left: 8,
+    top: 413
   },
-  footerContainer: {
-    alignSelf: "center",
-    display: "flex",
-    flexDirection: "row"
+  uDZvAxRY: {
+    position: "absolute",
+    left: 25,
+    top: 163,
+    width: 301,
+    height: 257
+  },
+  hXvAkQpN: {
+    width: 253,
+    height: 50,
+    lineHeight: 16,
+    fontSize: 14,
+    borderRadius: 0,
+    position: "absolute",
+    top: 18,
+    left: 52
+  },
+  BxjDSoZM: {
+    height: 54,
+    width: 297,
+    backgroundColor: "#000",
+    borderRadius: 10,
+    color: "#777777",
+    position: "absolute",
+    top: 499,
+    left: 28
+  },
+  nHIHOBof: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 18,
+    borderRadius: 0,
+    color: "#fff",
+    fontWeight: "700",
+    position: "absolute",
+    top: 17,
+    left: 110
+  },
+  qXIwXffk: {
+    width: 239,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 14,
+    borderRadius: 0,
+    position: "absolute",
+    top: 594,
+    left: 73
   }
 });
 export default Signup;
-
-const Button = props => {
-  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <View style={[btnStyles.button, {
-      backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
-      height: props.height ? props.height : 49,
-      borderWidth: props.borderWidth ? props.borderWidth : 0,
-      borderColor: props.borderColor ? props.borderColor : "#000000"
-    }]}>
-        <Text style={[btnStyles.text, {
-        color: props.color ? props.color : "#ffffff"
-      }]}>
-          {props.children}
-        </Text>
-      </View>
-    </TouchableHighlight>;
-};
-
-const btnStyles = StyleSheet.create({
-  button: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
-    position: "absolute",
-    left: 4,
-    width: 250,
-    top: 59
-  },
-  text: {
-    fontWeight: "bold",
-    fontSize: 15
-  }
-});
 
 const Input = props => {
   return <View>
