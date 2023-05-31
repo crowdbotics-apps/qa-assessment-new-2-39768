@@ -42,10 +42,9 @@ const CoinsList = () => {
   return <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity>
-          <Image name="arrow-back" size={24} color="black" />
+          <Image style={styles.gMdEanPl} source={require("./icons8-back-50.png")} />
         </TouchableOpacity>
         <Text style={styles.headerText}>My Offers</Text>
-        <View style={styles.ayMotHta}></View>
       </View>
       <FlatList data={coins} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.listContainer} />
     </View>;
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderBottomWidth: 1,
@@ -108,6 +107,11 @@ const styles = StyleSheet.create({
   },
   ayMotHta: {
     width: 24
+  },
+  gMdEanPl: {
+    width: 35,
+    height: 38,
+    marginRight: 90
   }
 });
 export default CoinsList;
