@@ -27,7 +27,7 @@ const AboutTheAppScreen = ({
         <Text style={styles.text}>{text1}</Text>
         <Text style={styles.text}>{text2}</Text>
       </View>
-    </SafeAreaView>;
+    <Text style={styles.DgLOWoTe}>{"About Us"}</Text></SafeAreaView>;
 };
 
 const styles = StyleSheet.create({
@@ -57,11 +57,24 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "justify",
     lineHeight: 18,
-    marginVertical: 10
+    marginVertical: 10,
+    width: 316,
+    height: 205
   },
   rgVPtOhF: {
     width: 38,
     height: 35
+  },
+  DgLOWoTe: {
+    width: 100,
+    height: 32,
+    lineHeight: 14,
+    fontSize: 20,
+    borderRadius: 0,
+    position: "absolute",
+    top: 16,
+    left: 133,
+    fontWeight: "700"
   }
 });
 export default AboutTheAppScreen;
