@@ -22,18 +22,34 @@ const Card = () => {
   const renderItem = ({
     item
   }) => <View style={styles.card}>
-      <Text style={styles.name}>Name: {item.name}</Text>
-      <Text style={styles.quantity}>Quantity: {item.quantity}</Text>
-      <Text style={styles.price}>Price per ounce: ${item.price}</Text>
+      <View style={styles.cardHeader}>
+        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.price}>${item.price}</Text>
+      </View>
+      <View style={styles.cardBody}>
+        <Text style={styles.quantity}>Quantity: {item.quantity}</Text>
+      </View>
     </View>;
 
-  return <FlatList data={data} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.scrollStyles} />;
+  return <View style={styles.container}>
+      <Text style={styles.heading}>Spot prices</Text>
+      <FlatList data={data} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.scrollStyles} />
+    </View>;
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff"
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 20
+  },
   card: {
     backgroundColor: "#fff",
-    padding: 20,
     borderRadius: 10,
     marginVertical: 10,
     marginHorizontal: 20,
@@ -45,6 +61,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5
+  },
+  cardHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee"
+  },
+  cardBody: {
+    padding: 20
   },
   scrollStyles: {
     paddingVertical: 20
@@ -59,7 +86,8 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   price: {
-    fontSize: 16
+    fontSize: 18,
+    fontWeight: "bold"
   }
 });
 export default Card;
