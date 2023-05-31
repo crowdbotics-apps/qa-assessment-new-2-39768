@@ -24,12 +24,16 @@ const Untitled15 = ({
       <View style={styles.JuRsRqkK}>
         <Pressable onPress={() => {
         navigation.navigate("termsAndConditions");
-      }}><Text style={styles.JjrHHKKm}>{"Terms and Conditions"}</Text></Pressable>
+      }}>
+          <Text style={styles.JjrHHKKm}>{"Terms and Conditions"}</Text>
+        </Pressable>
       </View>
       <View style={styles.OHsigrkx}>
         <Pressable onPress={() => {
         navigation.navigate("contactUs");
-      }}><Text style={styles.tmOHRJWU}>{"Contact Us"}</Text></Pressable>
+      }}>
+          <Text style={styles.tmOHRJWU}>{"Contact Us"}</Text>
+        </Pressable>
       </View>
       <View style={styles.DXCaOeme}>
         <Text style={styles.zqrbQWem}>{"Privacy Policy"}</Text>
@@ -63,7 +67,8 @@ const styles = StyleSheet.create({
   spPczPac: {
     height: 60,
     width: 140,
-    backgroundColor: "#173140",
+    backgroundColor: "#FFF",
+    borderWidth: 1,
     borderRadius: 10,
     color: "#777777",
     position: "absolute",
@@ -87,7 +92,8 @@ const styles = StyleSheet.create({
   JuRsRqkK: {
     height: 60,
     width: 140,
-    backgroundColor: "#173140",
+    backgroundColor: "#FFF",
+    borderWidth: 1,
     borderRadius: 10,
     color: "#777777",
     position: "absolute",
@@ -112,8 +118,9 @@ const styles = StyleSheet.create({
   OHsigrkx: {
     height: 60,
     width: 140,
-    backgroundColor: "#173140",
+    backgroundColor: "#FFF",
     borderRadius: 10,
+    borderWidth: 1,
     color: "#777777",
     position: "absolute",
     top: 387,
@@ -136,7 +143,8 @@ const styles = StyleSheet.create({
   DXCaOeme: {
     height: 60,
     width: 140,
-    backgroundColor: "#173140",
+    backgroundColor: "#FFF",
+    borderWidth: 1,
     borderRadius: 10,
     color: "#777777",
     position: "absolute",
@@ -150,8 +158,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     borderRadius: 0,
     position: "absolute",
-    top: 7,
-    left: 19,
+    top: 21,
+    left: 21,
     textAlign: "center",
     fontWeight: "700",
     color: "#fff",
@@ -160,7 +168,8 @@ const styles = StyleSheet.create({
   KBZeTCNN: {
     height: 60,
     width: 300,
-    backgroundColor: "#173140",
+    backgroundColor: "#FFF",
+    borderWidth: 1,
     borderRadius: 10,
     color: "#777777",
     position: "absolute",
