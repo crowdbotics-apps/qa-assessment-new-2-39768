@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, ScrollView } from "react-native";
+import { Text, StyleSheet, View, ScrollView, Image } from "react-native";
 
-const TermsAndConditionsScreen = params => {
+const TermsAndConditionsScreen = () => {
   const [lastUpdated, setLastUpdated] = useState(null);
   const [firstPara, setFirstPara] = useState(null);
   const [secondPara, setSecondPara] = useState(null);
@@ -13,7 +13,7 @@ const TermsAndConditionsScreen = params => {
     setThirdPara("I understand that uses my dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec.");
   }, []);
   return <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollStyle}>
         <View style={styles.lastUpdated}>
           <Text style={styles.bold}>Last Updated:</Text>
           <Text style={styles.bold}>{lastUpdated}</Text>
@@ -28,7 +28,8 @@ const TermsAndConditionsScreen = params => {
           <Text style={styles.policyText}>{thirdPara}</Text>
         </View>
       </ScrollView>
-    </View>;
+      <Image style={styles.oilrBMkV} source={require("./icons8-back-50.png")} />
+    <Text style={styles.uszraYYZ}>{"Terms & Conditions"}</Text></View>;
 };
 
 const styles = StyleSheet.create({
@@ -37,6 +38,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 20,
     paddingHorizontal: 30
+  },
+  scrollStyle: {
+    marginTop: 70
   },
   lastUpdated: {
     flexDirection: "row",
@@ -51,6 +55,23 @@ const styles = StyleSheet.create({
   policyText: {
     lineHeight: 20,
     textAlign: "justify"
+  },
+  oilrBMkV: {
+    width: 38,
+    height: 35,
+    position: "absolute",
+    top: 25,
+    left: 10
+  },
+  uszraYYZ: {
+    width: 211,
+    height: 38,
+    lineHeight: 14,
+    fontSize: 19,
+    borderRadius: 0,
+    position: "absolute",
+    top: 28,
+    left: 102
   }
 });
 export default TermsAndConditionsScreen;
