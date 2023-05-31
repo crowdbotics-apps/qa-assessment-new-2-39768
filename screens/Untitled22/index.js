@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, ScrollView, SafeAreaView, View, Text, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, ScrollView, SafeAreaView, View, Text, TextInput, Pressable } from "react-native";
 
 const SignupScreen = () => {
   return <SafeAreaView style={styles.safeArea}>
@@ -15,19 +15,19 @@ const SignupScreen = () => {
           <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} />
           <TextInput style={styles.input} placeholder="Confirm Password" secureTextEntry={true} />
           <View style={styles.checkboxContainer}>
-            <TouchableOpacity style={styles.checkbox}></TouchableOpacity>
+            <Pressable style={styles.checkbox}></Pressable>
             <Text style={styles.checkboxText}>
               I have read and agree to the Terms and Conditions
             </Text>
           </View>
-          <TouchableOpacity style={styles.button}>
+          <Pressable style={styles.button}>
             <Text style={styles.buttonText}>Signup</Text>
-          </TouchableOpacity>
+          </Pressable>
           <View style={styles.loginContainer}>
             <Text style={styles.loginText}>Already have an account?</Text>
-            <TouchableOpacity style={styles.loginButton}>
+            <Pressable style={styles.loginButton}>
               <Text style={styles.loginButtonText}>Login</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       </ScrollView>
