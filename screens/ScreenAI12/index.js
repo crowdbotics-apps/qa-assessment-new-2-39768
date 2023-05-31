@@ -1,10 +1,10 @@
-import { useNavigation } from "@react-navigation/native";
 import { Pressable } from "react-native";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
-const HomeScreen = () => {
-  const navigation = useNavigation();
+const HomeScreen = ({
+  navigation
+}) => {
   return <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Welcome to Coin Offer</Text>
@@ -22,17 +22,21 @@ const HomeScreen = () => {
           <Image source={{
           uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
         }} style={styles.footerIcon} />
-          <Text style={styles.footerText}>Home</Text>
+          <Text style={styles.footerText}>Spot price</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
           <Pressable onPress={() => {
           navigation.navigate("ScreenAI14");
-        }}><Image source={{
+        }}>
+            <Image source={{
             uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
-          }} style={styles.footerIcon} /></Pressable>
+          }} style={styles.footerIcon} />
+          </Pressable>
           <Pressable onPress={() => {
           navigation.navigate("ScreenAI13");
-        }}><Text style={styles.footerText}>My Offers</Text></Pressable>
+        }}>
+            <Text style={styles.footerText}>Retail price</Text>
+          </Pressable>
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
           <Image source={{
@@ -40,7 +44,9 @@ const HomeScreen = () => {
         }} style={styles.footerIcon} />
           <Pressable onPress={() => {
           navigation.navigate("profile");
-        }}><Text style={styles.footerText}>Profile</Text></Pressable>
+        }}>
+            <Text style={styles.footerText}>Make me an offer</Text>
+          </Pressable>
         </TouchableOpacity>
       </View>
     </View>;
