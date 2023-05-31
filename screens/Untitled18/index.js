@@ -45,6 +45,9 @@ const data = [{
 
 const App = () => {
   return <View style={styles.container}>
+      <View style={styles.centeredView}>
+        <Text style={styles.title}>Retail Price</Text>
+      </View>
       <FlatList data={data} renderItem={({
       item
     }) => <Card item={item} />} keyExtractor={item => item.id} />
@@ -54,8 +57,13 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#fff",
     padding: 10
+  },
+  centeredView: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 20
   },
   card: {
     backgroundColor: "#fff",
