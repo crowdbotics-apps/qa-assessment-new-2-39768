@@ -21,7 +21,7 @@ const SignupScreen = () => {
             </Text>
           </View>
           <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Create account</Text>
+            <Text style={styles.buttonText}>Signup</Text>
           </TouchableOpacity>
           <View style={styles.loginContainer}>
             <Text style={styles.loginText}>Already have an account?</Text>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 20
+    marginVertical: 20
   },
   checkbox: {
     width: 20,
