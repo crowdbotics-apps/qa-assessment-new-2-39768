@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, FlatList, Image } from "react-native";
 
 const CoinCard = ({
   coinName
@@ -39,10 +39,36 @@ const CoinsList = () => {
     item
   }) => <CoinCard coinName={item.name} />;
 
-  return <FlatList data={coins} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.listContainer} />;
+  return <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity>
+          <Image name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.headerText}>My Offers</Text>
+        <View style={styles.ayMotHta}></View>
+      </View>
+      <FlatList data={coins} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.listContainer} />
+    </View>;
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff"
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd"
+  },
+  headerText: {
+    fontSize: 18,
+    fontWeight: "bold"
+  },
   listContainer: {
     padding: 20
   },
@@ -79,6 +105,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     textAlign: "center"
+  },
+  ayMotHta: {
+    width: 24
   }
 });
 export default CoinsList;
