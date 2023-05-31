@@ -12,16 +12,17 @@ const Untitled21 = ({
     }}>
         <View style={styles.muaMPLcp}>
           <View style={styles.buttonView}>
-            <Pressable style={styles.buttonStyles} onPress={() => {
+            <Pressable onPress={() => {
             navigation.navigate("Untitled20");
           }}>
-              <Text style={styles.buttonText}>My Offers</Text>
+               <Image source={require("./icons8-coins-50.png")} style={[styles.buttonStyles, styles.TCQXckBo]} />
             </Pressable>
 
-            <Pressable style={[styles.buttonStyles, styles.lykZSeiA]} onPress={() => {
+           <Pressable onPress={() => {
             navigation.navigate("Untitled23");
           }}>
-              <Text style={styles.buttonText}>Settings</Text>
+             
+             <Image source={require("./icons8-settings-50.png")} style={[styles.buttonStyles]} />
             </Pressable>
           </View>
 
@@ -60,18 +61,14 @@ const styles = StyleSheet.create({
     fontWeight: "700"
   },
   buttonStyles: {
-    width: 140,
-    borderRadius: 10,
-    backgroundColor: "#000",
-    borderWidth: 1,
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center"
+    height: 40,
+    width: 40
   },
   buttonView: {
     flexDirection: "row",
-    justifyContent: "center",
-    marginTop: 20
+    justifyContent: "flex-end",
+    marginTop: 20,
+    marginRight: 20
   },
   tabContainer: {
     flexDirection: "row",
@@ -103,33 +100,15 @@ const styles = StyleSheet.create({
   lykZSeiA: {
     marginLeft: 20
   },
-  IAODLHOm: {
+  vYFhkmHw: {
     width: 107,
     height: 62,
     position: "absolute",
-    top: 141,
-    left: 30
+    top: 154,
+    left: 33
   },
-  JsynnSPH: {
-    width: 107,
-    height: 62,
-    position: "absolute",
-    top: 247,
-    left: 34
-  },
-  ujjBTXzN: {
-    width: 107,
-    height: 62,
-    position: "absolute",
-    top: 372,
-    left: 25
-  },
-  SAOLxXso: {
-    width: 107,
-    height: 62,
-    position: "absolute",
-    top: 133,
-    left: 189
+  TCQXckBo: {
+    marginRight: 20
   }
 });
 export default Untitled21;
