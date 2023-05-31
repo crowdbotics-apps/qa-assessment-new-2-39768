@@ -15,13 +15,13 @@ const Untitled21 = ({
             <Pressable style={styles.buttonStyles} onPress={() => {
             navigation.navigate("Untitled20");
           }}>
-              <Text>My Offers</Text>
+              <Text style={styles.buttonText}>My Offers</Text>
             </Pressable>
 
             <Pressable style={[styles.buttonStyles, styles.lykZSeiA]} onPress={() => {
             navigation.navigate("Untitled23");
           }}>
-              <Text>Settings</Text>
+              <Text style={styles.buttonText}>Settings</Text>
             </Pressable>
           </View>
 
@@ -54,10 +54,14 @@ const styles = StyleSheet.create({
   safeArea: {
     height: "100%"
   },
+  buttonText: {
+    color: '#fff',
+    fontWeight: '700'
+  },
   buttonStyles: {
     width: 140,
     borderRadius: 10,
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
     borderWidth: 1,
     height: 50,
     justifyContent: "center",

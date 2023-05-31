@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   button: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#000",
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    textAlign: "center"
+    textAlign: "center",
+    fontWeight: '700'
   },
   ayMotHta: {
     width: 24

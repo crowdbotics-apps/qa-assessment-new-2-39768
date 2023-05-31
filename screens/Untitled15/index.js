@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   spPczPac: {
     height: 60,
     width: 140,
-    backgroundColor: "#FFF",
+    backgroundColor: "#000",
     borderWidth: 1,
     borderRadius: 10,
     color: "#777777",
@@ -86,13 +86,13 @@ const styles = StyleSheet.create({
     left: 31,
     textAlign: "center",
     fontWeight: "700",
-    color: "#000",
+    color: "#FFF",
     fontFamily: "inherit"
   },
   JuRsRqkK: {
     height: 60,
     width: 140,
-    backgroundColor: "#FFF",
+    backgroundColor: "#000",
     borderWidth: 1,
     borderRadius: 10,
     color: "#777777",
@@ -111,14 +111,14 @@ const styles = StyleSheet.create({
     left: 21,
     textAlign: "center",
     fontWeight: "700",
-    color: "#000",
+    color: "#FFF",
     fontFamily: "inherit",
     letterSpacing: 0
   },
   OHsigrkx: {
     height: 60,
     width: 140,
-    backgroundColor: "#FFF",
+    backgroundColor: "#000",
     borderRadius: 10,
     borderWidth: 1,
     color: "#777777",
@@ -137,13 +137,13 @@ const styles = StyleSheet.create({
     left: 22,
     textAlign: "center",
     fontWeight: "700",
-    color: "#000",
+    color: "#FFF",
     fontFamily: "inherit"
   },
   DXCaOeme: {
     height: 60,
     width: 140,
-    backgroundColor: "#FFF",
+    backgroundColor: "#000",
     borderWidth: 1,
     borderRadius: 10,
     color: "#777777",
@@ -162,13 +162,13 @@ const styles = StyleSheet.create({
     left: 21,
     textAlign: "center",
     fontWeight: "700",
-    color: "#000",
+    color: "#FFF",
     fontFamily: "inherit"
   },
   KBZeTCNN: {
     height: 60,
     width: 300,
-    backgroundColor: "#FFF",
+    backgroundColor: "#000",
     borderWidth: 1,
     borderRadius: 10,
     color: "#777777",
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     left: 70,
     textAlign: "center",
     fontWeight: "700",
-    color: "#000",
+    color: "#FFF",
     fontFamily: "inherit"
   }
 });
