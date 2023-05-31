@@ -10,7 +10,7 @@ const Untitled15 = ({
 }) => {
   return <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={{
-      backgroundColor: "#f0f0f1",
+      backgroundColor: "#fff",
       padding: 10,
       position: "relative",
       flex: 1
@@ -41,7 +41,7 @@ const Untitled15 = ({
 
       <View style={styles.KBZeTCNN}>
         <Pressable onPress={() => {
-        navigation.navigate("Untitled22");
+        navigation.navigate("Untitled24");
       }}>
           <Text style={styles.dFwnCtGs}>{"Sign In / Sign Up"}</Text>
         </Pressable>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     left: 31,
     textAlign: "center",
     fontWeight: "700",
-    color: "#fff",
+    color: "#000",
     fontFamily: "inherit"
   },
   JuRsRqkK: {
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     left: 21,
     textAlign: "center",
     fontWeight: "700",
-    color: "#fff",
+    color: "#000",
     fontFamily: "inherit",
     letterSpacing: 0
   },
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     left: 22,
     textAlign: "center",
     fontWeight: "700",
-    color: "#fff",
+    color: "#000",
     fontFamily: "inherit"
   },
   DXCaOeme: {
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     left: 21,
     textAlign: "center",
     fontWeight: "700",
-    color: "#fff",
+    color: "#000",
     fontFamily: "inherit"
   },
   KBZeTCNN: {
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     left: 70,
     textAlign: "center",
     fontWeight: "700",
-    color: "#fff",
+    color: "#000",
     fontFamily: "inherit"
   }
 });
