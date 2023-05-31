@@ -18,7 +18,9 @@ const Untitled21 = ({
               <Text>My Offers</Text>
             </Pressable>
 
-            <Pressable style={[styles.buttonStyles, styles.lykZSeiA]}>
+            <Pressable style={[styles.buttonStyles, styles.lykZSeiA]} onPress={() => {
+            navigation.navigate("Untitled23");
+          }}>
               <Text>Settings</Text>
             </Pressable>
           </View>
