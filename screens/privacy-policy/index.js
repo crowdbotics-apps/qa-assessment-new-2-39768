@@ -3,7 +3,7 @@ import { Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, ScrollView } from "react-native";
 
-const PrivacyPolicyScreen = params => {
+const PrivacyPolicyScreen = () => {
   const [lastUpdated, setLastUpdated] = useState(null);
   const [firstPara, setFirstPara] = useState(null);
   const [secondPara, setSecondPara] = useState(null);
@@ -15,7 +15,7 @@ const PrivacyPolicyScreen = params => {
     setThirdPara("I understand that uses my dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec.");
   }, []);
   return <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollStyle}>
         <View style={styles.lastUpdated}>
           <Text style={styles.bold}>Last Updated:</Text>
           <Text style={styles.bold}>{lastUpdated}</Text>
@@ -35,7 +35,8 @@ const PrivacyPolicyScreen = params => {
     }}>
         <Image style={styles.XtvTFDHq} source={require("./icons8-back-50.png")} />
       </Pressable>
-    </View>;
+     
+    <Text style={styles.qfnIvfJb}>{"Privacy Policy"}</Text></View>;
 };
 
 const styles = StyleSheet.create({
@@ -44,6 +45,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 20,
     paddingHorizontal: 30
+  },
+  scrollStyle: {
+    marginTop: 70
   },
   lastUpdated: {
     flexDirection: "row",
@@ -63,12 +67,24 @@ const styles = StyleSheet.create({
   },
   JBRtUnVl: {
     position: "absolute",
-    left: 24,
-    top: 5
+    left: 15,
+    top: 19,
+    width: 33,
+    height: 31
   },
   XtvTFDHq: {
     width: 38,
     height: 35
+  },
+  qfnIvfJb: {
+    width: 166,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 19,
+    borderRadius: 0,
+    position: "absolute",
+    top: 23,
+    left: 132
   }
 });
 export default PrivacyPolicyScreen;
