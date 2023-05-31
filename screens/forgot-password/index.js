@@ -1,4 +1,3 @@
-import { Pressable } from "react-native";
 import "react";
 import { Text, View, StyleSheet, TextInput, TouchableHighlight } from "react-native";
 
@@ -6,9 +5,7 @@ const pressed = () => {
   console.log("pressed");
 };
 
-const ForgotPassword = ({
-  navigation
-}) => {
+const ForgotPassword = ({}) => {
   return <View style={styles.container}>
       <View style={styles.topHead}>
         <Text style={styles.mainHeading}>Forgot {"\n"} password</Text>
@@ -27,11 +24,9 @@ const ForgotPassword = ({
         </Button>
       </View>
       <View style={styles.back}>
-        <Pressable onPress={() => {
-        navigation.navigate("login2");
-      }}>
+        
           <Text style={styles.backText}>Back</Text>
-        </Pressable>
+        
       </View>
     </View>;
 };
