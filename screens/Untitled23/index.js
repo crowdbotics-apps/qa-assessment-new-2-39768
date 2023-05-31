@@ -1,7 +1,9 @@
 import React from "react";
 import { StyleSheet, ScrollView, SafeAreaView, View, Text, Pressable } from "react-native";
 
-const Untitled23 = () => {
+const Untitled23 = ({
+  navigate
+}) => {
   return <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={{
       backgroundColor: "#f0f0f1",
@@ -12,7 +14,9 @@ const Untitled23 = () => {
         <View style={styles.headingContainer}>
           <Text style={styles.heading}>Settings</Text>
         </View>
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => {
+        navigation.navigate("profile");
+      }}>
           <Text style={styles.buttonText}>View Profile</Text>
         </Pressable>
       </ScrollView>

@@ -13,15 +13,15 @@ const Profile = ({
       <View style={styles.mainContainer}>
         {
         /*         <View>
-          <View style={styles.headerContainer}>
-            <ProfileImage />
-            <Text style={styles.headerText}>Jay Mahanga</Text>
-            <Text style={styles.headerSubText}>jay@gmail.com</Text>
-          </View>
-          <View style={styles.subheaderContainer}>
-            <Text style={styles.subheaderDetailText}>Details</Text>
-            <Text style={styles.subheaderRemoveText}>Delete Account</Text>
-          </View>
+         <View style={styles.headerContainer}>
+           <ProfileImage />
+           <Text style={styles.headerText}>Jay Mahanga</Text>
+           <Text style={styles.headerSubText}>jay@gmail.com</Text>
+         </View>
+         <View style={styles.subheaderContainer}>
+           <Text style={styles.subheaderDetailText}>Details</Text>
+           <Text style={styles.subheaderRemoveText}>Delete Account</Text>
+         </View>
         </View> */
       }
         <View style={styles.mainBody}>
@@ -100,9 +100,7 @@ export default Profile;
 
 const Button = props => {
   return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <Pressable onPress={() => {
-      navigation.navigate("profile");
-    }}>
+      <Pressable>
         <View style={[btnStyles.button, {
         backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
         height: props.height ? props.height : 49,
