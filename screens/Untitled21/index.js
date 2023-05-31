@@ -29,19 +29,20 @@ const Untitled21 = ({
             <Pressable onPress={() => {
             navigation.navigate("Untitled17");
           }} style={styles.tab}>
-              <Image style={styles.mzYtvhsR} source={require("./icons8-coins-50.png")} />
+              <Image style={styles.mzYtvhsR} source={require("./icons8-crypto-trading-spot-50.png")} // source={require("./icons8-coins-50.png")}
+            />
               <Text style={styles.bottomText}>Spot price</Text>
             </Pressable>
             <Pressable onPress={() => {
             navigation.navigate("Untitled18");
           }} style={styles.tab}>
-              <Image style={styles.mzYtvhsR} source={require("./icons8-coins-50.png")} />
+              <Image style={styles.mzYtvhsR} source={require("./icons8-price-tag-50.png")} />
               <Text style={styles.bottomText}>Retail Value</Text>
             </Pressable>
             <Pressable onPress={() => {
             navigation.navigate("Untitled19");
           }} style={styles.tab}>
-              <Image style={styles.mzYtvhsR} source={require("./icons8-coins-50.png")} />
+              <Image style={styles.mzYtvhsR} source={require("./icons8-macbook-money-50.png")} />
               <Text style={styles.bottomText}>Make offer</Text>
             </Pressable>
           </View>
@@ -55,8 +56,8 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: '700'
+    color: "#fff",
+    fontWeight: "700"
   },
   buttonStyles: {
     width: 140,
@@ -101,6 +102,34 @@ const styles = StyleSheet.create({
   },
   lykZSeiA: {
     marginLeft: 20
+  },
+  IAODLHOm: {
+    width: 107,
+    height: 62,
+    position: "absolute",
+    top: 141,
+    left: 30
+  },
+  JsynnSPH: {
+    width: 107,
+    height: 62,
+    position: "absolute",
+    top: 247,
+    left: 34
+  },
+  ujjBTXzN: {
+    width: 107,
+    height: 62,
+    position: "absolute",
+    top: 372,
+    left: 25
+  },
+  SAOLxXso: {
+    width: 107,
+    height: 62,
+    position: "absolute",
+    top: 133,
+    left: 189
   }
 });
 export default Untitled21;
