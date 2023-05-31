@@ -43,11 +43,10 @@ const MyOffersScreen = ({
     }} />
       <View style={_styles.footer}>
         <TouchableOpacity style={_styles.footerButton}>
-          
-            <Image source={{
+          <Image source={{
           uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
         }} style={_styles.footerIcon} />
-          
+
           <Pressable onPress={() => {
           navigation.navigate("ScreenAI12");
         }}>
@@ -65,14 +64,11 @@ const MyOffersScreen = ({
           </Pressable>
         </TouchableOpacity>
         <TouchableOpacity style={_styles.footerButton}>
-          
-            <Image source={{
+          <Image source={{
           uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
         }} style={_styles.footerIcon} />
-          
-          <Pressable onPress={() => {
-          navigation.navigate("profile");
-        }}>
+
+          <Pressable>
             <Text style={_styles.footerText}>Profile</Text>
           </Pressable>
         </TouchableOpacity>
