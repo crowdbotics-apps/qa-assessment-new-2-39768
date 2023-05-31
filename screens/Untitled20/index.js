@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity, FlatList, Image } from "react-native";
+import { StyleSheet, View, Text, FlatList, Image, Pressable } from "react-native";
 
 const CoinCard = ({
   coinName
@@ -7,12 +7,12 @@ const CoinCard = ({
   return <View style={styles.card}>
       <Text style={styles.coinName}>{coinName}</Text>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button}>
+        <Pressable style={styles.button}>
           <Text style={styles.buttonText}>Accept</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        </Pressable>
+        <Pressable style={styles.button}>
           <Text style={styles.buttonText}>Decline</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </View>;
 };
@@ -41,9 +41,9 @@ const CoinsList = () => {
 
   return <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        <Pressable>
           <Image style={styles.gMdEanPl} source={require("./icons8-back-50.png")} />
-        </TouchableOpacity>
+        </Pressable>
         <Text style={styles.headerText}>My Offers</Text>
       </View>
       <FlatList data={coins} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.listContainer} />
