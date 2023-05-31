@@ -25,15 +25,13 @@ const HomeScreen = ({
           <Text style={styles.footerText}>Spot price</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.footerButton}>
-          <Pressable onPress={() => {
-          navigation.navigate("ScreenAI14");
+          <Pressable onPress={() => {// navigation.navigate("ScreenAI14")
         }}>
             <Image source={{
             uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
           }} style={styles.footerIcon} />
           </Pressable>
-          <Pressable onPress={() => {
-          navigation.navigate("ScreenAI13");
+          <Pressable onPress={() => {// navigation.navigate("ScreenAI13")
         }}>
             <Text style={styles.footerText}>Retail price</Text>
           </Pressable>
@@ -42,8 +40,7 @@ const HomeScreen = ({
           <Image source={{
           uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
         }} style={styles.footerIcon} />
-          <Pressable onPress={() => {
-          navigation.navigate("profile");
+          <Pressable onPress={() => {// navigation.navigate("profile")
         }}>
             <Text style={styles.footerText}>Make me an offer</Text>
           </Pressable>

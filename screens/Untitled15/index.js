@@ -22,10 +22,14 @@ const Untitled15 = ({
         </View>
       </ScrollView>
       <View style={styles.JuRsRqkK}>
-        <Text style={styles.JjrHHKKm}>{"Terms and Conditions"}</Text>
+        <Pressable onPress={() => {
+        navigation.navigate("termsAndConditions");
+      }}><Text style={styles.JjrHHKKm}>{"Terms and Conditions"}</Text></Pressable>
       </View>
       <View style={styles.OHsigrkx}>
-        <Text style={styles.tmOHRJWU}>{"Contact Us"}</Text>
+        <Pressable onPress={() => {
+        navigation.navigate("contactUs");
+      }}><Text style={styles.tmOHRJWU}>{"Contact Us"}</Text></Pressable>
       </View>
       <View style={styles.DXCaOeme}>
         <Text style={styles.zqrbQWem}>{"Privacy Policy"}</Text>
@@ -148,30 +152,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 7,
     left: 19,
-    textAlign: "center",
-    fontWeight: "700",
-    color: "#fff",
-    fontFamily: "inherit"
-  },
-  XoNJtAdd: {
-    height: 60,
-    width: 300,
-    backgroundColor: "#173140",
-    borderRadius: 10,
-    color: "#777777",
-    position: "absolute",
-    top: 555,
-    left: 33
-  },
-  SKCZdFqh: {
-    width: 150,
-    height: 42,
-    lineHeight: 21,
-    fontSize: 18,
-    borderRadius: 0,
-    position: "absolute",
-    top: 20,
-    left: 78,
     textAlign: "center",
     fontWeight: "700",
     color: "#fff",

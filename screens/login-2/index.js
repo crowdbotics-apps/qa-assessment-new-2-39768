@@ -57,7 +57,9 @@ const Login2 = ({
         </View>
       </Pressable>
       <View style={styles.DUqwmwLc}>
-        <Pressable>
+        <Pressable onPress={() => {
+        navigation.navigate("Untitled21");
+      }}>
           <Text style={styles.vkrKyqAb}>{"Login"}</Text>
         </Pressable>
       </View>
