@@ -1,7 +1,8 @@
+import { ImageBackground } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
 
-const ContactUsScreen = params => {
+const ContactUsScreen = () => {
   const [aboutText, setAboutText] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -17,12 +18,15 @@ const ContactUsScreen = params => {
       <View style={styles.infoContainer}>
         <Image source={require("./assets/email.png")} />
         <Text style={styles.infoText}>{email}</Text>
+        <ImageBackground style={styles.TQjozuqZ} source={require("./icons8-phone-number-50.png")} resizeMode="cover"></ImageBackground>
       </View>
       <View style={styles.infoContainer}>
         <Image source={require("./assets/phone.png")} />
         <Text style={styles.infoText}>{phone}</Text>
       </View>
-    </View>;
+      <ImageBackground style={styles.EwUGehNK} source={require("./icons8-email-50.png")} resizeMode="cover"></ImageBackground>
+      <ImageBackground style={styles.hwwpmDDE} source={require("./icons8-back-50.png")} resizeMode="cover"></ImageBackground>
+    <Text style={styles.NbmhgOhi}>{"Contact Us"}</Text></View>;
 };
 
 const styles = StyleSheet.create({
@@ -31,18 +35,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   aboutText: {
-    padding: 20
+    padding: 20,
+    marginTop: 60
   },
   text: {
     fontSize: 14,
     lineHeight: 20,
     textAlign: "justify"
-  },
-  headingTxt: {
-    fontSize: 24,
-    fontWeight: "bold",
-    padding: 2,
-    marginVertical: 12
   },
   infoContainer: {
     flexDirection: "row",
@@ -51,7 +50,38 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 14,
-    marginLeft: 15
+    marginLeft: 25
+  },
+  TQjozuqZ: {
+    width: 26,
+    height: 29,
+    position: "absolute",
+    top: 70,
+    left: 14
+  },
+  EwUGehNK: {
+    width: 27,
+    height: 24,
+    position: "absolute",
+    top: 357,
+    left: 6
+  },
+  hwwpmDDE: {
+    width: 38,
+    height: 35,
+    position: "absolute",
+    top: 16,
+    left: 10
+  },
+  NbmhgOhi: {
+    width: 100,
+    height: 50,
+    lineHeight: 14,
+    fontSize: 19,
+    borderRadius: 0,
+    position: "absolute",
+    top: 20,
+    left: 133
   }
 });
 export default ContactUsScreen;
