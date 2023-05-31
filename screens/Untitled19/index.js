@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
-    alignSelf: 'center'
+    alignSelf: "center"
   },
   card: {
     backgroundColor: "#fff",
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   button: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#000",
     padding: 10,
     borderRadius: 5,
     alignItems: "center"

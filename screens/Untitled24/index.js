@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   heading: {
-    fontSize: 24,
+    fontSize: 48,
     fontWeight: "bold",
     marginBottom: 70
   },
