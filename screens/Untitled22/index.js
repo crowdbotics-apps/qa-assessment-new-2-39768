@@ -1,7 +1,9 @@
 import React from "react";
 import { StyleSheet, ScrollView, SafeAreaView, View, Text, TextInput, Pressable } from "react-native";
 
-const SignupScreen = () => {
+const SignupScreen = ({
+  navigaton
+}) => {
   return <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={{
       backgroundColor: "#FFF",
@@ -20,7 +22,9 @@ const SignupScreen = () => {
               I have read and agree to the Terms and Conditions
             </Text>
           </View>
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={() => {
+          navigation.navigate("login2");
+        }}>
             <Text style={styles.buttonText}>Signup</Text>
           </Pressable>
           <View style={styles.loginContainer}>

@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     borderRadius: 0,
     position: "absolute",
-    top: 21,
+    top: 8,
     left: 21,
     textAlign: "center",
     fontWeight: "700",
