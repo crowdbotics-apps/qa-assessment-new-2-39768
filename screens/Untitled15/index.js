@@ -41,7 +41,7 @@ const Untitled15 = ({
 
       <View style={styles.KBZeTCNN}>
         <Pressable onPress={() => {
-        navigation.navigate("signup");
+        navigation.navigate("Untitled22");
       }}>
           <Text style={styles.dFwnCtGs}>{"Sign In / Sign Up"}</Text>
         </Pressable>
