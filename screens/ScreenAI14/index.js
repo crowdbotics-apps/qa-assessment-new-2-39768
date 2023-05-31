@@ -1,13 +1,10 @@
-import { useNavigation } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 import React from "react";
 import { View, Text, FlatList, TouchableOpacity, Image, Pressable } from "react-native";
 
 const MyOffersScreen = ({
-  route
+  navigation
 }) => {
-  const {} = route.params || {};
-  const navigation = useNavigation();
   const coinOffers = [{
     id: "1",
     title: "10% off on Bitcoin"
@@ -46,13 +43,11 @@ const MyOffersScreen = ({
     }} />
       <View style={_styles.footer}>
         <TouchableOpacity style={_styles.footerButton}>
-          <Pressable onPress={() => {
-          navigation.navigate("ScreenAI12");
-        }}>
+          
             <Image source={{
-            uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
-          }} style={_styles.footerIcon} />
-          </Pressable>
+          uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+        }} style={_styles.footerIcon} />
+          
           <Pressable onPress={() => {
           navigation.navigate("ScreenAI12");
         }}>
@@ -70,13 +65,11 @@ const MyOffersScreen = ({
           </Pressable>
         </TouchableOpacity>
         <TouchableOpacity style={_styles.footerButton}>
-          <Pressable onPress={() => {
-          navigation.navigate("profile");
-        }}>
+          
             <Image source={{
-            uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
-          }} style={_styles.footerIcon} />
-          </Pressable>
+          uri: "https://static01.nyt.com/images/2017/10/29/business/29Coin4/29Coin4-superJumbo.jpg"
+        }} style={_styles.footerIcon} />
+          
           <Pressable onPress={() => {
           navigation.navigate("profile");
         }}>
@@ -106,54 +99,6 @@ const _styles = StyleSheet.create({
   AJuMpbNO: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  QDahqBny: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    padding: 16
-  },
-  GKuBhEtH: {
-    width: 30,
-    height: 30
-  },
-  JxJofnVA: {
-    width: 30,
-    height: 30
-  },
-  hpOsEfGw: {
-    width: 30,
-    height: 30
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#fff"
-  },
-  header: {
-    height: 80,
-    backgroundColor: "#f4511e",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#fff"
-  },
-  content: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  image: {
-    width: 200,
-    height: 200,
-    marginBottom: 20
-  },
-  contentText: {
-    fontSize: 18,
-    color: "#333",
-    textAlign: "center",
-    paddingHorizontal: 20
   },
   footer: {
     height: 80,
