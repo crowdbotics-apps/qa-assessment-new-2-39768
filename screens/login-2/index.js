@@ -1,56 +1,73 @@
-import React from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import React from "react"
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet
+} from "react-native"
 
-const Login2 = ({
-  navigation
-}) => {
-  return <View style={styles.container}>
+const Login2 = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
       <Text style={styles.heading}>Login</Text>
       <TextInput style={styles.input} placeholder="Email" />
-      <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} />
-      <TouchableOpacity>
-        <Text style={styles.forgotPassword}>Forgot password?</Text>
-      </TouchableOpacity>
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        secureTextEntry={true}
+      />
+      <View>
+        <TouchableOpacity onPress={() => navigation.navigate("forgotPassword")}>
+          <Text style={styles.forgotPassword}>Forgot password?</Text>
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity style={styles.loginButton}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
-      <View style={styles.signupContainer}>
-        <Text style={styles.signupText}>Don't have an account? </Text>
-        <TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <View style={styles.signupContainer}>
+          <Text style={styles.signupText}>Don't have an account? </Text>
           <Text style={styles.signupButton}>Signup.</Text>
-        </TouchableOpacity>
-      </View>
-    </View>;
-};
+        </View>
+      </TouchableOpacity>
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: "#fff"
   },
   heading: {
-    fontSize: 24,
+    fontSize: 48,
     fontWeight: "bold",
-    marginBottom: 20
+    marginBottom: 80,
+    marginTop: 130,
+    alignSelf: "center"
   },
   input: {
-    width: "80%",
+    marginHorizontal: 20,
     height: 50,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#000",
     borderRadius: 5,
     marginBottom: 10,
     paddingLeft: 10
   },
   forgotPassword: {
     marginTop: 10,
-    color: "blue"
+    color: "#000",
+    alignSelf: "flex-end",
+    marginHorizontal: 20
   },
   loginButton: {
     backgroundColor: "black",
     width: "80%",
     height: 50,
+    alignSelf: "center",
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
@@ -63,15 +80,17 @@ const styles = StyleSheet.create({
   },
   signupContainer: {
     flexDirection: "row",
-    marginTop: 20
+    marginTop: 40,
+    justifyContent: "center"
   },
   signupText: {
-    fontSize: 16
+    fontSize: 16,
+    alignSelf: "center"
   },
   signupButton: {
     fontSize: 16,
     fontWeight: "bold",
     color: "blue"
   }
-});
-export default Login2;
+})
+export default Login2

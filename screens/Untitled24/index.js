@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, ScrollView, SafeAreaView, View, Text, TextInput, Pressable } from "react-native";
 
-const Untitled24 = () => {
+const Untitled24 = ({navigation}) => {
   return <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={{
       backgroundColor: "#fff",

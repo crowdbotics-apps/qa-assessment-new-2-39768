@@ -10,21 +10,24 @@ const Untitled15 = ({
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("termsAndConditions") }>
             <Text style={styles.buttonText}>Terms and conditions</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("contactUs") }>
             <Text style={styles.buttonText}>Contact Us</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("privacyPolicy") }>
             <Text style={styles.buttonText}>Privacy Policy</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("aboutTheApp") }>
             <Text style={styles.buttonText}>About us</Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity style={styles.buttonLong} onPress={() => navigation.navigate("Untitled24") }>
+            <Text style={styles.buttonText}>Sign Up</Text>
+          </TouchableOpacity>
       </View>
     </SafeAreaView>;
 };
@@ -61,6 +64,16 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     width: "48%",
+    height: 60,
+    justifyContent: 'center',
+    marginHorizontal: 10
+  },
+  buttonLong: {
+    backgroundColor: "black",
+    marginTop:10,
+    padding: 10,
+    borderRadius: 5,
+    width: 380,
     height: 60,
     justifyContent: 'center',
     marginHorizontal: 10

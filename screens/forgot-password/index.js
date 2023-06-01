@@ -1,11 +1,12 @@
-import "react";
+import React from "react";
 import { Text, View, StyleSheet, TextInput, TouchableHighlight } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const pressed = () => {
   console.log("pressed");
 };
 
-const ForgotPassword = ({}) => {
+const ForgotPassword = ({navigation}) => {
   return <View style={styles.container}>
       <View style={styles.topHead}>
         <Text style={styles.mainHeading}>Forgot {"\n"} password</Text>
@@ -24,8 +25,9 @@ const ForgotPassword = ({}) => {
         </Button>
       </View>
       <View style={styles.back}>
-        
-          <Text style={styles.backText}>Back</Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text style={styles.backText}>Back</Text>
+        </TouchableOpacity>
         
       </View>
     </View>;
