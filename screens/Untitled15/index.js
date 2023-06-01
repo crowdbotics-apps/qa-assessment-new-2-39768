@@ -1,194 +1,74 @@
-import { Pressable } from "react-native";
-import { Text } from "react-native";
-import { View } from "react-native";
-import { Image } from "react-native";
 import React from "react";
-import { StyleSheet, ScrollView, SafeAreaView } from "react-native";
+import { SafeAreaView, View, Image, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 const Untitled15 = ({
   navigation
 }) => {
-  return <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={{
-      backgroundColor: "#fff",
-      padding: 10,
-      position: "relative",
-      flex: 1
-    }} style={styles.HqDmFSno}>
-        <Image style={styles.OXBbRPHq} source={require("./investment-removebg-preview.png")} resizeMode="cover" />
-
-        <View style={styles.spPczPac}>
-          <Text style={styles.ZezLXuKD}>{"About Us"}</Text>
+  return <SafeAreaView style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image source={require("./investment-removebg-preview.png")} style={styles.image} />
+      </View>
+      <View style={styles.buttonContainer}>
+        <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Terms and conditions</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Contact Us</Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
-      <View style={styles.JuRsRqkK}>
-        <Pressable onPress={() => {
-        navigation.navigate("termsAndConditions");
-      }}>
-          <Text style={styles.JjrHHKKm}>{"Terms and Conditions"}</Text>
-        </Pressable>
-      </View>
-      <View style={styles.OHsigrkx}>
-        <Pressable onPress={() => {
-        navigation.navigate("contactUs");
-      }}>
-          <Text style={styles.tmOHRJWU}>{"Contact Us"}</Text>
-        </Pressable>
-      </View>
-      <View style={styles.DXCaOeme}>
-        <Text style={styles.zqrbQWem}>{"Privacy Policy"}</Text>
-      </View>
-
-      <View style={styles.KBZeTCNN}>
-        <Pressable onPress={() => {
-        navigation.navigate("Untitled24");
-      }}>
-          <Text style={styles.dFwnCtGs}>{"Sign In / Sign Up"}</Text>
-        </Pressable>
+        <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Privacy Policy</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>About us</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>;
 };
 
 const styles = StyleSheet.create({
-  safeArea: {
-    height: "100%",
-    backgroundColor: "#ed2e2e"
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
   },
-  OXBbRPHq: {
-    width: 107,
-    height: 102,
-    position: "absolute",
-    top: 92,
-    left: 125
+  imageContainer: {
+    marginBottom: 80,
+    alignItems: "center",
+    justifyContent: "center"
   },
-  HqDmFSno: {
-    backgroundColor: "#da3030"
+  image: {
+    width: 120,
+    height: 120
   },
-  spPczPac: {
+  buttonContainer: {
+    marginTop: 20,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  buttonRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    paddingHorizontal: 20,
+    marginBottom: 10
+  },
+  button: {
+    backgroundColor: "black",
+    padding: 10,
+    borderRadius: 5,
+    width: "48%",
     height: 60,
-    width: 140,
-    backgroundColor: "#000",
-    borderWidth: 1,
-    borderRadius: 10,
-    color: "#777777",
-    position: "absolute",
-    top: 386,
-    left: 29
+    justifyContent: 'center',
+    marginHorizontal: 10
   },
-  ZezLXuKD: {
-    width: 81,
-    height: 20,
-    lineHeight: 14,
-    fontSize: 18,
-    borderRadius: 0,
-    position: "absolute",
-    top: 23,
-    left: 31,
-    textAlign: "center",
-    fontWeight: "700",
-    color: "#FFF",
-    fontFamily: "inherit"
-  },
-  JuRsRqkK: {
-    height: 60,
-    width: 140,
-    backgroundColor: "#000",
-    borderWidth: 1,
-    borderRadius: 10,
-    color: "#777777",
-    position: "absolute",
-    top: 475,
-    left: 31
-  },
-  JjrHHKKm: {
-    width: 100,
-    height: 38,
-    lineHeight: 18,
-    fontSize: 18,
-    borderRadius: 0,
-    position: "absolute",
-    top: 12,
-    left: 21,
-    textAlign: "center",
-    fontWeight: "700",
-    color: "#FFF",
-    fontFamily: "inherit",
-    letterSpacing: 0
-  },
-  OHsigrkx: {
-    height: 60,
-    width: 140,
-    backgroundColor: "#000",
-    borderRadius: 10,
-    borderWidth: 1,
-    color: "#777777",
-    position: "absolute",
-    top: 387,
-    left: 191
-  },
-  tmOHRJWU: {
-    width: 100,
-    height: 16,
-    lineHeight: 14,
-    fontSize: 18,
-    borderRadius: 0,
-    position: "absolute",
-    top: 22,
-    left: 22,
-    textAlign: "center",
-    fontWeight: "700",
-    color: "#FFF",
-    fontFamily: "inherit"
-  },
-  DXCaOeme: {
-    height: 60,
-    width: 140,
-    backgroundColor: "#000",
-    borderWidth: 1,
-    borderRadius: 10,
-    color: "#777777",
-    position: "absolute",
-    top: 475,
-    left: 190
-  },
-  zqrbQWem: {
-    width: 99,
-    height: 42,
-    lineHeight: 21,
-    fontSize: 18,
-    borderRadius: 0,
-    position: "absolute",
-    top: 8,
-    left: 21,
-    textAlign: "center",
-    fontWeight: "700",
-    color: "#FFF",
-    fontFamily: "inherit"
-  },
-  KBZeTCNN: {
-    height: 60,
-    width: 300,
-    backgroundColor: "#000",
-    borderWidth: 1,
-    borderRadius: 10,
-    color: "#777777",
-    position: "absolute",
-    top: 552,
-    left: 31
-  },
-  dFwnCtGs: {
-    width: 159,
-    height: 42,
-    lineHeight: 21,
-    fontSize: 18,
-    borderRadius: 0,
-    position: "absolute",
-    top: 19,
-    left: 70,
-    textAlign: "center",
-    fontWeight: "700",
-    color: "#FFF",
-    fontFamily: "inherit"
+  buttonText: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
   }
 });
 export default Untitled15;
