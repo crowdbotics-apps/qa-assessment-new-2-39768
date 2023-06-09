@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, FlatList, Image, Pressable } from "react-native";
+import { StyleSheet, View, Text, FlatList, Pressable } from "react-native";
 
 const CoinCard = ({
   coinName
@@ -40,12 +40,14 @@ const CoinsList = () => {
   }) => <CoinCard coinName={item.name} />;
 
   return <View style={styles.container}>
-      {/* <View style={styles.header}>
-        <Pressable>
-          <Image style={styles.gMdEanPl} source={require("./icons8-back-50.png")} />
-        </Pressable>
-        <Text style={styles.headerText}>My Offers</Text>
-      </View> */}
+      {
+      /* <View style={styles.header}>
+       <Pressable>
+         <Image style={styles.gMdEanPl} source={require("./icons8-back-50.png")} />
+       </Pressable>
+       <Text style={styles.headerText}>My Offers</Text>
+      </View> */
+    }
       <FlatList data={coins} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.listContainer} />
     </View>;
 };

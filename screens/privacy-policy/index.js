@@ -1,5 +1,3 @@
-import { Image } from "react-native";
-import { Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, ScrollView } from "react-native";
 
@@ -30,13 +28,14 @@ const PrivacyPolicyScreen = () => {
           <Text style={styles.policyText}>{thirdPara}</Text>
         </View>
       </ScrollView>
-      {/* <Pressable style={styles.JBRtUnVl} onPress={() => {
+      {
+      /* <Pressable style={styles.JBRtUnVl} onPress={() => {
       navigation.navigate("Untitled15");
-    }}>
-        <Image style={styles.XtvTFDHq} source={require("./icons8-back-50.png")} />
+      }}>
+       <Image style={styles.XtvTFDHq} source={require("./icons8-back-50.png")} />
       </Pressable>
-     
-    <Text style={styles.qfnIvfJb}>{"Privacy Policy"}</Text> */}
+         <Text style={styles.qfnIvfJb}>{"Privacy Policy"}</Text> */
+    }
     </View>;
 };
 

@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: 'bold',
     marginBottom: 66,
-    marginTop:20,
-    textAlign: 'center',
+    marginTop: 20,
+    textAlign: 'center'
   },
   mt15: {
     marginTop: 15

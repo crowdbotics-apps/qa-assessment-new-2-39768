@@ -17,8 +17,7 @@ const SpotPrices = () => {
     name: "Test Name 3",
     quantity: 1,
     price: 15
-  },
-  {
+  }, {
     id: "3",
     name: "Test Name 3",
     quantity: 1,
@@ -43,7 +42,9 @@ const SpotPrices = () => {
     </View>;
 
   return <View style={styles.container}>
-      {/* <Text style={styles.heading}>Spot prices</Text> */}
+      {
+      /* <Text style={styles.heading}>Spot prices</Text> */
+    }
       <FlatList data={data} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.scrollStyles} />
     </View>;
 };
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    marginBottom:100
+    marginBottom: 100
   },
   heading: {
     fontSize: 24,

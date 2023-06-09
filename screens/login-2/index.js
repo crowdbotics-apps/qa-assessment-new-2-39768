@@ -1,22 +1,13 @@
-import React from "react"
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet
-} from "react-native"
+import React from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
-const Login2 = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
+const Login2 = ({
+  navigation
+}) => {
+  return <View style={styles.container}>
       <Text style={styles.heading}>Login</Text>
       <TextInput style={styles.input} placeholder="Email" />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry={true}
-      />
+      <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} />
       <View>
         <TouchableOpacity onPress={() => navigation.navigate("forgotPassword")}>
           <Text style={styles.forgotPassword}>Forgot password?</Text>
@@ -32,9 +23,8 @@ const Login2 = ({ navigation }) => {
           <Text style={styles.signupButton}>Signup.</Text>
         </View>
       </TouchableOpacity>
-    </View>
-  )
-}
+    </View>;
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -92,5 +82,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "blue"
   }
-})
-export default Login2
+});
+export default Login2;

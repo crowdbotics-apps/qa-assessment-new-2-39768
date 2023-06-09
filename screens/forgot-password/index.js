@@ -6,7 +6,9 @@ const pressed = () => {
   console.log("pressed");
 };
 
-const ForgotPassword = ({navigation}) => {
+const ForgotPassword = ({
+  navigation
+}) => {
   return <View style={styles.container}>
       <View style={styles.topHead}>
         <Text style={styles.mainHeading}>Forgot {"\n"} password</Text>

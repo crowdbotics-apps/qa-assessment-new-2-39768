@@ -1,6 +1,5 @@
-import { Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, SafeAreaView, Image } from "react-native";
+import { Text, StyleSheet, View, SafeAreaView } from "react-native";
 
 const AboutTheAppScreen = ({
   navigation
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "justify",
     lineHeight: 18,
-    marginVertical: 10,
+    marginVertical: 10
   },
   rgVPtOhF: {
     width: 38,

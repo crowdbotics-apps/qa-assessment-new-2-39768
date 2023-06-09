@@ -1,4 +1,3 @@
-import { ImageBackground } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
 
