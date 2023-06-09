@@ -1,13 +1,12 @@
-import React, { useContext } from "react"
-import { Text, View, Image, StyleSheet } from "react-native" // @ts-ignore
+import React, { useContext } from "react";
+import { Text, View, Image, StyleSheet } from "react-native"; // @ts-ignore
 
-import emailIcon from "../emailIcon.png"
-import { OptionsContext } from "@options"
+import emailIcon from "../emailIcon.png";
+import { OptionsContext } from "@options";
 
 const ContactUs = props => {
-  const options = useContext(OptionsContext)
-  return (
-    <View style={styles.pt30}>
+  const options = useContext(OptionsContext);
+  return <View style={styles.pt30}>
       <Text style={styles.YsOxQmMo}>
         Test Test Test Test Test Test Test Test Test Test Test Test Test Test
         Test Test Test Test Test Test Test Test Test Test Test Test Test Test
@@ -31,9 +30,8 @@ const ContactUs = props => {
         <Image source={require("../phone.png")} style={styles.phoneImage} />
         <Text style={styles.infoText}>+1 111 111 1111</Text>
       </View>
-    </View>
-  )
-}
+    </View>;
+};
 
 const styles = StyleSheet.create({
   email: {
@@ -71,5 +69,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginLeft: 15
   }
-})
-export default ContactUs
+});
+export default ContactUs;

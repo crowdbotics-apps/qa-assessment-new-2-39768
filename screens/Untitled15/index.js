@@ -1,67 +1,42 @@
-import React from "react"
-import {
-  SafeAreaView,
-  View,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  Text
-} from "react-native"
+import React from "react";
+import { SafeAreaView, View, Image, StyleSheet, TouchableOpacity, Text } from "react-native";
 
-const Untitled15 = ({ navigation }) => {
-  return (
-    <SafeAreaView style={styles.container}>
+const Untitled15 = ({
+  navigation
+}) => {
+  return <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image
-          source={require("./investment-removebg-preview.png")}
-          style={styles.image}
-        />
+        <Image source={require("./investment-removebg-preview.png")} style={styles.image} />
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.buttonRow}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              // navigation.navigate("termsAndConditions")
-              navigation.navigate("Terms and Conditions")
-            }}
-          >
+          <TouchableOpacity style={styles.button} onPress={() => {
+          // navigation.navigate("termsAndConditions")
+          navigation.navigate("Terms and Conditions");
+        }}>
             <Text style={styles.buttonText}>Terms and conditions</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("Contact-Us")}
-          >
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Contact-Us")}>
             <Text style={styles.buttonText}>Contact Us</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.buttonRow}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("privacyPolicy")}
-          >
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("privacyPolicy")}>
             <Text style={styles.buttonText}>Privacy Policy</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("aboutTheApp")}
-          >
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("aboutTheApp")}>
             <Text style={styles.buttonText}>About us</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={styles.buttonLong}
-          onPress={() => {
-            // navigation.navigate("Untitled24")
-            navigation.navigate("Login")
-          }}
-        >
+        <TouchableOpacity style={styles.buttonLong} onPress={() => {
+        // navigation.navigate("Untitled24")
+        navigation.navigate("Login");
+      }}>
           <Text style={styles.buttonText}>Sign Up / Sign In</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
-  )
-}
+    </SafeAreaView>;
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -114,5 +89,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center"
   }
-})
-export default Untitled15
+});
+export default Untitled15;

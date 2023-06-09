@@ -37,8 +37,7 @@ const getNavigation = (modules, screens, initialRoute) => {
       headerShown: true,
       headerBackImage: () => <CustomBackButton />
     };
-
-    console.log("ROUTESS", routes)
+    console.log("ROUTESS", routes);
     return <NavigationContainer>
         <Stack.Navigator initialRouteName={initialRoute} screenOptions={screenOptions}>
           {routes}

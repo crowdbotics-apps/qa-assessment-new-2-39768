@@ -1,74 +1,61 @@
-import React, { useContext } from "react"
-import { OptionsContext } from "@options"
-import PropTypes from "prop-types"
-import {
-  View,
-  ImageBackground,
-  Image,
-  Text,
-  TouchableOpacity,
-  ScrollView
-} from "react-native"
-import {
-  NavigationHelpersContext,
-  useNavigationBuilder,
-  TabRouter,
-  TabActions,
-  createNavigatorFactory
-} from "@react-navigation/native"
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
-import { createStackNavigator } from "@react-navigation/stack"
-import { slice } from "./auth"
-import { styles } from "./screens/styles"
-import { SignInTab, SignupTab } from "./screens/loginsignup"
-import PasswordReset from "./screens/reset"
+import { StyleSheet } from "react-native";
+import React, { useContext } from "react";
+import { OptionsContext } from "@options";
+import PropTypes from "prop-types";
+import { View, Image, Text, TouchableOpacity, ScrollView } from "react-native";
+import { NavigationHelpersContext, useNavigationBuilder, TabRouter, TabActions, createNavigatorFactory } from "@react-navigation/native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { createStackNavigator } from "@react-navigation/stack";
+import { slice } from "./auth";
+import { styles } from "./screens/styles";
+import { SignInTab, SignupTab } from "./screens/loginsignup";
+import PasswordReset from "./screens/reset";
 
-const LoginTabBar = ({ navigation, state, descriptors, activeTabStyle }) => {
-  const currentTab = state.routes[state.index]
-  return (
-    <View style={styles.tabStyle}>
-      {state.routes.map(route => (
-        <View
-          key={route.key}
-          style={
-            route.key === currentTab.key
-              ? [styles.activeTabStyle, activeTabStyle]
-              : null
-          }
-        >
-          <TouchableOpacity
-            onPress={() => {
-              const event = navigation.emit({
-                type: "tabPress",
-                target: route.key,
-                canPreventDefault: true
-              })
-              if (!event.defaultPrevented) {
-                navigation.dispatch({
-                  ...TabActions.jumpTo(route.name),
-                  target: state.key
-                })
-              }
-            }}
-          >
+const LoginTabBar = ({
+  navigation,
+  state,
+  descriptors,
+  activeTabStyle
+}) => {
+  const currentTab = state.routes[state.index];
+  return <View style={styles.tabStyle}>
+      {state.routes.map(route => <View key={route.key} style={route.key === currentTab.key ? [styles.activeTabStyle, activeTabStyle] : null}>
+          <TouchableOpacity onPress={() => {
+        const event = navigation.emit({
+          type: "tabPress",
+          target: route.key,
+          canPreventDefault: true
+        });
+
+        if (!event.defaultPrevented) {
+          navigation.dispatch({ ...TabActions.jumpTo(route.name),
+            target: state.key
+          });
+        }
+      }}>
             <Text style={styles.tabStyle}>
               {descriptors[route.key].options.title || route.name}
             </Text>
           </TouchableOpacity>
-        </View>
-      ))}
-    </View>
-  )
-}
+        </View>)}
+    </View>;
+};
 
-function LoginSignupTabs({ initialRouteName, children, screenOptions }) {
-  const options = useContext(OptionsContext)
-  const { state, navigation, descriptors } = useNavigationBuilder(TabRouter, {
+function LoginSignupTabs({
+  initialRouteName,
+  children,
+  screenOptions
+}) {
+  const options = useContext(OptionsContext);
+  const {
+    state,
+    navigation,
+    descriptors
+  } = useNavigationBuilder(TabRouter, {
     children,
     screenOptions,
     initialRouteName
-  })
-
+  });
   const {
     LOGO_IMAGE,
     logoStyle,
@@ -78,41 +65,35 @@ function LoginSignupTabs({ initialRouteName, children, screenOptions }) {
     imageContainerStyle,
     signInContainerStyle,
     activeTabStyle
-  } = screenOptions
-  return (
-    <NavigationHelpersContext.Provider value={navigation}>
-      <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+  } = screenOptions;
+  return <NavigationHelpersContext.Provider value={navigation}>
+      <KeyboardAwareScrollView contentContainerStyle={{
+      flex: 1
+    }}>
         <ScrollView style={[styles.container, mainContainerStyle]}>
-          <View style={{ flex: 1 }}>
+          <View style={_styles.OwrRWDcw}>
             <View style={[styles.imageContainer, imageContainerStyle]}>
-              <Image
-                source={require("./investment-removebg-preview.png")}
-                style={[styles.logoImg, logoStyle]}
-              />
+              <Image source={require("./investment-removebg-preview.png")} style={[styles.logoImg, logoStyle]} />
             </View>
           </View>
           <View style={[styles.cardView, signInContainerStyle]}>
-            <LoginTabBar
-              navigation={navigation}
-              state={state}
-              descriptors={descriptors}
-              activeTabStyle={activeTabStyle}
-            />
+            <LoginTabBar navigation={navigation} state={state} descriptors={descriptors} activeTabStyle={activeTabStyle} />
             <View style={styles.tabContainerStyle}>
               {descriptors[state.routes[state.index].key].render()}
             </View>
           </View>
         </ScrollView>
       </KeyboardAwareScrollView>
-    </NavigationHelpersContext.Provider>
-  )
+    </NavigationHelpersContext.Provider>;
 }
 
-const createLoginNavigator = createNavigatorFactory(LoginSignupTabs)
+const createLoginNavigator = createNavigatorFactory(LoginSignupTabs);
+const LoginStack = createLoginNavigator();
 
-const LoginStack = createLoginNavigator()
-
-const LoginScreen = ({ navigation, route }) => {
+const LoginScreen = ({
+  navigation,
+  route
+}) => {
   const {
     LOGO_IMAGE,
     logoStyle,
@@ -125,38 +106,36 @@ const LoginScreen = ({ navigation, route }) => {
     buttonStyle,
     buttonTextStyle,
     activeTabStyle = {}
-  } = route.params
-  const options = useContext(OptionsContext)
-  return (
-    <LoginStack.Navigator
-      screenOptions={{
-        LOGO_IMAGE,
-        logoStyle,
-        BACKGROUND_IMAGE,
-        backgroundImgStyle,
-        mainContainerStyle,
-        imageContainerStyle,
-        signInContainerStyle,
-        activeTabStyle
-      }}
-    >
-      <LoginStack.Screen
-        name="SignIn"
-        component={SignInTab}
-        options={{ title: options.SignInNavText }}
-        initialParams={{ textInputStyle, buttonStyle, buttonTextStyle }}
-      />
-      <LoginStack.Screen
-        name="SignUp"
-        component={SignupTab}
-        options={{ title: options.SignUpNavText }}
-        initialParams={{ textInputStyle, buttonStyle, buttonTextStyle }}
-      />
-    </LoginStack.Navigator>
-  )
-}
+  } = route.params;
+  const options = useContext(OptionsContext);
+  return <LoginStack.Navigator screenOptions={{
+    LOGO_IMAGE,
+    logoStyle,
+    BACKGROUND_IMAGE,
+    backgroundImgStyle,
+    mainContainerStyle,
+    imageContainerStyle,
+    signInContainerStyle,
+    activeTabStyle
+  }}>
+      <LoginStack.Screen name="SignIn" component={SignInTab} options={{
+      title: options.SignInNavText
+    }} initialParams={{
+      textInputStyle,
+      buttonStyle,
+      buttonTextStyle
+    }} />
+      <LoginStack.Screen name="SignUp" component={SignupTab} options={{
+      title: options.SignUpNavText
+    }} initialParams={{
+      textInputStyle,
+      buttonStyle,
+      buttonTextStyle
+    }} />
+    </LoginStack.Navigator>;
+};
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 const Login = ({
   LOGO_IMAGE,
@@ -171,38 +150,28 @@ const Login = ({
   buttonTextStyle = {},
   activeTabStyle = {}
 }) => {
-  return (
-    <Stack.Navigator headerMode="none">
-      <Stack.Screen
-        name="LoginScreen"
-        component={LoginScreen}
-        initialParams={{
-          LOGO_IMAGE,
-          logoStyle,
-          BACKGROUND_IMAGE,
-          backgroundImgStyle,
-          mainContainerStyle,
-          imageContainerStyle,
-          signInContainerStyle,
-          textInputStyle,
-          buttonStyle,
-          buttonTextStyle,
-          activeTabStyle
-        }}
-      />
-      <Stack.Screen
-        name="PasswordReset"
-        component={PasswordReset}
-        initialParams={{
-          LOGO_IMAGE,
-          textInputStyle,
-          buttonStyle,
-          buttonTextStyle
-        }}
-      />
-    </Stack.Navigator>
-  )
-}
+  return <Stack.Navigator headerMode="none">
+      <Stack.Screen name="LoginScreen" component={LoginScreen} initialParams={{
+      LOGO_IMAGE,
+      logoStyle,
+      BACKGROUND_IMAGE,
+      backgroundImgStyle,
+      mainContainerStyle,
+      imageContainerStyle,
+      signInContainerStyle,
+      textInputStyle,
+      buttonStyle,
+      buttonTextStyle,
+      activeTabStyle
+    }} />
+      <Stack.Screen name="PasswordReset" component={PasswordReset} initialParams={{
+      LOGO_IMAGE,
+      textInputStyle,
+      buttonStyle,
+      buttonTextStyle
+    }} />
+    </Stack.Navigator>;
+};
 
 Login.propTypes = {
   LOGO_IMAGE: PropTypes.string,
@@ -216,10 +185,15 @@ Login.propTypes = {
   buttonStyle: PropTypes.object,
   buttonTextStyle: PropTypes.object,
   activeTabStyle: PropTypes.object
-}
-
+};
 export default {
   title: "Login",
   navigator: Login,
   slice: slice
-}
+};
+
+const _styles = StyleSheet.create({
+  OwrRWDcw: {
+    flex: 1
+  }
+});
