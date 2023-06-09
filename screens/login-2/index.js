@@ -22,7 +22,7 @@ const Login2 = ({ navigation }) => {
           <Text style={styles.forgotPassword}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate("Untitled21")}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
 

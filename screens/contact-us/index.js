@@ -18,15 +18,12 @@ const ContactUsScreen = () => {
       <View style={styles.infoContainer}>
         <Image source={require("./assets/email.png")} />
         <Text style={styles.infoText}>{email}</Text>
-        <ImageBackground style={styles.TQjozuqZ} source={require("./icons8-phone-number-50.png")} resizeMode="cover"></ImageBackground>
       </View>
       <View style={styles.infoContainer}>
         <Image source={require("./assets/phone.png")} />
         <Text style={styles.infoText}>{phone}</Text>
       </View>
-      <ImageBackground style={styles.EwUGehNK} source={require("./icons8-email-50.png")} resizeMode="cover"></ImageBackground>
-      <ImageBackground style={styles.hwwpmDDE} source={require("./icons8-back-50.png")} resizeMode="cover"></ImageBackground>
-    <Text style={styles.NbmhgOhi}>{"Contact Us"}</Text></View>;
+    </View>;
 };
 
 const styles = StyleSheet.create({

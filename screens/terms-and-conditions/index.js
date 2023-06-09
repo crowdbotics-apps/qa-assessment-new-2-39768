@@ -28,8 +28,7 @@ const TermsAndConditionsScreen = () => {
           <Text style={styles.policyText}>{thirdPara}</Text>
         </View>
       </ScrollView>
-      <Image style={styles.oilrBMkV} source={require("./icons8-back-50.png")} />
-    <Text style={styles.uszraYYZ}>{"Terms & Conditions"}</Text></View>;
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30
   },
   scrollStyle: {
-    marginTop: 70
+    marginTop: 20
   },
   lastUpdated: {
     flexDirection: "row",

@@ -53,9 +53,9 @@ const data = [{
   betweenPrice: 300
 }];
 
-const App = () => {
+const MakeAnOffer = () => {
   return <View style={styles.container}>
-      <Text style={styles.heading}>Offers</Text>
+      {/* <Text style={styles.heading}>Offers</Text> */}
       <FlatList data={data} renderItem={({
       item
     }) => <Card item={item} />} keyExtractor={item => item.id} />
@@ -66,7 +66,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
-    padding: 10
+    padding: 10,
+    marginBottom:100,
+    paddingTop:20
   },
   heading: {
     fontSize: 24,
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    marginBottom: 10
+    marginVertical:10
   },
   title: {
     fontSize: 20,
@@ -117,4 +119,4 @@ const styles = StyleSheet.create({
     fontSize: 16
   }
 });
-export default App;
+export default MakeAnOffer;

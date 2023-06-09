@@ -40,12 +40,12 @@ const CoinsList = () => {
   }) => <CoinCard coinName={item.name} />;
 
   return <View style={styles.container}>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Pressable>
           <Image style={styles.gMdEanPl} source={require("./icons8-back-50.png")} />
         </Pressable>
         <Text style={styles.headerText}>My Offers</Text>
-      </View>
+      </View> */}
       <FlatList data={coins} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.listContainer} />
     </View>;
 };

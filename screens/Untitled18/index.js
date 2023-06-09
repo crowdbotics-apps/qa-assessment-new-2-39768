@@ -1,10 +1,9 @@
-import React from "react";
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import React from "react"
+import { StyleSheet, View, Text, FlatList } from "react-native"
 
-const Card = ({
-  item
-}) => {
-  return <View style={styles.card}>
+const Card = ({ item }) => {
+  return (
+    <View style={styles.card}>
       <View style={styles.header}>
         <Text style={styles.title}>{item.name}</Text>
         <Text style={styles.quantity}>Quantity: {item.quantity}</Text>
@@ -23,42 +22,65 @@ const Card = ({
           </Text>
         </View>
       </View>
-    </View>;
-};
+    </View>
+  )
+}
 
-const data = [{
-  id: "1",
-  name: "Product 1",
-  quantity: "100",
-  priceRange: ["10.00", "20.00", "15.00"]
-}, {
-  id: "2",
-  name: "Product 2",
-  quantity: "200",
-  priceRange: ["15.00", "25.00", "20.00"]
-}, {
-  id: "3",
-  name: "Product 3",
-  quantity: "300",
-  priceRange: ["20.00", "30.00", "25.00"]
-}];
+const data = [
+  {
+    id: "1",
+    name: "Product 1",
+    quantity: "100",
+    priceRange: ["10.00", "20.00", "15.00"]
+  },
+  {
+    id: "2",
+    name: "Product 2",
+    quantity: "200",
+    priceRange: ["15.00", "25.00", "20.00"]
+  },
+  {
+    id: "3",
+    name: "Product 3",
+    quantity: "300",
+    priceRange: ["20.00", "30.00", "25.00"]
+  },
+  {
+    id: "2",
+    name: "Product 2",
+    quantity: "200",
+    priceRange: ["15.00", "25.00", "20.00"]
+  },
+  {
+    id: "2",
+    name: "Product 2",
+    quantity: "200",
+    priceRange: ["15.00", "25.00", "20.00"]
+  }
+]
 
-const App = () => {
-  return <View style={styles.container}>
-      <View style={styles.centeredView}>
+const RetailPrice = () => {
+  return (
+    <View style={styles.container}>
+      {/* <View style={styles.centeredView}>
         <Text style={styles.title}>Retail Price</Text>
-      </View>
-      <FlatList data={data} renderItem={({
-      item
-    }) => <Card item={item} />} keyExtractor={item => item.id} />
-    </View>;
-};
+      </View> */}
+      <FlatList
+        data={data}
+        renderItem={({ item }) => <Card item={item} />}
+        keyExtractor={item => item.id}
+        showsVerticalScrollIndicator={false}
+      />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    padding: 10
+    padding: 10,
+    marginBottom: 100
   },
   centeredView: {
     justifyContent: "center",
@@ -77,7 +99,8 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5
+    elevation: 5,
+    marginHorizontal: 5
   },
   header: {
     flexDirection: "row",
@@ -102,7 +125,7 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   priceRangeContainer: {
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between"
   },
   priceRange: {
@@ -110,5 +133,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#666"
   }
-});
-export default App;
+})
+export default RetailPrice

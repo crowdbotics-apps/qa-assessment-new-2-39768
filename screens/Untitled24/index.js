@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, ScrollView, SafeAreaView, View, Text, TextInput, Pressable } from "react-native";
+import { StyleSheet, ScrollView, SafeAreaView, View, Text, TextInput, Pressable, TouchableOpacity } from "react-native";
 
 const Untitled24 = ({navigation}) => {
   return <SafeAreaView style={styles.safeArea}>
@@ -28,7 +28,10 @@ const Untitled24 = ({navigation}) => {
       }}>
           <Text style={styles.signupButtonText}>Sign Up</Text>
         </Pressable>
+        <TouchableOpacity onPress={() => navigation.navigate("login2")}>
         <Text style={styles.loginText}>Already have an account? Login</Text>
+
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>;
 };

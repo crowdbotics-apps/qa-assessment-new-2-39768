@@ -11,19 +11,7 @@ const Profile = ({
 }) => {
   return <ScrollView>
       <View style={styles.mainContainer}>
-        {
-        /*         <View>
-         <View style={styles.headerContainer}>
-           <ProfileImage />
-           <Text style={styles.headerText}>Jay Mahanga</Text>
-           <Text style={styles.headerSubText}>jay@gmail.com</Text>
-         </View>
-         <View style={styles.subheaderContainer}>
-           <Text style={styles.subheaderDetailText}>Details</Text>
-           <Text style={styles.subheaderRemoveText}>Delete Account</Text>
-         </View>
-        </View> */
-      }
+      <Text style={styles.heading}>Edit Profile</Text>
         <View style={styles.mainBody}>
           <View style={styles.mt15}>
             <Text style={styles.textLabel}>First Name</Text>
@@ -77,6 +65,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     height: "100%",
     backgroundColor: "#FFF"
+  },
+  heading: {
+    fontSize: 48,
+    fontWeight: 'bold',
+    marginBottom: 66,
+    marginTop:20,
+    textAlign: 'center',
   },
   mt15: {
     marginTop: 15

@@ -11,23 +11,16 @@ const AboutTheAppScreen = ({
   useEffect(() => {
     setText1("I understand that uses my dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec.");
     setText2("I understand that uses my dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec.");
-    setImageSource(require("./assets/Frame21.png"));
   }, []);
   return <SafeAreaView style={styles.container}>
       <View style={styles.imgScroller}>
-        <Image source={ImageSource} />
-        <Image style={styles.threeDots} source={require("./assets/3Dots.png")} />
-        <Pressable onPress={() => {
-        navigation.navigate("Untitled15");
-      }} style={styles.rgVPtOhG}>
-          <Image style={styles.rgVPtOhF} source={require("./icons8-back-50.png")} />
-        </Pressable>
+
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.text}>{text1}</Text>
         <Text style={styles.text}>{text2}</Text>
       </View>
-    <Text style={styles.DgLOWoTe}>{"About Us"}</Text></SafeAreaView>;
+    </SafeAreaView>;
 };
 
 const styles = StyleSheet.create({
@@ -58,8 +51,6 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     lineHeight: 18,
     marginVertical: 10,
-    width: 316,
-    height: 205
   },
   rgVPtOhF: {
     width: 38,

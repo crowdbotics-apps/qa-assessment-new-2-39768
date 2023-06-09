@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 
-const Card = () => {
+const SpotPrices = () => {
   const data = [{
     id: "1",
     name: "Test Name 1",
@@ -12,6 +12,17 @@ const Card = () => {
     name: "Test Name 2",
     quantity: 2,
     price: 30
+  }, {
+    id: "3",
+    name: "Test Name 3",
+    quantity: 1,
+    price: 15
+  },
+  {
+    id: "3",
+    name: "Test Name 3",
+    quantity: 1,
+    price: 15
   }, {
     id: "3",
     name: "Test Name 3",
@@ -32,7 +43,7 @@ const Card = () => {
     </View>;
 
   return <View style={styles.container}>
-      <Text style={styles.heading}>Spot prices</Text>
+      {/* <Text style={styles.heading}>Spot prices</Text> */}
       <FlatList data={data} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.scrollStyles} />
     </View>;
 };
@@ -40,7 +51,8 @@ const Card = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    marginBottom:100
   },
   heading: {
     fontSize: 24,
@@ -90,4 +102,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   }
 });
-export default Card;
+export default SpotPrices;

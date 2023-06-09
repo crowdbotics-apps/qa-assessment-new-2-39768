@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, ScrollView, SafeAreaView, View, Text, Pressable } from "react-native";
 
 const Untitled23 = ({
-  navigate
+  navigation
 }) => {
   return <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={{

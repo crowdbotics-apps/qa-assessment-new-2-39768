@@ -30,13 +30,14 @@ const PrivacyPolicyScreen = () => {
           <Text style={styles.policyText}>{thirdPara}</Text>
         </View>
       </ScrollView>
-      <Pressable style={styles.JBRtUnVl} onPress={() => {
+      {/* <Pressable style={styles.JBRtUnVl} onPress={() => {
       navigation.navigate("Untitled15");
     }}>
         <Image style={styles.XtvTFDHq} source={require("./icons8-back-50.png")} />
       </Pressable>
      
-    <Text style={styles.qfnIvfJb}>{"Privacy Policy"}</Text></View>;
+    <Text style={styles.qfnIvfJb}>{"Privacy Policy"}</Text> */}
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30
   },
   scrollStyle: {
-    marginTop: 70
+    marginTop: 20
   },
   lastUpdated: {
     flexDirection: "row",
