@@ -21,7 +21,7 @@ const Untitled15 = ({
           </TouchableOpacity>
         </View>
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("privacyPolicy")}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Privacy Policy")}>
             <Text style={styles.buttonText}>Privacy Policy</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("aboutTheApp")}>
