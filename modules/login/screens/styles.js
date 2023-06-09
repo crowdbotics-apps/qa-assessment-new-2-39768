@@ -100,7 +100,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Color.whiteOff
   },
-  imageContainer: { marginTop: -20, width: width, height: height / 2 },
+  imageContainer: { marginTop: -20, width: width, height: height / 2, justifyContent:'center' },
   cardView: {
     marginTop: -90,
     marginBottom: 20,
@@ -125,8 +125,8 @@ export const styles = StyleSheet.create({
   },
   activeTabStyle: {
     borderBottomWidth: 5,
-    borderBottomColor: Color.malibu,
-    paddingBottom: 5
+    borderBottomColor: "#000",
+    paddingBottom: 5,
   },
   tabStyle: {
     width: "100%",
@@ -156,7 +156,7 @@ export const styles = StyleSheet.create({
 
 export const buttonStyles = {
   viewStyle: {
-    backgroundColor: Color.malibu,
+    backgroundColor: "#000",
     borderRadius: 5,
     borderColor: Color.black,
     justifyContent: "center",

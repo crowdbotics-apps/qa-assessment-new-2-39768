@@ -34,7 +34,10 @@
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "^0.18.2",
     "react-redux": "^7.2.2",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "prop-types": "15.8.1",
+    "react-native-keyboard-aware-scroll-view": "^0.9.3",
+    "react-native-render-html": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
