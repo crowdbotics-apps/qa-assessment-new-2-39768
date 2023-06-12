@@ -256,7 +256,7 @@ SPECTACULAR_SETTINGS = {
         "persistAuthorization": True,
         "displayOperationId": True,
     },
-    "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAuthenticated"],\
+    "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAuthenticated"], \
     "TITLE": "qa_assessment_new_2_39768 API",
     "DESCRIPTION": "API documentation for qa_assessment_new_2_39768 App",
     "VERSION": "v1",

@@ -33,7 +33,13 @@ class LoginViewSet(ViewSet):
         user_serializer = UserSerializer(user)
         return Response({"token": token.key, "user": user_serializer.data})
 
+
 class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
     queryset = Profile.objects.all()
+
+    def get_queryset(self):
+        if not self.request.user.is_superuser:
+            return self.queryset.filter(user=self.request.user)
+        return self.queryset
