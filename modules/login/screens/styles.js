@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     color: "#707070"
   },
   actionButon: {
-    backgroundColor: Color.malibu,
+    backgroundColor: "#000",
     borderWidth: 0,
     marginLeft: scale(10),
     marginRight: scale(10),

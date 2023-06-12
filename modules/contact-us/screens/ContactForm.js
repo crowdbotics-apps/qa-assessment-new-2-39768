@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, ToastAndroid, Linking } from "react-native";
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, ToastAndroid, Linking, Alert } from "react-native";
 import { sendQuery } from "../api";
 import Button from "../components/Button";
 import Loader from "../components/Loader";
@@ -45,7 +45,8 @@ const ContactForm = () => {
   };
 
   const showToastWithGravity = message => {
-    ToastAndroid.showWithGravityAndOffset(message, ToastAndroid.SHORT, ToastAndroid.BOTTOM, 25, 50);
+    Alert.alert("SUCCESS", "Your feedback has been sent!")
+    // ToastAndroid.showWithGravityAndOffset(message, ToastAndroid.SHORT, ToastAndroid.BOTTOM, 25, 50);
   };
 
   return <SafeAreaView>

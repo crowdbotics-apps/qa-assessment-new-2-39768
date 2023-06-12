@@ -44,9 +44,7 @@ const PasswordRecover = ({
       width: 365,
       height: 161
     };
-    return <Image style={[styles.image, imageSize]} source={{
-      uri: LOGO_IMAGE || options.LOGO_URL
-    }} />;
+    return <Image style={[styles.image, imageSize]} source={require('../investment-removebg-preview.png')} />;
   };
 
   return <View style={_styles.TIvRsRxH}>

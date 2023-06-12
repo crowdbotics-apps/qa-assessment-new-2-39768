@@ -1,7 +1,7 @@
 // @ts-ignore
-import { getGlobalOptions } from "@options";
-const global = getGlobalOptions();
-const BASE_URL = global.url;
+import { getGlobalOptions } from "@options"
+const global = getGlobalOptions()
+const BASE_URL = global.url
 export const sendQuery = async data => {
   try {
     const response = await fetch(`${BASE_URL}/modules/contact-us/contact_us/`, {
@@ -10,9 +10,12 @@ export const sendQuery = async data => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    });
-    return response;
+    })
+    console.log("repsonse", response)
+    return response
   } catch (error) {
-    throw new Error("NETWORK_ERROR").message;
+    console.log("RESPONSE", error.response)
+    Alert.alert("Error", error.message)
+    throw new Error()
   }
-};
+}
