@@ -59,6 +59,7 @@ class SignupSerializer(serializers.ModelSerializer):
         user.save()
         request = self._get_request()
         setup_user_email(request, user, [])
+        Profile.objects.create(user=user, email=user.email)
         return user
 
     def save(self, request=None):
