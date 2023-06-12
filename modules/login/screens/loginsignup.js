@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { loginRequest, signupRequest } from "../auth"
 import { validateEmail } from "../constants"
 import { buttonStyles, Color, textInputStyles } from "./styles" // Custom Text Input
+import { CheckBox } from "react-native-elements"
 
 export const TextInputField = props => (
   <View>
@@ -32,7 +33,10 @@ export const TextInputField = props => (
 ) // Custom Button
 
 export const Button = props => (
-  <TouchableOpacity onPress={props.onPress} disabled={props.loading}>
+  <TouchableOpacity
+    onPress={props.onPress}
+    disabled={props.loading || props.disabled}
+  >
     <View style={[buttonStyles.viewStyle, props.buttonStyle]}>
       {props.loading ? (
         <ActivityIndicator
@@ -102,6 +106,8 @@ export const SignupTab = ({ navigation, route }) => {
       .catch(err => console.log(err.response))
   }
 
+  const [privacyCheck, setPrivacyCheck] = useState(false)
+
   return (
     <KeyboardAvoidingView>
       <View style={_styles.yqHcHTHq}>
@@ -131,12 +137,20 @@ export const SignupTab = ({ navigation, route }) => {
           value={confirmPassword}
           textInputStyle={textInputStyle}
         />
+
+        <CheckBox
+          onPress={() => setPrivacyCheck(!privacyCheck)}
+          title={"I have read Terms and Conditions and Privacy Policy"}
+          // checkedIcon={require('../checked.png')}
+          // uncheckedIcon={require('../checked.png')}
+        />
       </View>
       <Button
         title={options.SignUpButtonText}
         loading={api.loading === "pending"}
         onPress={onSignupPress}
         buttonStyle={buttonStyle}
+        disabled={privacyCheck ? false : true}
         buttonTextStyle={buttonTextStyle}
       />
       {!!api.error && (
