@@ -52,7 +52,7 @@ class MakeOfferSerializer(serializers.ModelSerializer):
 
 class MyOfferSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='coin.name')
-    id = serializers.CharField(source='coin.id')
+    id = serializers.CharField(source='offer.id')
 
     class Meta:
         model = OfferList

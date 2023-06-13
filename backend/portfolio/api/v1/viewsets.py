@@ -31,7 +31,7 @@ class OfferListViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get', 'patch'], url_path='my_offer', permission_classes=(IsAuthenticated,), )
     def my_offer(self, request):
-        queryset = self.queryset.filter(coin__coin_user=request.user)
+        queryset = self.queryset.filter(coin__coin_user=request.user, offer__status='PENDING')
         if request.method == 'PATCH':
             offer = Offer.objects.filter(id=request.data.get('offer_id')).update(
                 status=request.data.get('offer_status'))
