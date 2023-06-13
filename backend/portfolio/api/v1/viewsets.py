@@ -30,11 +30,11 @@ class OfferListViewSet(viewsets.ModelViewSet):
     queryset = OfferList.objects.all()
 
     def get_queryset(self):
-        return self.queryset
+        return self.queryset.all()
 
-    @action(detail=False, methods=['get'], url_path='spot_price', permission_classes=(IsAuthenticated,))
+    @action(detail=False, methods=['get'], url_path='spot_price', permission_classes=(IsAuthenticated,), )
     def spot_price(self, request):
-        queryset = self.get_queryset()
+        queryset = self.queryset.all()
         sport_serializer = SpotpriceSerializer(queryset, many=True)
         return Response(sport_serializer.data)
 
