@@ -13,7 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic.base import TemplateView
@@ -22,22 +23,21 @@ from rest_framework import permissions
 from drf_spectacular.views import SpectacularJSONAPIView, SpectacularSwaggerView
 
 urlpatterns = [
-    
-    path("accounts/", include("allauth.urls")),
-    path("modules/", include("modules.urls")),
-    path("api/v1/", include("home.api.v1.urls")),
-    path("admin/", admin.site.urls),
-    path("users/", include("users.urls", namespace="users")),
-    path("rest-auth/", include("rest_auth.urls")),
-    # Override email confirm to use allauth's HTML view instead of rest_auth's API view
-    path("rest-auth/registration/account-confirm-email/<str:key>/", confirm_email),
-    path("rest-auth/registration/", include("rest_auth.registration.urls")),path("home/", include("home.urls")), path("api/v1/", include("portfolio.api.v1.urls")), path("api/v1/", include("company.api.v1.urls")), path("portfolio/", include("portfolio.urls")), path("company/", include("company.urls"))
 
-
-
-
-
-]
+                  path("accounts/", include("allauth.urls")),
+                  path("modules/", include("modules.urls")),
+                  path("api/v1/", include("home.api.v1.urls")),
+                  path("admin/", admin.site.urls),
+                  path("users/", include("users.urls", namespace="users")),
+                  path("rest-auth/", include("rest_auth.urls")),
+                  # Override email confirm to use allauth's HTML view instead of rest_auth's API view
+                  path("rest-auth/registration/account-confirm-email/<str:key>/", confirm_email),
+                  path("rest-auth/registration/", include("rest_auth.registration.urls")),
+                  path("home/", include("home.urls")), path("api/v1/", include("portfolio.api.v1.urls")),
+                  path("api/v1/", include("company.api.v1.urls")), path("portfolio/", include("portfolio.urls")),
+                  path("company/", include("company.urls"))
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.site_header = "qa-assessment-new-2023"
 admin.site.site_title = "qa-assessment-new-2023 Admin Portal"
@@ -49,5 +49,4 @@ urlpatterns += [
     path("api-docs/", SpectacularSwaggerView.as_view(url_name='schema'), name="api_docs")
 ]
 
-
-urlpatterns += [re_path(r".*",TemplateView.as_view(template_name='index.html'))]
+urlpatterns += [re_path(r".*", TemplateView.as_view(template_name='index.html'))]

@@ -13,7 +13,6 @@ class ContactUs(APIView):
         Sends a message and name of the sender as mail to to your email that you have configured in settings.py as 'TO_EMAILS'.
         """
         email = request.data.get('email')
-        phone_number = request.data.get('phone_number')
         name = request.data.get('name')
         message = request.data.get('message')
         if email and email != '':

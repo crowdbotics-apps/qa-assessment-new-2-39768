@@ -1,6 +1,6 @@
-from rest_framework import viewsets
-from home.models import Profile
-from .serializers import ProfileSerializer
+from allauth.account.models import EmailAddress
+from rest_auth.registration.views import RegisterView
+from rest_framework import viewsets, status
 from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
@@ -13,9 +13,8 @@ from home.api.v1.serializers import (
 )
 
 
-class SignupViewSet(ModelViewSet):
-    serializer_class = SignupSerializer
-    http_method_names = ["post"]
+class SignupViewSet(RegisterView):
+    authentication_classes = ()
 
 
 class LoginViewSet(ViewSet):
@@ -29,17 +28,15 @@ class LoginViewSet(ViewSet):
         )
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data["user"]
+        user_email = request.data.get('username')
+        confirmed_email = EmailAddress.objects.filter(email__exact=user_email, verified=True)
+        if not confirmed_email:
+            return Response(
+                {'non_field_errors': [
+                    'To complete your account setup, please verify your email address by clicking the button below.']},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         token, created = Token.objects.get_or_create(user=user)
         user_serializer = UserSerializer(user)
         return Response({"token": token.key, "user": user_serializer.data})
 
-
-class ProfileViewSet(viewsets.ModelViewSet):
-    serializer_class = ProfileSerializer
-    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
-    queryset = Profile.objects.all()
-
-    def get_queryset(self):
-        if not self.request.user.is_superuser:
-            return self.queryset.filter(user=self.request.user)
-        return self.queryset

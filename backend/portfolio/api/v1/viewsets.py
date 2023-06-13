@@ -1,4 +1,3 @@
-from django.db.models import F
 from rest_framework import authentication
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -19,9 +18,7 @@ class CoinViewSet(viewsets.ModelViewSet):
     queryset = Coin.objects.all()
 
     def get_queryset(self):
-        if not self.request.user.is_superuser:
-            return self.queryset.filter(user=self.request.user)
-        return self.queryset
+        return self.queryset.all()
 
 
 class OfferListViewSet(viewsets.ModelViewSet):
@@ -32,41 +29,15 @@ class OfferListViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.all()
 
-    @action(detail=False, methods=['get'], url_path='spot_price', permission_classes=(IsAuthenticated,), )
-    def spot_price(self, request):
-        queryset = self.queryset.all()
-        sport_serializer = SpotpriceSerializer(queryset, many=True)
-        return Response(sport_serializer.data)
-
-    @action(detail=False, methods=['get'], url_path='retail_value', permission_classes=(IsAuthenticated,), )
-    def retail_value(self, request):
-        lower_price = request.query_params.get('lower_price')
-        higher_price = request.query_params.get('higher_price')
-        order_field = request.query_params.get('order_field', '-coin__bid_premium_high')
-        if lower_price and higher_price:
-            queryset = self.queryset.filter(coin__bid_premium_low__gte=lower_price,
-                                            coin__bid_premium_high__lte=higher_price).order_by(order_field)
-            retail_value_serializer = RetailValueSerializer(queryset, many=True)
-            return Response(retail_value_serializer.data)
-
-        queryset = self.queryset.order_by(order_field)
-        retail_value_serializer = RetailValueSerializer(queryset, many=True)
-        return Response(retail_value_serializer.data)
-
-    @action(detail=False, methods=['get'], url_path='make_offer', permission_classes=(IsAuthenticated,), )
-    def make_offer(self, request):
-        lower_price = request.query_params.get('lower_price')
-        higher_price = request.query_params.get('higher_price')
-        order_field = request.query_params.get('order_field', '-coin__bid_premium_high')
-        if lower_price and higher_price:
-            queryset = self.queryset.filter(coin__bid_premium_low__gte=lower_price,
-                                            coin__bid_premium_high__lte=higher_price).order_by(order_field)
-            retail_value_serializer = MakeOfferSerializer(queryset, many=True)
-            return Response(retail_value_serializer.data)
-
-        queryset = self.queryset.order_by(order_field)
-        make_offer_serializer = MakeOfferSerializer(queryset, many=True)
-        return Response(make_offer_serializer.data)
+    @action(detail=False, methods=['get', 'patch'], url_path='my_offer', permission_classes=(IsAuthenticated,), )
+    def my_offer(self, request):
+        queryset = self.queryset.filter(coin__coin_user=request.user, offer__status='PENDING')
+        if request.method == 'PATCH':
+            offer = Offer.objects.filter(id=request.data.get('offer_id')).update(
+                status=request.data.get('offer_status'))
+            return Response({'msg': 'Updated successfully'})
+        my_offer_serializer = MyOfferSerializer(queryset, many=True)
+        return Response(my_offer_serializer.data)
 
 
 class OfferViewSet(viewsets.ModelViewSet):

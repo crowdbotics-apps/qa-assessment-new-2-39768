@@ -97,7 +97,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -191,7 +191,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = "optional"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_UNIQUE_EMAIL = True
@@ -213,14 +213,27 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
 }
 
 # Custom user model
 AUTH_USER_MODEL = "users.User"
 
-EMAIL_HOST = env.str("EMAIL_HOST", "smtp.sendgrid.net")
+# Email Setting
+SENDGRID_API_KEY = env.str("SENDGRID_API_KEY", "")
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST_USER = env.str("SENDGRID_USERNAME", "")
-EMAIL_HOST_PASSWORD = env.str("SENDGRID_PASSWORD", "")
+EMAIL_HOST_PASSWORD = env.str("SENDGRID_API_KEY", "")
+DEFAULT_FROM_EMAIL = env.str("TO_EMAILS", "")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
