@@ -55,7 +55,7 @@ const getNavigation = (modules, screens, initialRoute) => {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName={"profile"}
+          initialRouteName={"Untitled15"}
           screenOptions={screenOptions}
         >
           {routes}

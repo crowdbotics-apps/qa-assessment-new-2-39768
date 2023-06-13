@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { loginRequest, signupRequest } from "../auth"
 import { validateEmail } from "../constants"
 import { buttonStyles, Color, textInputStyles } from "./styles" // Custom Text Input
-import { CheckBox } from "react-native-elements"
+import CheckBox from "@react-native-community/checkbox"
 
 export const TextInputField = props => (
   <View>
@@ -100,7 +100,7 @@ export const SignupTab = ({ navigation, route }) => {
     )
       .then(unwrapResult)
       .then(() => {
-        Alert.alert("Signup Success", "Registration Successful!")
+        Alert.alert("Signup Success", "An email has been sent to verify your email address.")
         navigation.navigate("SignIn")
       })
       .catch(err => console.log(err.response))
@@ -138,12 +138,16 @@ export const SignupTab = ({ navigation, route }) => {
           textInputStyle={textInputStyle}
         />
 
-        <CheckBox
-          onPress={() => setPrivacyCheck(!privacyCheck)}
-          title={"I have read Terms and Conditions and Privacy Policy"}
-          // checkedIcon={require('../checked.png')}
-          // uncheckedIcon={require('../checked.png')}
-        />
+        <View style={{ flexDirection: "row" }}>
+          <CheckBox
+            disabled={false}
+            value={privacyCheck}
+            onValueChange={() => setPrivacyCheck(!privacyCheck)}
+          />
+          <Text style={{ alignSelf: "center", width: 300 }}>
+            I have read Terms and Conditions and Privacy Policy
+          </Text>
+        </View>
       </View>
       <Button
         title={options.SignUpButtonText}

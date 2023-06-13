@@ -8,7 +8,6 @@ export const loginRequest = createAsyncThunk(
   async payload => {
     try {
       const response = await api.apiLoginRequest(payload)
-
       return response.data
     } catch (error) {
       Alert.alert("Error", mapErrors(error))

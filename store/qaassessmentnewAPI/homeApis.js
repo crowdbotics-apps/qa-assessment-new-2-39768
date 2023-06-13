@@ -73,6 +73,19 @@ export const getUserRequests = async () => {
   const config = {
     method: "get",
     maxBodyLength: Infinity,
+    url: `${globalOptions.url}/api/v1/offerlist/my_offer/`,
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  }
+  return axios.request(config)
+}
+
+export const getCoins = async () => {
+  const token = await AsyncStorage.getItem("access_token")
+  const config = {
+    method: "get",
+    maxBodyLength: Infinity,
     url: `${globalOptions.url}/api/v1/coin/`,
     headers: {
       Authorization: `Token ${token}`
@@ -80,11 +93,42 @@ export const getUserRequests = async () => {
   }
   return axios.request(config)
 }
+
+export const makeOffer = async payload => {
+  const token = await AsyncStorage.getItem("access_token")
+  const config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: `${globalOptions.url}/api/v1/offer/`,
+    headers: {
+      Authorization: `Token ${token}`
+    },
+    data: payload
+  }
+  return axios.request(config)
+}
+
+export const updateOffer = async payload => {
+  const token = await AsyncStorage.getItem("access_token")
+  const config = {
+    method: "patch",
+    maxBodyLength: Infinity,
+    url: `${globalOptions.url}/api/v1/offerlist/my_offer/`,
+    headers: {
+      Authorization: `Token ${token}`
+    },
+    data: payload
+  }
+  return axios.request(config)
+}
 export const api = {
   getSpotList,
   getRetailList,
   getOffer,
-  getUserDetails, 
+  getUserDetails,
   updateProfile,
-  getUserRequests
+  getUserRequests,
+  getCoins,
+  makeOffer,
+  updateOffer
 }
