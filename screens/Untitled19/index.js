@@ -1,68 +1,60 @@
-import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity, FlatList } from "react-native";
+import React, { useEffect } from "react"
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList
+} from "react-native"
+import { useDispatch, useSelector } from "react-redux"
+import { getOffers } from "../../store/qaassessmentnewAPI/homescreen.slice"
 
-const Card = ({
-  item
-}) => {
-  return <View style={styles.card}>
+const Card = ({ item, navigation }) => {
+  return (
+    <View style={styles.card}>
       <Text style={styles.title}>{item.name}</Text>
       <Text style={styles.text}>Quantity: {item.quantity}</Text>
-      <Text style={styles.text}>Spot Price: {item.spotPrice}</Text>
+      <Text style={styles.text}>Spot Price: {item.spot_price}</Text>
       <Text style={styles.text}>
         Retail Price Range: {item.retailPriceRange}
       </Text>
       <View style={styles.priceContainer}>
-        <Text style={styles.price}>Lower End Price: {item.lowerEndPrice}</Text>
         <Text style={styles.price}>
-          Higher End Price: {item.higherEndPrice}
+          Lower End Price: {item.bid_premium_low}
         </Text>
-        <Text style={styles.price}>Between Price: {item.betweenPrice}</Text>
+        <Text style={styles.price}>
+          Higher End Price: {item.bid_premium_high}
+        </Text>
+        <Text style={styles.price}>Between Price: {item.between_price}</Text>
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Untitled20")}
+      >
         <Text style={styles.buttonText}>Make me an offer</Text>
       </TouchableOpacity>
-    </View>;
-};
+    </View>
+  )
+}
 
-const data = [{
-  id: "1",
-  name: "Product 1",
-  quantity: 10,
-  spotPrice: 100,
-  retailPriceRange: "100-200",
-  lowerEndPrice: 80,
-  higherEndPrice: 120,
-  betweenPrice: 100
-}, {
-  id: "2",
-  name: "Product 2",
-  quantity: 20,
-  spotPrice: 200,
-  retailPriceRange: "200-300",
-  lowerEndPrice: 180,
-  higherEndPrice: 220,
-  betweenPrice: 200
-}, {
-  id: "3",
-  name: "Product 3",
-  quantity: 30,
-  spotPrice: 300,
-  retailPriceRange: "300-400",
-  lowerEndPrice: 280,
-  higherEndPrice: 320,
-  betweenPrice: 300
-}];
+const MakeAnOffer = ({ navigation }) => {
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.Homescreen.offerList.entities)
 
-const MakeAnOffer = () => {
-  return <View style={styles.container}>
-      {
-      /* <Text style={styles.heading}>Offers</Text> */
-    }
-      <FlatList data={data} renderItem={({
-      item
-    }) => <Card item={item} />} keyExtractor={item => item.id} />
-    </View>;
-};
+  useEffect(() => {
+    dispatch(getOffers())
+  }, [])
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={state}
+        renderItem={({ item }) => <Card item={item} navigation={navigation} />}
+        keyExtractor={item => item.id}
+      />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -103,12 +95,13 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   priceContainer: {
-    flexDirection: "row",
+    // flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10
   },
   price: {
-    fontSize: 16
+    fontSize: 16,
+    lineHeight: 25
   },
   button: {
     backgroundColor: "#000",
@@ -120,5 +113,5 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16
   }
-});
-export default MakeAnOffer;
+})
+export default MakeAnOffer

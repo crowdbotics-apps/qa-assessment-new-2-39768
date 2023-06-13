@@ -20,9 +20,9 @@ const TermsAndConditions = ({ navigation }) => {
     fetch(`${globalOptions.url}/modules/terms-and-conditions/`)
       .then(response => response.json())
       .then(data => {
-        setHtmlContent(data[0].body)
+        setHtmlContent(data[0]?.body)
       })
-      .catch(() => {
+      .catch(err => {
         return setHtmlContent("<h1>Error Loading Terms and Conditions</h1>")
       })
   })
@@ -57,7 +57,7 @@ export default {
 const _styles = StyleSheet.create({
   xjCUGiTc: {
     flex: 1,
-    paddingHorizontal:20
+    paddingHorizontal: 20
   },
   RCSRxBhS: {
     flex: 1

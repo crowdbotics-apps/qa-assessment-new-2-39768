@@ -1,45 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { StyleSheet, View, Text, FlatList } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
+import { getSpotList } from "../../store/qaassessmentnewAPI/homescreen.slice"
 
 const SpotPrices = () => {
-  const data = [
-    {
-      id: "1",
-      name: "Test Name 1",
-      quantity: 3,
-      price: 45
-    },
-    {
-      id: "2",
-      name: "Test Name 2",
-      quantity: 2,
-      price: 30
-    },
-    {
-      id: "3",
-      name: "Test Name 3",
-      quantity: 1,
-      price: 15
-    },
-    {
-      id: "3",
-      name: "Test Name 3",
-      quantity: 1,
-      price: 15
-    },
-    {
-      id: "3",
-      name: "Test Name 3",
-      quantity: 1,
-      price: 15
-    }
-  ]
-
   const dispatch = useDispatch()
+  const state = useSelector(state => state.Homescreen.spotList.entities)
 
-  const state = useSelector(state => state)
-  console.log("STATEEE", state)
+  useEffect(() => {
+    dispatch(getSpotList())
+  }, [])
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
@@ -57,7 +27,7 @@ const SpotPrices = () => {
     <View style={styles.container}>
       {/* <Text style={styles.heading}>Spot prices</Text> */}
       <FlatList
-        data={data}
+        data={state}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.scrollStyles}

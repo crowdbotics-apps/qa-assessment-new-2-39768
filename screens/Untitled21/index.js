@@ -1,71 +1,111 @@
-import React, { useState } from "react";
-import { StyleSheet, ScrollView, SafeAreaView, View, Image, Text, Pressable } from "react-native";
-import SpotPrices from "../Untitled17";
-import RetailPrice from "../Untitled18";
-import MakeAnOffer from "../Untitled19";
+import React, { useEffect, useState } from "react"
+import {
+  StyleSheet,
+  ScrollView,
+  SafeAreaView,
+  View,
+  Image,
+  Text,
+  Pressable
+} from "react-native"
+import SpotPrices from "../Untitled17"
+import RetailPrice from "../Untitled18"
+import MakeAnOffer from "../Untitled19"
+import { CommonActions } from "@react-navigation/native"
 
-const Untitled21 = ({
-  navigation
-}) => {
-  const [currentTab, setCurrentTab] = useState('Spot Price');
-  return <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={{
-      backgroundColor: "#f0f0f1",
-      position: "relative",
-      flex: 1
-    }}>
+const Untitled21 = ({ navigation }) => {
+  const [currentTab, setCurrentTab] = useState("Spot Price")
+
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView
+        contentContainerStyle={{
+          backgroundColor: "#f0f0f1",
+          position: "relative",
+          flex: 1
+        }}
+      >
         <View style={styles.muaMPLcp}>
           <View style={styles.buttonView}>
             <Text style={styles.heading}>{currentTab}</Text>
             <View style={styles.iVinfpmg}>
-              <Pressable onPress={() => {
-              navigation.navigate("Untitled20");
-            }}>
-                <Image source={require("./icons8-coins-50.png")} style={[styles.buttonStyles, styles.TCQXckBo]} />
+              <Pressable
+                onPress={() => {
+                  navigation.navigate("Untitled20")
+                }}
+              >
+                <Image
+                  source={require("./icons8-coins-50.png")}
+                  style={[styles.buttonStyles, styles.TCQXckBo]}
+                />
               </Pressable>
 
-              <Pressable onPress={() => {
-              navigation.navigate("Untitled23");
-            }}>
-                <Image source={require("./icons8-settings-50.png")} style={[styles.buttonStyles]} />
+              <Pressable
+                onPress={() => {
+                  navigation.navigate("Untitled23")
+                }}
+              >
+                <Image
+                  source={require("./icons8-settings-50.png")}
+                  style={[styles.buttonStyles]}
+                />
               </Pressable>
             </View>
           </View>
           <View style={styles.wdsTNeKA}>
-            {currentTab === 'Spot Price' && <SpotPrices />}
-            {currentTab === 'Retail Price' && <RetailPrice />}
-            {currentTab === 'Make An Offer' && <MakeAnOffer />}
-
+            {currentTab === "Spot Price" && <SpotPrices />}
+            {currentTab === "Retail Price" && <RetailPrice />}
+            {currentTab === "Make An Offer" && (
+              <MakeAnOffer navigation={navigation} />
+            )}
           </View>
 
           <View style={styles.tabContainer}>
-            <Pressable onPress={() => {
-            // navigation.navigate("Untitled17")
-            setCurrentTab('Spot Price');
-          }} style={styles.tab}>
-              <Image style={styles.mzYtvhsR} source={require("./icons8-crypto-trading-spot-50.png")} // source={require("./icons8-coins-50.png")}
-            />
+            <Pressable
+              onPress={() => {
+                // navigation.navigate("Untitled17")
+                setCurrentTab("Spot Price")
+              }}
+              style={styles.tab}
+            >
+              <Image
+                style={styles.mzYtvhsR}
+                source={require("./icons8-crypto-trading-spot-50.png")} // source={require("./icons8-coins-50.png")}
+              />
               <Text style={styles.bottomText}>Spot price</Text>
             </Pressable>
-            <Pressable onPress={() => {
-            // navigation.navigate("Untitled18")
-            setCurrentTab('Retail Price');
-          }} style={styles.tab}>
-              <Image style={styles.mzYtvhsR} source={require("./icons8-price-tag-50.png")} />
+            <Pressable
+              onPress={() => {
+                // navigation.navigate("Untitled18")
+                setCurrentTab("Retail Price")
+              }}
+              style={styles.tab}
+            >
+              <Image
+                style={styles.mzYtvhsR}
+                source={require("./icons8-price-tag-50.png")}
+              />
               <Text style={styles.bottomText}>Retail Value</Text>
             </Pressable>
-            <Pressable onPress={() => {
-            // navigation.navigate("Untitled19")
-            setCurrentTab("Make An Offer");
-          }} style={styles.tab}>
-              <Image style={styles.mzYtvhsR} source={require("./icons8-macbook-money-50.png")} />
+            <Pressable
+              onPress={() => {
+                // navigation.navigate("Untitled19")
+                setCurrentTab("Make An Offer")
+              }}
+              style={styles.tab}
+            >
+              <Image
+                style={styles.mzYtvhsR}
+                source={require("./icons8-macbook-money-50.png")}
+              />
               <Text style={styles.bottomText}>Make offer</Text>
             </Pressable>
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>;
-};
+    </SafeAreaView>
+  )
+}
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -142,5 +182,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     height: "95%"
   }
-});
-export default Untitled21;
+})
+export default Untitled21

@@ -1,10 +1,11 @@
-import React from "react";
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import React, {useEffect} from "react"
+import { StyleSheet, View, Text, FlatList } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
+import { getRetailList } from "../../store/qaassessmentnewAPI/homescreen.slice"
 
-const Card = ({
-  item
-}) => {
-  return <View style={styles.card}>
+const Card = ({ item }) => {
+  return (
+    <View style={styles.card}>
       <View style={styles.header}>
         <Text style={styles.title}>{item.name}</Text>
         <Text style={styles.quantity}>Quantity: {item.quantity}</Text>
@@ -15,56 +16,37 @@ const Card = ({
         </Text>
         <View style={styles.priceRangeContainer}>
           <Text style={styles.priceRange}>
-            Lower End: ${item.priceRange[0]}
+            Lower End: ${item.bid_premium_low}
           </Text>
-          <Text style={styles.priceRange}>Between: ${item.priceRange[1]}</Text>
+          <Text style={styles.priceRange}>Between: ${item.between_price}</Text>
           <Text style={styles.priceRange}>
-            Higher End: ${item.priceRange[2]}
+            Higher End: ${item.bid_premium_high}
           </Text>
         </View>
       </View>
-    </View>;
-};
-
-const data = [{
-  id: "1",
-  name: "Product 1",
-  quantity: "100",
-  priceRange: ["10.00", "20.00", "15.00"]
-}, {
-  id: "2",
-  name: "Product 2",
-  quantity: "200",
-  priceRange: ["15.00", "25.00", "20.00"]
-}, {
-  id: "3",
-  name: "Product 3",
-  quantity: "300",
-  priceRange: ["20.00", "30.00", "25.00"]
-}, {
-  id: "2",
-  name: "Product 2",
-  quantity: "200",
-  priceRange: ["15.00", "25.00", "20.00"]
-}, {
-  id: "2",
-  name: "Product 2",
-  quantity: "200",
-  priceRange: ["15.00", "25.00", "20.00"]
-}];
+    </View>
+  )
+}
 
 const RetailPrice = () => {
-  return <View style={styles.container}>
-      {
-      /* <View style={styles.centeredView}>
-       <Text style={styles.title}>Retail Price</Text>
-      </View> */
-    }
-      <FlatList data={data} renderItem={({
-      item
-    }) => <Card item={item} />} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} />
-    </View>;
-};
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.Homescreen.retailList.entities)
+
+  useEffect(() => {
+    dispatch(getRetailList())
+  }, [])
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={state}
+        renderItem={({ item }) => <Card item={item} />}
+        keyExtractor={item => item.id}
+        showsVerticalScrollIndicator={false}
+      />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -124,5 +106,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#666"
   }
-});
-export default RetailPrice;
+})
+export default RetailPrice

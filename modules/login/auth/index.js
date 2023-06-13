@@ -2,17 +2,16 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { mapErrorMessage } from "./utils"
 import { Alert } from "react-native"
 import { api } from "./api"
+import { mapErrors } from "../../../utils/functions"
 export const loginRequest = createAsyncThunk(
   "login/loginRequest",
   async payload => {
     try {
       const response = await api.apiLoginRequest(payload)
-      console.log("repsone", response)
-      
+
       return response.data
     } catch (error) {
-      console.log("errr ;logj", error.response)
-      Alert.alert("Error", error.message)
+      Alert.alert("Error", mapErrors(error))
       throw new Error()
     }
   }
@@ -24,7 +23,7 @@ export const signupRequest = createAsyncThunk(
       const response = await api.apiSignupRequest(payload)
       return response.data
     } catch (error) {
-      Alert.alert("Error", error.message)
+      Alert.alert("Error", mapErrors(error))
       throw new Error()
     }
   }
@@ -48,10 +47,8 @@ export const resetPassword = createAsyncThunk(
   async payload => {
     try {
       const response = await api.apiResetPasswordRequest(payload)
-      console.log("response", response)
       return response.data
     } catch (error) {
-      console.log('ERR', error.response)
       Alert.alert("Error", error.message)
       throw new Error()
     }

@@ -1,10 +1,11 @@
-import React from "react";
-import { StyleSheet, View, Text, FlatList, Pressable } from "react-native";
+import React, { useEffect } from "react"
+import { StyleSheet, View, Text, FlatList, Pressable } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
+import { getUserRequests } from "../../store/qaassessmentnewAPI/homescreen.slice"
 
-const CoinCard = ({
-  coinName
-}) => {
-  return <View style={styles.card}>
+const CoinCard = ({ coinName }) => {
+  return (
+    <View style={styles.card}>
       <Text style={styles.coinName}>{coinName}</Text>
       <View style={styles.buttonsContainer}>
         <Pressable style={styles.button}>
@@ -14,43 +15,31 @@ const CoinCard = ({
           <Text style={styles.buttonText}>Decline</Text>
         </Pressable>
       </View>
-    </View>;
-};
+    </View>
+  )
+}
 
 const CoinsList = () => {
-  const coins = [{
-    id: "1",
-    name: "Bitcoin"
-  }, {
-    id: "2",
-    name: "Ethereum"
-  }, {
-    id: "3",
-    name: "Litecoin"
-  }, {
-    id: "4",
-    name: "Ripple"
-  }, {
-    id: "5",
-    name: "Bitcoin Cash"
-  }];
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.Homescreen.userRequestList.entities)
 
-  const renderItem = ({
-    item
-  }) => <CoinCard coinName={item.name} />;
+  useEffect(() => {
+    dispatch(getUserRequests())
+  }, [])
 
-  return <View style={styles.container}>
-      {
-      /* <View style={styles.header}>
-       <Pressable>
-         <Image style={styles.gMdEanPl} source={require("./icons8-back-50.png")} />
-       </Pressable>
-       <Text style={styles.headerText}>My Offers</Text>
-      </View> */
-    }
-      <FlatList data={coins} renderItem={renderItem} keyExtractor={item => item.id} contentContainerStyle={styles.listContainer} />
-    </View>;
-};
+  const renderItem = ({ item }) => <CoinCard coinName={item.name} />
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={state}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        contentContainerStyle={styles.listContainer}
+      />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -106,7 +95,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     textAlign: "center",
-    fontWeight: '700'
+    fontWeight: "700"
   },
   ayMotHta: {
     width: 24
@@ -116,5 +105,5 @@ const styles = StyleSheet.create({
     height: 38,
     marginRight: 90
   }
-});
-export default CoinsList;
+})
+export default CoinsList
