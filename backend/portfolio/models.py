@@ -12,9 +12,10 @@ class MetalType(models.Model):
 class Coin(models.Model):
     'Generated Model'
     name = models.CharField(max_length=256, )
+    coin_quantity = models.BigIntegerField(null=True)
     metal_type = models.ForeignKey("portfolio.MetalType", on_delete=models.CASCADE, related_name="coin_metal_type", )
     company = models.ForeignKey("company.Company", on_delete=models.CASCADE, related_name="coin_company", )
-    user = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="coin_user", )
+    coin_user = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="coin_user", )
     price = models.FloatField()
     bid_premium_low = models.FloatField()
     bid_premium_high = models.BigIntegerField()
@@ -23,6 +24,7 @@ class Coin(models.Model):
 class OfferList(models.Model):
     'Generated Model'
     quantity = models.BigIntegerField()
+    offer_price = models.FloatField(null=True)
     offer = models.ForeignKey("portfolio.Offer", null=True, blank=True, on_delete=models.CASCADE,
                               related_name="offerlist_offer", )
     coin = models.ForeignKey("portfolio.Coin", null=True, blank=True, on_delete=models.CASCADE,
@@ -33,7 +35,12 @@ class OfferList(models.Model):
 
 class Offer(models.Model):
     'Generated Model'
-    status = models.CharField(max_length=256, )
+    STATUS_CHOICES = (
+        ('PENDING', 'Pending'),
+        ('ACCEPTED', 'Accepted'),
+        ('REJECTED', 'Rejected'),
+    )
+    status = models.CharField(max_length=256, choices=STATUS_CHOICES, default='PENDING')
     created_date = models.DateTimeField(auto_now=True, )
     offerer = models.ForeignKey("users.User", null=True, blank=True, on_delete=models.CASCADE,
                                 related_name="offer_offerer", )
