@@ -25,7 +25,6 @@ const PrivacyPolicy = ({ navigation }) => {
       .then(response => response.json())
       .then(data => setHtmlContent(data[0].body))
       .catch(err => {
-        console.log(err)
         setHtmlContent(
           "<h3> Privacy Policy could not be loaded at this time.</h3>"
         )

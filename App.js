@@ -45,13 +45,6 @@ const getNavigation = (modules, screens, initialRoute) => {
       headerBackImage: () => <CustomBackButton />
     }
 
-    // const updateStack = async() => {
-    //   const accessToken = await AsyncStorage.getItem("access_token")
-    //  return accessToken
-    // }
-    // console.log("updateStack()", updateStack()._z)
-
-    console.log("ROUTES", routes)
     return (
       <NavigationContainer>
         <Stack.Navigator
