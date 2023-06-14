@@ -1,14 +1,14 @@
 import React, { useEffect } from "react"
 import { StyleSheet, View, Text, FlatList } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
-import { getSpotList } from "../../store/qaassessmentnewAPI/homescreen.slice"
+import { getCoins } from "../../store/qaassessmentnewAPI/homescreen.slice"
 
 const SpotPrices = () => {
   const dispatch = useDispatch()
-  const state = useSelector(state => state.Homescreen.spotList.entities)
+  const state = useSelector(state => state.Homescreen.coinList.entities)
 
   useEffect(() => {
-    dispatch(getSpotList())
+    dispatch(getCoins())
   }, [])
 
   const renderItem = ({ item }) => (
@@ -18,7 +18,7 @@ const SpotPrices = () => {
         <Text style={styles.price}>${item.price}</Text>
       </View>
       <View style={styles.cardBody}>
-        <Text style={styles.quantity}>Quantity: {item.quantity}</Text>
+        <Text style={styles.quantity}>Quantity: {item.coin_quantity}</Text>
       </View>
     </View>
   )

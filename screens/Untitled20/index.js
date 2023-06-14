@@ -1,19 +1,49 @@
-import React, { useEffect } from "react"
-import { StyleSheet, View, Text, FlatList, Pressable } from "react-native"
+import React, { useEffect, useState } from "react"
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  Pressable,
+  Alert,
+  TouchableOpacity
+} from "react-native"
 import { useDispatch, useSelector } from "react-redux"
-import { getUserRequests } from "../../store/qaassessmentnewAPI/homescreen.slice"
+import {
+  getUserRequests,
+  updateOffer
+} from "../../store/qaassessmentnewAPI/homescreen.slice"
+import { unwrapResult } from "@reduxjs/toolkit"
 
-const CoinCard = ({ coinName }) => {
+const CoinCard = ({ coinName, updateStatus }) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.coinName}>{coinName}</Text>
+      <Text style={styles.coinName}>{coinName.name}</Text>
       <View style={styles.buttonsContainer}>
-        <Pressable style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() =>
+            updateStatus({
+              id: coinName.id,
+              name: coinName.name,
+              status: "ACCEPTED"
+            })
+          }
+        >
           <Text style={styles.buttonText}>Accept</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() =>
+            updateStatus({
+              id: coinName.id,
+              name: coinName.name,
+              status: "DECLINED"
+            })
+          }
+        >
           <Text style={styles.buttonText}>Decline</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -27,7 +57,22 @@ const CoinsList = () => {
     dispatch(getUserRequests())
   }, [])
 
-  const renderItem = ({ item }) => <CoinCard coinName={item.name} />
+  const updateStatus = data => {
+    const payload = {
+      offer_id: data.id,
+      offer_status: data.status
+    }
+    dispatch(updateOffer(payload))
+      .then(unwrapResult)
+      .then(() => {
+        dispatch(getUserRequests())
+        Alert.alert("Success", "Offer status is updated")
+      })
+  }
+
+  const renderItem = ({ item }) => (
+    <CoinCard coinName={item} updateStatus={updateStatus} />
+  )
 
   return (
     <View style={styles.container}>

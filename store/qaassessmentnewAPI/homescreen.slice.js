@@ -74,6 +74,39 @@ export const getUserRequests = createAsyncThunk(
   }
 )
 
+export const getCoins = createAsyncThunk("profile/getCoins", async () => {
+  try {
+    const response = await api.getCoins()
+    return response.data
+  } catch (error) {
+    Alert.alert("Error", error.message)
+    throw new Error()
+  }
+})
+
+export const makeOffer = createAsyncThunk("profile/makeOffer", async data => {
+  try {
+    const response = await api.makeOffer(data)
+    return response.data
+  } catch (error) {
+    Alert.alert("Error", error.message)
+    throw new Error()
+  }
+})
+
+export const updateOffer = createAsyncThunk(
+  "profile/updateOffer",
+  async data => {
+    try {
+      const response = await api.updateOffer(data)
+      return response.data
+    } catch (error) {
+      Alert.alert("Error", error.message)
+      throw new Error()
+    }
+  }
+)
+
 const initialState = {
   token: null,
   spotList: {
@@ -113,6 +146,27 @@ const initialState = {
   },
   userRequestList: {
     entities: [],
+    api: {
+      loading: "idle",
+      error: null
+    }
+  },
+  coinList: {
+    entities: [],
+    api: {
+      loading: "idle",
+      error: null
+    }
+  },
+  makeOffer: {
+    entities: false,
+    api: {
+      loading: "idle",
+      error: null
+    }
+  },
+  updateOffer: {
+    entities: false,
     api: {
       loading: "idle",
       error: null
@@ -216,7 +270,6 @@ const homescreenSlice = createSlice({
         state.updateProfile.api.loading = "idle"
       }
     },
-
     [getUserRequests.pending]: (state, action) => {
       if (state.userRequestList.api.loading === "idle") {
         state.userRequestList.api.loading = "pending"
@@ -233,6 +286,62 @@ const homescreenSlice = createSlice({
       if (state.userRequestList.api.loading === "pending") {
         state.userRequestList.api.error = action.error
         state.userRequestList.api.loading = "idle"
+      }
+    },
+
+    [getCoins.pending]: (state, action) => {
+      if (state.coinList.api.loading === "idle") {
+        state.coinList.api.loading = "pending"
+        state.coinList.api.error = null
+      }
+    },
+    [getCoins.fulfilled]: (state, action) => {
+      if (state.coinList.api.loading === "pending") {
+        state.coinList.entities = action.payload
+        state.coinList.api.loading = "idle"
+      }
+    },
+    [getCoins.rejected]: (state, action) => {
+      if (state.coinList.api.loading === "pending") {
+        state.coinList.api.error = action.error
+        state.coinList.api.loading = "idle"
+      }
+    },
+    [makeOffer.pending]: (state, action) => {
+      if (state.makeOffer.api.loading === "idle") {
+        state.makeOffer.api.loading = "pending"
+        state.makeOffer.api.error = null
+      }
+    },
+    [makeOffer.fulfilled]: (state, action) => {
+      if (state.makeOffer.api.loading === "pending") {
+        state.makeOffer.entities = action.payload
+        state.makeOffer.api.loading = "idle"
+      }
+    },
+    [makeOffer.rejected]: (state, action) => {
+      if (state.makeOffer.api.loading === "pending") {
+        state.makeOffer.api.error = action.error
+        state.makeOffer.api.loading = "idle"
+      }
+    },
+
+    [updateOffer.pending]: (state, action) => {
+      if (state.updateOffer.api.loading === "idle") {
+        state.updateOffer.api.loading = "pending"
+        state.updateOffer.api.error = null
+      }
+    },
+    [updateOffer.fulfilled]: (state, action) => {
+      if (state.updateOffer.api.loading === "pending") {
+        state.updateOffer.entities = action.payload
+        state.updateOffer.api.loading = "idle"
+      }
+    },
+    [updateOffer.rejected]: (state, action) => {
+      if (state.updateOffer.api.loading === "pending") {
+        state.updateOffer.api.error = action.error
+        state.updateOffer.api.loading = "idle"
       }
     }
   }

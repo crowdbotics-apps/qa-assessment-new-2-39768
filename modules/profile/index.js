@@ -1,21 +1,27 @@
-import { unwrapResult } from "@reduxjs/toolkit";
-import React, { Fragment, useEffect, useState } from "react";
+import { unwrapResult } from "@reduxjs/toolkit"
+import React, { Fragment, useEffect, useState } from "react"
 import {
-  Image, ScrollView, StyleSheet, Text, TouchableOpacity, View
-} from "react-native";
-import DocumentPicker from "react-native-document-picker";
-import { useDispatch } from "react-redux";
-import { adduser, deleteUser, getUser, slice } from "./auth";
-import Button from "./components/Button";
-import Input from "./components/Input";
-import Loader from "./components/Loader";
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native"
+import DocumentPicker from "react-native-document-picker"
+import { useDispatch } from "react-redux"
+import { adduser, deleteUser, getUser, slice } from "./auth"
+import Button from "./components/Button"
+import Input from "./components/Input"
+import Loader from "./components/Loader"
 
 const Profile = () => {
-  const dispatch = useDispatch();
-  const [errors, setErrors] = useState({});
-  const [isloading, setIsLoading] = useState(false);
-  const [editProfile, setEditPrfile] = useState(false);
-  const [isProfile, setIsProfile] = useState(false);
+  const dispatch = useDispatch()
+  const [errors, setErrors] = useState({})
+  const [isloading, setIsLoading] = useState(false)
+  const [editProfile, setEditPrfile] = useState(false)
+  const [isProfile, setIsProfile] = useState(false)
+  const [imageState, setImageState] = useState(false)
   const [profileData, setProfileData] = useState({
     first_name: "",
     last_name: "",
@@ -28,94 +34,102 @@ const Profile = () => {
     gender: "",
     age: null,
     profile_image: null
-  });
+  })
 
   useEffect(() => {
-    getProfile();
-  }, []);
+    getProfile()
+  }, [])
 
   const selectFile = async () => {
     try {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.images]
-      });
-      setProfileData({ ...profileData, profile_image: res[0] });
-      setIsProfile(true);
+      })
+      setImageState(true)
+      setProfileData({ ...profileData, profile_image: res[0] })
+      setIsProfile(true)
     } catch (err) {
-      setIsProfile(false);
+      setIsProfile(false)
       if (DocumentPicker.isCancel(err)) {
-        alert("Canceled");
+        alert("Canceled")
       } else {
-        alert("Unknown Error: " + JSON.stringify(err));
-        throw err;
+        alert("Unknown Error: " + JSON.stringify(err))
+        throw err
       }
     }
-  };
+  }
 
   const addProfile = async () => {
-    setIsLoading(true);
-    const tmpProfileData = JSON.parse(JSON.stringify(profileData));
+    setIsLoading(true)
+    const tmpProfileData = JSON.parse(JSON.stringify(profileData))
     if (!isProfile) {
-      delete tmpProfileData.profile_image;
+      delete tmpProfileData.profile_image
     }
-    const data = new FormData();
+    const data = new FormData()
     Object.keys(tmpProfileData).forEach(key => {
-      data.append(key, tmpProfileData[key]);
-    });
+      if (key !== "user") {
+        data.append(key, tmpProfileData[key])
+      }
+    })
 
     dispatch(adduser(data))
       .then(unwrapResult)
-      .then((res) => {
-        setIsLoading(false);
-        setEditPrfile(false);
-        setIsProfile(false);
-        setErrors({});
-        alert("Profile updated successfully");
+      .then(res => {
+        setIsLoading(false)
+        setEditPrfile(false)
+        setIsProfile(false)
+        setErrors({})
+        alert("Profile updated successfully")
       })
-      .catch((err) => {
-        setErrors(err);
-        setIsLoading(false);
-      });
-  };
+      .catch(err => {
+        setErrors(err)
+        setIsLoading(false)
+      })
+  }
 
   const getProfile = async () => {
-    setIsLoading(true);
-    dispatch(getUser()).then(unwrapResult).then((res) => {
-      if (res) {
-        setProfileData(res);
-      } else {
-        setEditPrfile(true);
-      }
-      setIsLoading(false);
-    }).catch((err) => {
-      setIsLoading(false);
-      alert(err.detail);
-    });
-  };
+    setIsLoading(true)
+    dispatch(getUser())
+      .then(unwrapResult)
+      .then(res => {
+        if (res) {
+          setProfileData(res)
+        } else {
+          setEditPrfile(true)
+        }
+        setIsLoading(false)
+      })
+      .catch(err => {
+        setIsLoading(false)
+        alert(err.detail)
+      })
+  }
 
   const deleteProfile = async () => {
-    setIsLoading(true);
-    dispatch(deleteUser()).then(unwrapResult).then((res) => {
-      setIsLoading(false);
-      setProfileData({
-        first_name: "",
-        last_name: "",
-        phone: "",
-        country: "",
-        city: "",
-        state: "",
-        address1: "",
-        zip_code: "",
-        gender: "",
-        age: null,
-        profile_image: null
-      });
-    })
-      .catch((err) => {
-        setIsLoading(false);
-        alert(err.detail);
-      });
-  };
+    setIsLoading(true)
+    dispatch(deleteUser())
+      .then(unwrapResult)
+      .then(res => {
+        setIsLoading(false)
+        setProfileData({
+          first_name: "",
+          last_name: "",
+          phone: "",
+          country: "",
+          city: "",
+          state: "",
+          address1: "",
+          zip_code: "",
+          gender: "",
+          age: null,
+          profile_image: null
+        })
+      })
+      .catch(err => {
+        setIsLoading(false)
+        alert(err.detail)
+      })
+  }
 
   return (
     <View style={styles.container}>
@@ -123,25 +137,60 @@ const Profile = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <TouchableOpacity onPress={selectFile}>
-            <Image resizeMode="cover" source={profileData?.profile_image ? { uri: profileData.profile_image.uri } || { uri: profileData.profile_image } : require("./assets/profilePicture.png")} style={styles.profilePicture} />
+            <Image
+              resizeMode="cover"
+              source={
+                profileData?.profile_image
+                  ? imageState
+                    ? { uri: profileData.profile_image.uri }
+                    : {
+                        uri: profileData.profile_image
+                      }
+                  : require("./assets/profilePicture.png")
+              }
+              style={styles.profilePicture}
+            />
           </TouchableOpacity>
-          {
-            profileData.first_name
-              ? <Text style={styles.name}>{profileData.first_name} {profileData.last_name}</Text>
-              : <Text style={styles.name}>username</Text>
-          }
+          {profileData.first_name ? (
+            <Text style={styles.name}>
+              {profileData.first_name} {profileData.last_name}
+            </Text>
+          ) : (
+            <Text style={styles.name}>username</Text>
+          )}
         </View>
         <View style={styles.separator}>
           <TouchableOpacity onPress={() => setEditPrfile(!editProfile)}>
-            <Text style={[styles.separatorText, styles.green]}>Edit Account</Text>
+            <Text style={[styles.separatorText, styles.green]}>
+              Edit Account
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={deleteProfile}>
-            <Text style={[styles.separatorText, styles.red]}>Delete Account</Text>
+            <Text style={[styles.separatorText, styles.red]}>
+              Delete Account
+            </Text>
           </TouchableOpacity>
         </View>
-        <Input editable={editProfile} text="First Name" value={profileData.first_name} onChange={text => setProfileData({ ...profileData, first_name: text })} />
-        <Input editable={editProfile} text="Last Name" value={profileData.last_name} onChange={text => setProfileData({ ...profileData, last_name: text })} />
-        <Input editable={editProfile} text="Phone" value={profileData.phone?.toString()} onChange={text => setProfileData({ ...profileData, phone: text })} />
+        <Input
+          editable={editProfile}
+          text="First Name"
+          value={profileData.first_name}
+          onChange={text =>
+            setProfileData({ ...profileData, first_name: text })
+          }
+        />
+        <Input
+          editable={editProfile}
+          text="Last Name"
+          value={profileData.last_name}
+          onChange={text => setProfileData({ ...profileData, last_name: text })}
+        />
+        <Input
+          editable={editProfile}
+          text="Phone"
+          value={profileData.phone?.toString()}
+          onChange={text => setProfileData({ ...profileData, phone: text })}
+        />
         <View style={styles.halfInputs}>
           <Input
             editable={editProfile}
@@ -165,7 +214,9 @@ const Profile = () => {
             editable={editProfile}
             text="Zip Code"
             value={profileData.zip_code}
-            onChange={text => setProfileData({ ...profileData, zip_code: text })}
+            onChange={text =>
+              setProfileData({ ...profileData, zip_code: text })
+            }
             style={styles.input1}
             containerStyle={styles.inputContainer1}
           />
@@ -196,23 +247,33 @@ const Profile = () => {
             containerStyle={styles.inputContainer2}
           />
         </View>
-        <Input editable={editProfile} text="Address 1" value={profileData.address1} onChange={text => setProfileData({ ...profileData, address1: text })} />
+        <Input
+          editable={editProfile}
+          text="Address 1"
+          value={profileData.address1}
+          onChange={text => setProfileData({ ...profileData, address1: text })}
+        />
         {Object.keys(errors).map((error, index) => (
           <Fragment key={index}>
-            {
-              (errors[error] instanceof Array)
-                ? errors[error].map((obj, index) => (<Text key={index} style={styles.error}>{error}: {obj}</Text>))
-                : <Text key={index} style={styles.error}>{error}: {errors[error]}</Text>
-            }
+            {errors[error] instanceof Array ? (
+              errors[error].map((obj, index) => (
+                <Text key={index} style={styles.error}>
+                  {error}: {obj}
+                </Text>
+              ))
+            ) : (
+              <Text key={index} style={styles.error}>
+                {error}: {errors[error]}
+              </Text>
+            )}
           </Fragment>
-        ))
-        }
+        ))}
 
         <Button buttonText="Update Profile" onPress={addProfile} />
       </ScrollView>
     </View>
-  );
-};
+  )
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -312,10 +373,10 @@ const styles = StyleSheet.create({
     resizeMode: "contain"
   },
   error: { color: "#FF5733" }
-});
+})
 
 export default {
   title: "profile",
   navigator: Profile,
   slice
-};
+}

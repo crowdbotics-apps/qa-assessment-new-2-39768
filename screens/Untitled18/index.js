@@ -1,14 +1,14 @@
-import React, {useEffect} from "react"
+import React, { useEffect } from "react"
 import { StyleSheet, View, Text, FlatList } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
-import { getRetailList } from "../../store/qaassessmentnewAPI/homescreen.slice"
+import { getCoins } from "../../store/qaassessmentnewAPI/homescreen.slice"
 
 const Card = ({ item }) => {
   return (
     <View style={styles.card}>
       <View style={styles.header}>
         <Text style={styles.title}>{item.name}</Text>
-        <Text style={styles.quantity}>Quantity: {item.quantity}</Text>
+        <Text style={styles.quantity}>Quantity: {item.coin_quantity}</Text>
       </View>
       <View style={styles.priceContainer}>
         <Text style={styles.priceTitle}>
@@ -18,7 +18,9 @@ const Card = ({ item }) => {
           <Text style={styles.priceRange}>
             Lower End: ${item.bid_premium_low}
           </Text>
-          <Text style={styles.priceRange}>Between: ${item.between_price}</Text>
+          <Text style={styles.priceRange}>
+            Between: ${(item?.bid_premium_low + item?.bid_premium_high) / 2}
+          </Text>
           <Text style={styles.priceRange}>
             Higher End: ${item.bid_premium_high}
           </Text>
@@ -30,10 +32,10 @@ const Card = ({ item }) => {
 
 const RetailPrice = () => {
   const dispatch = useDispatch()
-  const state = useSelector(state => state.Homescreen.retailList.entities)
+  const state = useSelector(state => state.Homescreen.coinList.entities)
 
   useEffect(() => {
-    dispatch(getRetailList())
+    dispatch(getCoins())
   }, [])
 
   return (

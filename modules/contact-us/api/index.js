@@ -11,10 +11,8 @@ export const sendQuery = async data => {
       },
       body: JSON.stringify(data)
     })
-    console.log("repsonse", response)
     return response
   } catch (error) {
-    console.log("RESPONSE", error.response)
     Alert.alert("Error", error.message)
     throw new Error()
   }
