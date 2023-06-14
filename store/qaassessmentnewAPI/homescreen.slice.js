@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { Alert } from "react-native"
 import { api } from "./homeApis"
+import { mapErrors } from "../../utils/functions"
 
 export const getSpotList = createAsyncThunk("home/spotList", async () => {
   try {
@@ -89,7 +90,7 @@ export const makeOffer = createAsyncThunk("profile/makeOffer", async data => {
     const response = await api.makeOffer(data)
     return response.data
   } catch (error) {
-    Alert.alert("Error", error.message)
+    Alert.alert("Error", mapErrors(error))
     throw new Error()
   }
 })
@@ -101,7 +102,7 @@ export const updateOffer = createAsyncThunk(
       const response = await api.updateOffer(data)
       return response.data
     } catch (error) {
-      Alert.alert("Error", error.message)
+      Alert.alert("Error", mapErrors(error))
       throw new Error()
     }
   }
