@@ -74,3 +74,42 @@ class UserSerializer(serializers.ModelSerializer):
 class PasswordSerializer(PasswordResetSerializer):
     """Custom serializer for rest_auth to solve reset password error"""
     password_reset_form_class = ResetPasswordForm
+
+
+class SuperUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'name', 'email', 'password')
+        extra_kwargs = {
+            'password': {
+                'write_only': True,
+                'style': {
+                    'input_type': 'password'
+                }
+            },
+            'email': {
+                'required': True,
+                'allow_blank': False,
+            }
+        }
+
+    def create(self, validated_data):
+        user = User(
+            email=validated_data.get('email'),
+            name=validated_data.get('name'),
+            username=generate_unique_username([
+                validated_data.get('name'),
+                validated_data.get('email'),
+                'user'
+            ])
+        )
+        user.is_superuser = True
+        user.is_staff = True
+        user.is_active = True
+        user.set_password(validated_data.get('password'))
+        user.save()
+        return user
+
+    def save(self, request=None):
+        """rest_auth passes request so we must override to accept it"""
+        return super().save()

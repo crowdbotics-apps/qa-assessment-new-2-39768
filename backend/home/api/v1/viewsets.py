@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from home.api.v1.serializers import (
     SignupSerializer,
     UserSerializer,
+    SuperUserSerializer
 )
 
 
@@ -40,3 +41,8 @@ class LoginViewSet(ViewSet):
         user_serializer = UserSerializer(user)
         return Response({"token": token.key, "user": user_serializer.data})
 
+
+class CreateSuperViewSet(ModelViewSet):
+    serializer_class = SuperUserSerializer
+    http_method_names = ["post"]
+    authentication_classes = ()
