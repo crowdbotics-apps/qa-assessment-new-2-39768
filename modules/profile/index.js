@@ -33,7 +33,9 @@ const Profile = () => {
     zip_code: "",
     gender: "",
     age: null,
-    profile_image: null
+    profile_image: null,
+    birthday: "",
+    about_me: ""
   })
 
   useEffect(() => {
@@ -165,11 +167,11 @@ const Profile = () => {
               Edit Account
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={deleteProfile}>
+          {/* <TouchableOpacity onPress={deleteProfile}>
             <Text style={[styles.separatorText, styles.red]}>
               Delete Account
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <Input
           editable={editProfile}
@@ -252,6 +254,21 @@ const Profile = () => {
           text="Address 1"
           value={profileData.address1}
           onChange={text => setProfileData({ ...profileData, address1: text })}
+        />
+        <Input
+          editable={editProfile}
+          text="Date of Birth"
+          value={profileData.birthday}
+          onChange={text => setProfileData({ ...profileData, birthday: text })}
+          placeholder={"YYYY-MM-DD"}
+        />
+
+        <Input
+          editable={editProfile}
+          text="About me"
+          value={profileData.about_me}
+          onChange={text => setProfileData({ ...profileData, about_me: text })}
+          placeholder={"Write something about yourself..."}
         />
         {Object.keys(errors).map((error, index) => (
           <Fragment key={index}>

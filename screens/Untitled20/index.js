@@ -76,12 +76,18 @@ const CoinsList = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={state}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        contentContainerStyle={styles.listContainer}
-      />
+      {state.length === 0 ? (
+        <Text style={{ alignSelf: "center", marginTop: 20 }}>
+          No record found.
+        </Text>
+      ) : (
+        <FlatList
+          data={state}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          contentContainerStyle={styles.listContainer}
+        />
+      )}
     </View>
   )
 }
