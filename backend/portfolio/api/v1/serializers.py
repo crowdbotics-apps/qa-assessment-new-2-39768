@@ -1,3 +1,4 @@
+from django.http import HttpResponseBadRequest
 from rest_framework import serializers
 from portfolio.models import Coin, MetalType, Offer, OfferList
 
@@ -64,11 +65,14 @@ class OfferSerializer(serializers.ModelSerializer):
         model = Offer
         fields = "__all__"
 
-    def to_representation(self, instance):
+    def validate(self, data):
         _request = self.context.get('request')
-        offer_list = instance.offerlist_offer.filter(user=_request.user)
-        serializer = MakeOfferSerializer(offer_list, many=True)
-        return serializer.data
+        existing_offer = OfferList.objects.filter(coin_id=_request.data.get('coin'),
+                                                  offer__offerer=_request.user).exists()
+        if existing_offer:
+            raise serializers.ValidationError(
+                "An offer with the same coin ID already exists for the user use another coin ID.")
+        return data
 
     def create(self, validated_data):
         _request = self.context.get('request')
@@ -86,4 +90,3 @@ class OfferSerializer(serializers.ModelSerializer):
         )
         offer_list.save()
         return offer
-

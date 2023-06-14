@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-
 user = get_user_model()
 
 
@@ -36,8 +35,9 @@ class Profile(TimeStamp):
     address1 = models.CharField(max_length=255, null=True, blank=True)
     zip_code = models.CharField(max_length=20, null=True, blank=True)
     gender = models.CharField(max_length=5, choices=GENDER_CHOICES, default='MALE', null=True, blank=True)
-    birthday = models.DateTimeField(auto_now=True, null=True, blank=True)
+    birthday = models.DateField(null=True, blank=True)
     age = models.IntegerField(blank=True, null=True, default=None)
+    about_me = models.TextField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Profile"
