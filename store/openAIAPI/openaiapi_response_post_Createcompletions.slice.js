@@ -1,32 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { apiService } from "./api"
-export const rest_auth_password_reset_confirm_create = createAsyncThunk(
-  "passwordResetConfirms/rest_auth_password_reset_confirm_create",
+export const openaiapi_post_v1_completions_create = createAsyncThunk(
+  "openaiapi_response_post_Createcompletions/openaiapi_post_v1_completions_create",
   async payload => {
-    const response = await apiService.rest_auth_password_reset_confirm_create(
+    const response = await apiService.openaiapi_post_v1_completions_create(
       payload
     )
     return response.data
   }
 )
 const initialState = { entities: [], api: { loading: "idle", error: null } }
-const passwordResetConfirmsSlice = createSlice({
-  name: "passwordResetConfirms",
+const openaiapi_response_post_CreatecompletionsSlice = createSlice({
+  name: "openaiapi_response_post_Createcompletions",
   initialState,
   reducers: {},
   extraReducers: {
-    [rest_auth_password_reset_confirm_create.pending]: (state, action) => {
+    [openaiapi_post_v1_completions_create.pending]: (state, action) => {
       if (state.api.loading === "idle") {
         state.api.loading = "pending"
       }
     },
-    [rest_auth_password_reset_confirm_create.fulfilled]: (state, action) => {
+    [openaiapi_post_v1_completions_create.fulfilled]: (state, action) => {
       if (state.api.loading === "pending") {
         state.entities.push(action.payload)
         state.api.loading = "idle"
       }
     },
-    [rest_auth_password_reset_confirm_create.rejected]: (state, action) => {
+    [openaiapi_post_v1_completions_create.rejected]: (state, action) => {
       if (state.api.loading === "pending") {
         state.api.error = action.error
         state.api.loading = "idle"
@@ -35,6 +35,6 @@ const passwordResetConfirmsSlice = createSlice({
   }
 })
 export default {
-  rest_auth_password_reset_confirm_create,
-  slice: passwordResetConfirmsSlice
+  openaiapi_post_v1_completions_create,
+  slice: openaiapi_response_post_CreatecompletionsSlice
 }
